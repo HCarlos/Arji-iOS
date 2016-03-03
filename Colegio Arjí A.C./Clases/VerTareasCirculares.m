@@ -23,13 +23,13 @@
 @synthesize WebView, IdObj, IdObjAlu, IdObjMenu, Singleton, IdTarea, loadingView, lblPorc, urlWeb, IdComMensaje;
 
 - (void)viewDidLoad {
-
+/*
     self.navigationItem.backBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@""
                                      style:UIBarButtonItemStylePlain
                                     target:nil
                                     action:nil];
-        
+*/        
     
     loadingView = [[UIView alloc]initWithFrame:CGRectMake(
                                                           ((self.WebView.scrollView.contentSize.width/2)-60),
@@ -71,7 +71,7 @@
     
     switch (self.Singleton.Clave) {
         case 7:
-            if (self.IdObjMenu == 0 || self.IdObjMenu == 1 || self.IdObjMenu == 3){
+            if (self.IdObjMenu == 0 || self.IdObjMenu == 1 || self.IdObjMenu == 3 || self.IdObjMenu == 4){
                 miMIME = @"text/html";
                 [self getHTMLVal];
             }else if (self.IdObjMenu == 2){
@@ -105,15 +105,6 @@
     self.WebView = nil;
     self.Singleton = nil;
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma Get HTML Val
 -(void)getHTMLVal{
@@ -133,10 +124,6 @@
     }else     if (self.IdObjMenu == 1){
         noteDataString = [NSString stringWithFormat:@"user=%@&idcommensaje=%d&idcommensajedestinatario=%d&sts=0", usernamex,self.IdComMensaje,self.IdObj];
         url = [NSURL URLWithString:@"http://platsource.mx/getCircularesHTMLTemplate/"];
-    }else     if (self.IdObjMenu == 3){
-        noteDataString = [NSString stringWithFormat:@"user=%@&iduser=%d&idedocta=%d&sts=0", usernamex,self.Singleton.IdUser,self.IdObj];
-        url = [NSURL URLWithString:@"http://platsource.mx/getPagosLayout/"];
-        
     }
         
     // Tarea de gestión de datos
@@ -203,12 +190,19 @@ didFinishDownloadingToURL:(NSURL *)location
     
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
+    
+    NSLog(@"Acaba de Terminar de Cargar el %lu",(unsigned long)webView.dataDetectorTypes);
     [loadingView removeFromSuperview];
     
 }
 
+
+
 #pragma webView_shouldStartLoadWithRequest
 -(BOOL) webView:(UIWebView *)inWeb shouldStartLoadWithRequest:(NSURLRequest *)inRequest navigationType:(UIWebViewNavigationType)inType {
+    
+    NSLog(@"BODY: %@",[[NSString alloc]initWithData:inRequest.HTTPBody encoding:NSUTF8StringEncoding] );
+    
     if ( inType == UIWebViewNavigationTypeLinkClicked ) {
         [[UIApplication sharedApplication] openURL:[inRequest URL]];
         NSLog(@"Entro");

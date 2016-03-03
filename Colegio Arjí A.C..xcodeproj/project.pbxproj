@@ -16,12 +16,9 @@
 		A6A9CAAD1C7E4C4600314626 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6A9CAAC1C7E4C4600314626 /* Assets.xcassets */; };
 		A6A9CAB01C7E4C4600314626 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6A9CAAE1C7E4C4600314626 /* LaunchScreen.storyboard */; };
 		A6A9CABB1C7E51B400314626 /* PrimerMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A9CABA1C7E51B400314626 /* PrimerMenu.m */; };
-		A6A9CABE1C7E521800314626 /* PrimerMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A9CABD1C7E521800314626 /* PrimerMenuCell.m */; };
 		A6A9CAC11C7E543300314626 /* Singleton.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A9CABF1C7E543300314626 /* Singleton.m */; };
 		A6A9CAC41C7E57DE00314626 /* SegundoMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A9CAC31C7E57DE00314626 /* SegundoMenu.m */; };
-		A6A9CAC71C7E595800314626 /* SegundoMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A9CAC61C7E595800314626 /* SegundoMenuCell.m */; };
 		A6A9CACA1C7E5BB100314626 /* TercerMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A9CAC91C7E5BB100314626 /* TercerMenu.m */; };
-		A6A9CACD1C7E5C1400314626 /* TercerMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A9CACC1C7E5C1400314626 /* TercerMenuCell.m */; };
 		A6AEE3C01C864CEA00BA68FA /* icono_arji.png in Resources */ = {isa = PBXBuildFile; fileRef = A6AEE3B71C864CEA00BA68FA /* icono_arji.png */; };
 		A6AEE3C11C864CEA00BA68FA /* icono_arji2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6AEE3B81C864CEA00BA68FA /* icono_arji2x.png */; };
 		A6AEE3C21C864CEA00BA68FA /* icono_arji3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6AEE3B91C864CEA00BA68FA /* icono_arji3x.png */; };
@@ -43,8 +40,6 @@
 		A6AEE3DE1C864D1000BA68FA /* retina_display_1242x2208.png in Resources */ = {isa = PBXBuildFile; fileRef = A6AEE3D21C864D1000BA68FA /* retina_display_1242x2208.png */; };
 		A6AEE3DF1C864D1000BA68FA /* retina_display_1334x750.png in Resources */ = {isa = PBXBuildFile; fileRef = A6AEE3D31C864D1000BA68FA /* retina_display_1334x750.png */; };
 		A6AEE3E01C864D1000BA68FA /* retina_display_2208x1242.png in Resources */ = {isa = PBXBuildFile; fileRef = A6AEE3D41C864D1000BA68FA /* retina_display_2208x1242.png */; };
-		A6CD42C11C87934E005323D4 /* PrimerMenuHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6CD42C01C87934E005323D4 /* PrimerMenuHeaderCell.m */; };
-		A6CD42C31C879368005323D4 /* PrimerMenuHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6CD42C21C879368005323D4 /* PrimerMenuHeaderCell.xib */; };
 		A6FB64591C8733480093A2A0 /* icono_arji360x360.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FB64581C8733480093A2A0 /* icono_arji360x360.png */; };
 /* End PBXBuildFile section */
 
@@ -65,18 +60,12 @@
 		A6A9CAB11C7E4C4600314626 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6A9CAB91C7E51B400314626 /* PrimerMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrimerMenu.h; path = Clases/PrimerMenu.h; sourceTree = "<group>"; };
 		A6A9CABA1C7E51B400314626 /* PrimerMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PrimerMenu.m; path = Clases/PrimerMenu.m; sourceTree = "<group>"; };
-		A6A9CABC1C7E521800314626 /* PrimerMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrimerMenuCell.h; path = Clases/PrimerMenuCell.h; sourceTree = "<group>"; };
-		A6A9CABD1C7E521800314626 /* PrimerMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PrimerMenuCell.m; path = Clases/PrimerMenuCell.m; sourceTree = "<group>"; };
 		A6A9CABF1C7E543300314626 /* Singleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Singleton.m; path = Clases/Singleton.m; sourceTree = "<group>"; };
 		A6A9CAC01C7E543300314626 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Singleton.h; path = Clases/Singleton.h; sourceTree = "<group>"; };
 		A6A9CAC21C7E57DE00314626 /* SegundoMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SegundoMenu.h; path = Clases/SegundoMenu.h; sourceTree = "<group>"; };
 		A6A9CAC31C7E57DE00314626 /* SegundoMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SegundoMenu.m; path = Clases/SegundoMenu.m; sourceTree = "<group>"; };
-		A6A9CAC51C7E595800314626 /* SegundoMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SegundoMenuCell.h; path = Clases/SegundoMenuCell.h; sourceTree = "<group>"; };
-		A6A9CAC61C7E595800314626 /* SegundoMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SegundoMenuCell.m; path = Clases/SegundoMenuCell.m; sourceTree = "<group>"; };
 		A6A9CAC81C7E5BB100314626 /* TercerMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TercerMenu.h; path = Clases/TercerMenu.h; sourceTree = "<group>"; };
 		A6A9CAC91C7E5BB100314626 /* TercerMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TercerMenu.m; path = Clases/TercerMenu.m; sourceTree = "<group>"; };
-		A6A9CACB1C7E5C1400314626 /* TercerMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TercerMenuCell.h; path = Clases/TercerMenuCell.h; sourceTree = "<group>"; };
-		A6A9CACC1C7E5C1400314626 /* TercerMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TercerMenuCell.m; path = Clases/TercerMenuCell.m; sourceTree = "<group>"; };
 		A6AEE3B71C864CEA00BA68FA /* icono_arji.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icono_arji.png; path = Img/Iconos/icono_arji.png; sourceTree = "<group>"; };
 		A6AEE3B81C864CEA00BA68FA /* icono_arji2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icono_arji2x.png; path = Img/Iconos/icono_arji2x.png; sourceTree = "<group>"; };
 		A6AEE3B91C864CEA00BA68FA /* icono_arji3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icono_arji3x.png; path = Img/Iconos/icono_arji3x.png; sourceTree = "<group>"; };
@@ -98,9 +87,6 @@
 		A6AEE3D21C864D1000BA68FA /* retina_display_1242x2208.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = retina_display_1242x2208.png; path = Img/Imagenes/retina_display_1242x2208.png; sourceTree = "<group>"; };
 		A6AEE3D31C864D1000BA68FA /* retina_display_1334x750.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = retina_display_1334x750.png; path = Img/Imagenes/retina_display_1334x750.png; sourceTree = "<group>"; };
 		A6AEE3D41C864D1000BA68FA /* retina_display_2208x1242.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = retina_display_2208x1242.png; path = Img/Imagenes/retina_display_2208x1242.png; sourceTree = "<group>"; };
-		A6CD42BF1C87934E005323D4 /* PrimerMenuHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrimerMenuHeaderCell.h; path = Nib/PrimerMenuHeaderCell.h; sourceTree = "<group>"; };
-		A6CD42C01C87934E005323D4 /* PrimerMenuHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PrimerMenuHeaderCell.m; path = Nib/PrimerMenuHeaderCell.m; sourceTree = "<group>"; };
-		A6CD42C21C879368005323D4 /* PrimerMenuHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PrimerMenuHeaderCell.xib; path = Nib/PrimerMenuHeaderCell.xib; sourceTree = "<group>"; };
 		A6FB64581C8733480093A2A0 /* icono_arji360x360.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icono_arji360x360.png; path = Img/Iconos/icono_arji360x360.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,7 +120,6 @@
 		A6A9CA9C1C7E4C4600314626 /* Colegio Arjí A.C. */ = {
 			isa = PBXGroup;
 			children = (
-				A6CD42BC1C879195005323D4 /* Nib */,
 				A6A9CAB71C7E518200314626 /* Imagenes */,
 				A6A9CAB81C7E518B00314626 /* Clases */,
 				A6A9CAA01C7E4C4600314626 /* AppDelegate.h */,
@@ -176,16 +161,10 @@
 				A6A9CABF1C7E543300314626 /* Singleton.m */,
 				A6A9CAB91C7E51B400314626 /* PrimerMenu.h */,
 				A6A9CABA1C7E51B400314626 /* PrimerMenu.m */,
-				A6A9CABC1C7E521800314626 /* PrimerMenuCell.h */,
-				A6A9CABD1C7E521800314626 /* PrimerMenuCell.m */,
 				A6A9CAC21C7E57DE00314626 /* SegundoMenu.h */,
 				A6A9CAC31C7E57DE00314626 /* SegundoMenu.m */,
-				A6A9CAC51C7E595800314626 /* SegundoMenuCell.h */,
-				A6A9CAC61C7E595800314626 /* SegundoMenuCell.m */,
 				A6A9CAC81C7E5BB100314626 /* TercerMenu.h */,
 				A6A9CAC91C7E5BB100314626 /* TercerMenu.m */,
-				A6A9CACB1C7E5C1400314626 /* TercerMenuCell.h */,
-				A6A9CACC1C7E5C1400314626 /* TercerMenuCell.m */,
 				A665743D1C7E69C500834389 /* VerTareasCirculares.h */,
 				A665743E1C7E69C500834389 /* VerTareasCirculares.m */,
 			);
@@ -226,16 +205,6 @@
 				A6AEE3BF1C864CEA00BA68FA /* icono_arji180x.png */,
 			);
 			name = Iconos;
-			sourceTree = "<group>";
-		};
-		A6CD42BC1C879195005323D4 /* Nib */ = {
-			isa = PBXGroup;
-			children = (
-				A6CD42BF1C87934E005323D4 /* PrimerMenuHeaderCell.h */,
-				A6CD42C01C87934E005323D4 /* PrimerMenuHeaderCell.m */,
-				A6CD42C21C879368005323D4 /* PrimerMenuHeaderCell.xib */,
-			);
-			name = Nib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,7 +274,6 @@
 				A6AEE3C41C864CEA00BA68FA /* icono_arji60x.png in Resources */,
 				A6AEE3C31C864CEA00BA68FA /* icono_arji57x.png in Resources */,
 				A6AEE3DE1C864D1000BA68FA /* retina_display_1242x2208.png in Resources */,
-				A6CD42C31C879368005323D4 /* PrimerMenuHeaderCell.xib in Resources */,
 				A6AEE3DB1C864D1000BA68FA /* retina_display_900x640.png in Resources */,
 				A6A9CAAD1C7E4C4600314626 /* Assets.xcassets in Resources */,
 				A6AEE3DD1C864D1000BA68FA /* retina_display_1136x640.png in Resources */,
@@ -335,15 +303,11 @@
 				A6A9CABB1C7E51B400314626 /* PrimerMenu.m in Sources */,
 				A6A9CAC41C7E57DE00314626 /* SegundoMenu.m in Sources */,
 				A6A9CAA21C7E4C4600314626 /* AppDelegate.m in Sources */,
-				A6A9CABE1C7E521800314626 /* PrimerMenuCell.m in Sources */,
-				A6A9CACD1C7E5C1400314626 /* TercerMenuCell.m in Sources */,
 				A6A9CAC11C7E543300314626 /* Singleton.m in Sources */,
-				A6CD42C11C87934E005323D4 /* PrimerMenuHeaderCell.m in Sources */,
 				A6A9CAA51C7E4C4600314626 /* Login.m in Sources */,
 				A6A9CACA1C7E5BB100314626 /* TercerMenu.m in Sources */,
 				A6A9CA9F1C7E4C4600314626 /* main.m in Sources */,
 				A665743F1C7E69C500834389 /* VerTareasCirculares.m in Sources */,
-				A6A9CAC71C7E595800314626 /* SegundoMenuCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Singleton.h"
 
-@interface SegundoMenu : UITableViewController{
+@interface SegundoMenu : UITableViewController<UITableViewDelegate>{
     int IdObjAlu;
     Singleton *Singleton;
 }

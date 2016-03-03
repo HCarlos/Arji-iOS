@@ -91,7 +91,7 @@
                 if (status_movto == 1){
                     TableId = @"TercerMenuCell_Pagado";
                 }else{
-                    TableId = @"TercerMenuCell";
+                    TableId = @"TercerMenuCell_Pago_Normal";
                 }
             }
             break;
@@ -151,42 +151,6 @@
 
 }
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -214,6 +178,7 @@
                 vo.IdObj = [ [[Menu objectAtIndex:iPath.row] objectForKey:@"idcommensajedestinatario"] intValue];
                 // NSLog(@"idcommensajedestinatario = %d",vo.IdObj);
                 break;
+                
             case 2:
                 vo.title  = [[Menu objectAtIndex:iPath.row] objectForKey:@"pdf"];
                 vo.IdObj = [ [[Menu objectAtIndex:iPath.row] objectForKey:@"idfactura"] intValue];
@@ -222,18 +187,7 @@
                                     [[Menu objectAtIndex:iPath.row] objectForKey:@"pdf"]
                                     ];
                 break;
-            case 3:
                 
-                vo.title  = [NSString stringWithFormat:@"%@ %@ ",
-                             [[Menu objectAtIndex:iPath.row] objectForKey:@"concepto"],
-                             [[Menu objectAtIndex:iPath.row] objectForKey:@"mes"]
-                            ];
-                vo.IdObj = [ [[Menu objectAtIndex:iPath.row] objectForKey:@"idedocta"] intValue];
-
-                break;
-                
-            default:
-                break;
         }
         
         vo.IdObjAlu  =  self.IdObjAlu;
@@ -243,6 +197,16 @@
 
 }
 
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(nonnull NSIndexPath *)indexPath{
+    
+    int IdObj = [ [[Menu objectAtIndex:indexPath.row] objectForKey:@"idedocta"] intValue];
+    NSString *urlstring = [[NSString alloc] initWithFormat:@"http://platsource.mx/php/getPagosLayout/%d/%@/%d/",IdObj,self.Singleton.Username,self.Singleton.IdUser] ;
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlstring]];
+    
+    [[UIApplication sharedApplication] openURL:[request URL]];
+    
+}
 
 
 
@@ -289,9 +253,11 @@
                 } else {
                     // NSLog(@"Cadena Request: %@",noteDataString);
                     NSAssert(NO, @"Error en la conversión de JSON a Foundation ");
+                    [postDataTask resume];
                 }
             } else {
                 NSAssert(NO, @"Error a la hora de obtener las notas del servidor");
+                [postDataTask resume];
             }
             dispatch_async(dispatch_get_main_queue(), ^{ });
                 [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
@@ -316,11 +282,14 @@
  
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 40;
+}
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
     static NSString *CellIdentifier = @"TercerMenuHeader";
     UITableViewCell *headerView = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    // CGFloat constraintSize = 32.0f;
     CGRect customCreationRect;
     customCreationRect.size.height = 32.0f;
     [headerView setFrame:customCreationRect];
@@ -340,10 +309,6 @@
             break;
         case 3:
             sectionName = [NSString stringWithFormat:@"%lu PAGOS",(unsigned long)[Menu count] ];
-            break;
-        case 4:
-            // sectionName = NSLocalizedString(@"BOLETAS", @"BOLETAS");
-            sectionName = [NSString stringWithFormat:@"%lu BOLETAS",(unsigned long)[Menu count] ];
             break;
     }
     
