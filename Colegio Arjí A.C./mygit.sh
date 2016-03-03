@@ -14,7 +14,7 @@ git status
 
 git add .
 
-git commit -m "Inicio por MyGit"
+git commit -m "test 1"
 
 git push -u origin master
 
