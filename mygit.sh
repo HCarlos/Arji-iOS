@@ -8,14 +8,14 @@ git config --global color.ui true
 git config core.fileMode false
 git config --global push.default simple
 
-git checkout staging master 
+git checkout master 
 
 git status
 
 git add .
 
-git commit -m "Inicio"
+git commit -m "Inicio por MyGit"
 
-git push -u origin staging master
+git push -u origin master
 
 exit
