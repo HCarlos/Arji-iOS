@@ -23,13 +23,18 @@
     [self.Indicator startAnimating];
     self.Singleton  = [Singleton sharedMySingleton];
     [self.Segment0 setHidden:NO];
+
+    self.tableView.layer.cornerRadius = 5.0f;
+    [self.tableView.layer setMasksToBounds:YES];
     
+    
+/*
     self.navigationItem.backBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@""
                                      style:UIBarButtonItemStylePlain
                                     target:nil
                                     action:nil];
-    
+*/
     
     self.Status = 0;
     switch (self.IdObjMenu) {
@@ -104,7 +109,9 @@
     
     if (cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TableId];
+        [cell.layer setCornerRadius:5.0];
     }
+    
     switch (self.IdObjMenu) {
         case 0:
             cell.textLabel.text = [[Menu objectAtIndex:indexPath.row] objectForKey:@"titulo_tarea"];
@@ -313,6 +320,7 @@
     }
     
     headerView.textLabel.text = sectionName;
+    [headerView.layer setCornerRadius:5.0];
     
     return headerView;
     

@@ -24,6 +24,7 @@
 @synthesize uniqueIdentifier;
 @synthesize pathPList, dataPList,IdUser,IsDelete,limCant, limFrom;
 @synthesize Username, Password, IdEmp, IdUserNivelAcceso, Param1, Clave, Empresa, RegistrosPorPagina;
+@synthesize tokenUser, typeDevice;
 
 static Singleton* _sharedMySingleton = nil;
 //extern NSString* CTSettingCopyMyPhoneNumber();

@@ -62,12 +62,12 @@
         
         NSString *usernamex = [[NSString alloc] initWithFormat: @"%@",self.txtUsername.text];
         NSString *passwordl = [[NSString alloc] initWithFormat: @"%@",self.txtPassword.text];
-        NSString *noteDataString = [NSString stringWithFormat:@"username=%@&passwordL=%@", usernamex, passwordl];
+        NSString *noteDataString = [NSString stringWithFormat:@"username=%@&passwordL=%@&UUID=%@&tD=%@", usernamex, passwordl,self.Singleton.uniqueIdentifier,self.Singleton.typeDevice];
         
         // Configuración de la sesión
         NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
         sessionConfiguration.HTTPAdditionalHeaders = @{
-                                                       @"Accept"    : @"application/json"
+                                                       @"Accept" : @"application/json"
                                                        };
         
         // Inicialización de la sesión
@@ -89,11 +89,10 @@
                 NSDictionary *responseBody = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&JSONError];
                 if (!JSONError) {
                     
-                    
                     datos = (NSMutableArray *)responseBody;
                     NSString *msg = [[datos objectAtIndex:0]objectForKey:@"msg"];
                     NSString *testString= [[datos objectAtIndex:0]objectForKey:@"data"];
-                    // NSLog(@"Data->: %@",testString);
+                    NSLog(@"Data->: %@",msg);
                     NSArray *Value = [testString componentsSeparatedByString:@"|"];
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
@@ -140,8 +139,6 @@
             });
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         }];
-        
-        
         
         [postDataTask resume];
         

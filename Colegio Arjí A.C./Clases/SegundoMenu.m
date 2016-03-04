@@ -23,13 +23,16 @@
 - (void)viewDidLoad {
 
     self.Singleton  = [Singleton sharedMySingleton];
-    
+
+    self.tableView.layer.cornerRadius = 5.0f;
+    [self.tableView.layer setMasksToBounds:YES];
+/*
     self.navigationItem.backBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@""
                                      style:UIBarButtonItemStylePlain
                                     target:nil
                                     action:nil];
-    
+*/    
     
     switch (self.Singleton.Clave) {
         case 7:
@@ -84,6 +87,8 @@
     
     if (cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TableId];
+        [cell.layer setCornerRadius:5.0];
+
     }
     
     cell.textLabel.text = [ArrObj objectAtIndex:indexPath.row];
@@ -105,6 +110,8 @@
     
     static NSString *CellIdentifier = @"SegundoMenuHeader";
     UITableViewCell *headerView = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    [headerView.layer setCornerRadius:5.0];
+
     return headerView;
     
 }

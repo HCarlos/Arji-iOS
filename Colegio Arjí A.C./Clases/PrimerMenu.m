@@ -20,12 +20,16 @@
 @synthesize tblView, Indicator;
 
 - (void)viewDidLoad {
-
+/*
     self.navigationItem.backBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@""
                                      style:UIBarButtonItemStylePlain
                                     target:nil
                                     action:nil];
+*/
+    
+    self.tableView.layer.cornerRadius = 5.0f;
+    [self.tableView.layer setMasksToBounds:YES];
     
     // [self.tblView registerClass:[M3CHeaderFooter class] forHeaderFooterViewReuseIdentifier:@"PrimerMenuHeader"];
     
@@ -41,6 +45,14 @@
             break;
             
         default:
+            [self.Indicator stopAnimating];
+            UILabel* lblLoading = [[UILabel alloc]initWithFrame:CGRectMake(0, 48, 350, 30)];
+            lblLoading.text = @"No se encontraron datos para este Usuario.";
+            lblLoading.textColor = [UIColor brownColor];
+            lblLoading.font = [UIFont fontWithName:lblLoading.font.fontName size:15];
+            lblLoading.textAlignment = NSTextAlignmentCenter;
+            [self.view addSubview:lblLoading];
+            
             break;
     }
  
@@ -77,6 +89,10 @@
     
     if (cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TableId];
+
+        [cell.layer setCornerRadius:5.0];
+        
+    
     }
     
     cell.textLabel.text = [[Hijos objectAtIndex:indexPath.row] objectForKey:@"label"];
@@ -86,40 +102,6 @@
     
 }
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 
 #pragma mark - Navigation
@@ -247,8 +229,11 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
     static NSString *CellIdentifier = @"PrimerMenuHeader";
-    UITableViewCell *headerView = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    return headerView;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+
+    [cell.layer setCornerRadius:5.0];
+    
+    return cell;
 
 }
 

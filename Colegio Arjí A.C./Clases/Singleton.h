@@ -64,14 +64,15 @@
 @property(nonatomic,readonly,retain) NSString    *systemVersion;     // e.g. @"2.0"
 */
 // @property(nonatomic,readonly) CLDeviceOrientation orientation;       // return current device orientation
-@property(nonatomic,readonly,retain) NSString    *uniqueIdentifier;  // a string unique to each device based on various 
-@property(nonatomic, readonly, retain) NSUUID *identifierForVendor;
+@property(nonatomic, retain) NSString    *typeDevice;  // a string unique to each device based on various
+@property(nonatomic, retain) NSString    *uniqueIdentifier;  // a string unique to each device based on various
+@property(nonatomic, retain) NSUUID *identifierForVendor;
 /*
 @property(nonatomic,retain) NSString *domicilio;            // domicilio
+ */
 @property(nonatomic,retain) NSString *tokenUser;              // e.g. "My iPhone"
-*/
-@property(nonatomic,readonly,retain) NSMutableDictionary *dataPList;
-@property(nonatomic,readonly,retain) NSString *pathPList;
+@property(nonatomic,retain) NSMutableDictionary *dataPList;
+@property(nonatomic,retain) NSString *pathPList;
 
 // @property(nonatomic,retain) UIWebView* webView;
 
