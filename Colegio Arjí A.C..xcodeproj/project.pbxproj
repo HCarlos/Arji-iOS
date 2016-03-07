@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A633CEE61C8A1D3200B65BE6 /* defaultback.png in Resources */ = {isa = PBXBuildFile; fileRef = A633CEE51C8A1D3200B65BE6 /* defaultback.png */; };
+		A644FF401C8DBBEA008876CC /* key.png in Resources */ = {isa = PBXBuildFile; fileRef = A644FF3F1C8DBBEA008876CC /* key.png */; };
+		A644FF421C8DBE75008876CC /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = A644FF411C8DBE75008876CC /* calendar.png */; };
 		A665743F1C7E69C500834389 /* VerTareasCirculares.m in Sources */ = {isa = PBXBuildFile; fileRef = A665743E1C7E69C500834389 /* VerTareasCirculares.m */; };
 		A6A9CA9F1C7E4C4600314626 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A9CA9E1C7E4C4600314626 /* main.m */; };
 		A6A9CAA21C7E4C4600314626 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A9CAA11C7E4C4600314626 /* AppDelegate.m */; };
@@ -46,6 +48,8 @@
 
 /* Begin PBXFileReference section */
 		A633CEE51C8A1D3200B65BE6 /* defaultback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = defaultback.png; path = Img/Imagenes/defaultback.png; sourceTree = "<group>"; };
+		A644FF3F1C8DBBEA008876CC /* key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = key.png; path = Img/Iconos/key.png; sourceTree = "<group>"; };
+		A644FF411C8DBE75008876CC /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = calendar.png; path = Img/Iconos/calendar.png; sourceTree = "<group>"; };
 		A665743D1C7E69C500834389 /* VerTareasCirculares.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VerTareasCirculares.h; path = Clases/VerTareasCirculares.h; sourceTree = "<group>"; };
 		A665743E1C7E69C500834389 /* VerTareasCirculares.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VerTareasCirculares.m; path = Clases/VerTareasCirculares.m; sourceTree = "<group>"; };
 		A6A9CA9A1C7E4C4600314626 /* Colegio Arjí A.C..app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Colegio Arjí A.C..app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -196,6 +200,8 @@
 		A6AEE3B61C864CDD00BA68FA /* Iconos */ = {
 			isa = PBXGroup;
 			children = (
+				A644FF411C8DBE75008876CC /* calendar.png */,
+				A644FF3F1C8DBBEA008876CC /* key.png */,
 				A6FB64581C8733480093A2A0 /* icono_arji360x360.png */,
 				A6AEE3B71C864CEA00BA68FA /* icono_arji.png */,
 				A6AEE3B81C864CEA00BA68FA /* icono_arji2x.png */,
@@ -294,8 +300,10 @@
 				A6AEE3D61C864D1000BA68FA /* retina_display_480x320.png in Resources */,
 				A633CEE61C8A1D3200B65BE6 /* defaultback.png in Resources */,
 				A6AEE3D91C864D1000BA68FA /* retina_display_640x1136.png in Resources */,
+				A644FF401C8DBBEA008876CC /* key.png in Resources */,
 				A6AEE3C11C864CEA00BA68FA /* icono_arji2x.png in Resources */,
 				A6AEE3C71C864CEA00BA68FA /* icono_arji120x.png in Resources */,
+				A644FF421C8DBE75008876CC /* calendar.png in Resources */,
 				A6A9CAAB1C7E4C4600314626 /* Main.storyboard in Resources */,
 				A6AEE3C81C864CEA00BA68FA /* icono_arji180x.png in Resources */,
 				A6FB64591C8733480093A2A0 /* icono_arji360x360.png in Resources */,

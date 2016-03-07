@@ -38,7 +38,7 @@
                                         <color key="textColor" red="0.43505263328552246" green="0.25672176480293274" blue="0.13657590746879578" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="per0178" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="G3M-2a-AR9">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="per0252" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="G3M-2a-AR9">
                                         <rect key="frame" x="116" y="93" width="170" height="30"/>
                                         <color key="backgroundColor" red="0.43505263328552246" green="0.25672176480293274" blue="0.13657590746879578" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" red="0.97299522161483765" green="0.93423014879226685" blue="0.83232200145721436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -68,7 +68,7 @@
                                             <segue destination="nkc-LZ-CFK" kind="push" identifier="NUno" id="Xhh-6l-QGq"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="per0178" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="a8p-gf-2ME">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="per0252" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="a8p-gf-2ME">
                                         <rect key="frame" x="116" y="131" width="170" height="30"/>
                                         <color key="backgroundColor" red="0.43505263328552246" green="0.25672176480293274" blue="0.13657590746879578" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" red="0.97299522161483765" green="0.93423014879226685" blue="0.83232200145721436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -110,7 +110,7 @@
             <objects>
                 <tableViewController automaticallyAdjustsScrollViewInsets="NO" id="nkc-LZ-CFK" userLabel="Primer Menu" customClass="PrimerMenu" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="qjy-Ju-IJX">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.97299522161483765" green="0.93423014879226685" blue="0.83232200145721436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="sectionIndexColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -193,7 +193,7 @@
             <objects>
                 <tableViewController automaticallyAdjustsScrollViewInsets="NO" id="o5y-Op-PI1" customClass="SegundoMenu" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="YdG-bd-7XT">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.97299522161483765" green="0.93423014879226685" blue="0.83232200145721436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -273,7 +273,7 @@
             <objects>
                 <tableViewController automaticallyAdjustsScrollViewInsets="NO" id="Ioq-cF-rf4" userLabel="Tercer Menu" customClass="TercerMenu" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="3Fy-S8-LeX">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.97299522161483765" green="0.93423014879226685" blue="0.83232200145721436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" preservesSuperviewLayoutMargins="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="073-mO-ZQb">
@@ -430,7 +430,7 @@
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="CES-xK-xIN" userLabel="Ver Tareas y Circulares" customClass="VerTareasCirculares" sceneMemberID="viewController">
                     <webView key="view" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" scalesPageToFit="YES" paginationMode="leftToRight" id="1ZA-ow-Y84">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -494,7 +494,7 @@
                             <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Boletín" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Boletín" image="calendar.png" selectedImage="calendar.png" id="cPa-gy-q4n"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -523,7 +523,7 @@
         <scene sceneID="nBy-84-wi2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7Uo-v2-Pwn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Ingresar" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Ingresar" image="key.png" selectedImage="key.png" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TlQ-me-tRP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -540,10 +540,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="calendar.png" width="29" height="30"/>
+        <image name="key.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0Ys-Di-9tW"/>
+        <segue reference="o7J-LM-tLa"/>
     </inferredMetricsTieBreakers>
 </document>

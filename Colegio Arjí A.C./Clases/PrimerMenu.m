@@ -193,20 +193,22 @@
                         
                     });
                 } else {
+
                     NSAssert(NO, @"Error en la conversión de JSON a Foundation ");
+                    [self.Indicator stopAnimating];
+                    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+
                 }
             } else {
                 NSAssert(NO, @"Error a la hora de obtener las notas del servidor");
             }
+            
             dispatch_async(dispatch_get_main_queue(), ^{ });
                 [self.Indicator stopAnimating];
                 [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             }];
         
-        
-        
         [postDataTask resume];
-        
         
     }
     @catch (NSException *theException)
