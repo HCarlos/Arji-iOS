@@ -19,10 +19,12 @@
 @synthesize Indicador, ViewLogin;
 - (void)viewDidLoad {
 
+    /*
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"retina_display_320x480.png"]];
     self.view.backgroundColor = background;
     background = nil;
-
+     */
+    
     UIView *xView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
     self.ViewLogin.layer.cornerRadius = xView.frame.size.width/2;
     self.ViewLogin.layer.borderWidth = 1.0f;

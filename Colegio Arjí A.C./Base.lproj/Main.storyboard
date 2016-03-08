@@ -38,7 +38,7 @@
                                         <color key="textColor" red="0.43505263328552246" green="0.25672176480293274" blue="0.13657590746879578" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="per0252" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="G3M-2a-AR9">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="per1090" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="G3M-2a-AR9">
                                         <rect key="frame" x="116" y="93" width="170" height="30"/>
                                         <color key="backgroundColor" red="0.43505263328552246" green="0.25672176480293274" blue="0.13657590746879578" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" red="0.97299522161483765" green="0.93423014879226685" blue="0.83232200145721436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -68,11 +68,11 @@
                                             <segue destination="nkc-LZ-CFK" kind="push" identifier="NUno" id="Xhh-6l-QGq"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="per0252" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="a8p-gf-2ME">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="per1090" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="a8p-gf-2ME">
                                         <rect key="frame" x="116" y="131" width="170" height="30"/>
                                         <color key="backgroundColor" red="0.43505263328552246" green="0.25672176480293274" blue="0.13657590746879578" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" red="0.97299522161483765" green="0.93423014879226685" blue="0.83232200145721436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
