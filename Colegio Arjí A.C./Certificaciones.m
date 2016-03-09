@@ -1,36 +1,34 @@
 //
-//  QuienesSomos.m
+//  Certificaciones.m
 //  Colegio Arjí A.C.
 //
 //  Created by Carlos Hidalgo on 09/03/16.
 //  Copyright © 2016 Colegio Arji A.C. All rights reserved.
 //
 
-#import "QuienesSomos.h"
+#import "Certificaciones.h"
 
-@interface QuienesSomos ()
+@interface Certificaciones ()
 
 @end
 
-@implementation QuienesSomos{
+@implementation Certificaciones{
     NSString *miMIME;
 }
 @synthesize WebView, Singleton, loadingView, lblPorc, urlWeb, interactionController;
 
-
 - (void)viewDidLoad {
-    
+
     [self Preloader];
     
     self.Singleton  = [Singleton sharedMySingleton];
     
     miMIME = @"text/html";
-    self.urlWeb = @"http://platsource.mx/getQuienesSomos/";
-    [self getURLQuienesSomos];
-    
+    self.urlWeb = @"http://platsource.mx/getCertificaciones/";
+    [self getCertificaciones];
     
     [super viewDidLoad];
-    
+    // Do any additional setup after loading the view.
 }
 
 -(void)dealloc{
@@ -45,7 +43,7 @@
 
 #pragma Preloader
 -(void) Preloader{
-
+    
     loadingView = [[UIView alloc]initWithFrame:CGRectMake(
                                                           ((self.WebView.scrollView.contentSize.width/2)-60),
                                                           ((self.WebView.scrollView.contentSize.height/2)-50),
@@ -123,7 +121,7 @@ didFinishDownloadingToURL:(NSURL *)location
 }
 
 
--(void)getURLQuienesSomos{
+-(void)getCertificaciones{
     // Configuración de la sesión
     @try {
         // Configuración de la sesión
@@ -140,13 +138,13 @@ didFinishDownloadingToURL:(NSURL *)location
         
     }@catch (NSException *exception) { }
     @finally { }
-
+    
 }
 
 - (IBAction)btnRefresh:(id)sender {
     [self.WebView loadHTMLString:@"" baseURL:nil];
     [self Preloader];
-    [self getURLQuienesSomos];
+    [self getCertificaciones];
 }
 
 -(IBAction)Zoom:(UIPinchGestureRecognizer *)recognizer{

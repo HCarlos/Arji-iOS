@@ -465,7 +465,7 @@
             <objects>
                 <viewController title="Boletín Informativo" automaticallyAdjustsScrollViewInsets="NO" id="8rJ-Kc-sve" userLabel="Boletin" customClass="Boletin" sceneMemberID="viewController">
                     <webView key="view" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" scalesPageToFit="YES" paginationMode="leftToRight" id="GlY-4g-SLh">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" calendarEvent="YES"/>
@@ -496,15 +496,17 @@
             <objects>
                 <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" itemPositioning="fill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="barTintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="7Uo-v2-Pwn" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="Z2h-jn-PkT" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="wMQ-cA-VFl" kind="relationship" relationship="viewControllers" id="SjX-od-B5J"/>
+                        <segue destination="6Hk-0v-8aT" kind="relationship" relationship="viewControllers" id="3yQ-Kp-5gU"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -554,7 +556,7 @@
             <objects>
                 <viewController title="Quienes Somos" automaticallyAdjustsScrollViewInsets="NO" id="WAZ-hI-Oc0" customClass="QuienesSomos" sceneMemberID="viewController">
                     <webView key="view" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" scalesPageToFit="YES" paginationMode="leftToRight" id="md6-9B-bVq">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" calendarEvent="YES"/>
@@ -597,9 +599,57 @@
             </objects>
             <point key="canvasLocation" x="395" y="1002"/>
         </scene>
+        <!--Certificaciones-->
+        <scene sceneID="haA-JB-agg">
+            <objects>
+                <viewController id="hfN-eF-MVT" userLabel="Certificaciones" customClass="Certificaciones" sceneMemberID="viewController">
+                    <webView key="view" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" scalesPageToFit="YES" paginationMode="leftToRight" id="c9O-Bn-gwF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" calendarEvent="YES"/>
+                        <connections>
+                            <outlet property="delegate" destination="hfN-eF-MVT" id="QHC-ov-KI8"/>
+                        </connections>
+                    </webView>
+                    <navigationItem key="navigationItem" title="CERTIFICACIONES" id="hRj-up-BNK">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="chR-MS-rND">
+                            <connections>
+                                <action selector="btnRefresh:" destination="hfN-eF-MVT" id="ssy-pj-e6D"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="WebView" destination="c9O-Bn-gwF" id="6RN-Xv-JPo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wZG-Kq-RpU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="927" y="1662"/>
+        </scene>
+        <!--Tab Bar Certificaciones-->
+        <scene sceneID="bsf-Bx-trd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Hk-0v-8aT" userLabel="Tab Bar Certificaciones" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Certificaciones" image="graduation-cap.png" selectedImage="graduation-cap.png" id="W8m-He-bFX"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hV0-Fl-Y1z">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hfN-eF-MVT" kind="relationship" relationship="rootViewController" id="9u2-YS-T2b"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rq6-dl-iQo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="395" y="1662"/>
+        </scene>
     </scenes>
     <resources>
         <image name="calendar.png" width="29" height="30"/>
+        <image name="graduation-cap.png" width="30" height="30"/>
         <image name="home.png" width="30" height="30"/>
         <image name="key.png" width="30" height="30"/>
     </resources>

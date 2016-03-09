@@ -1,5 +1,5 @@
 //
-//  QuienesSomos.h
+//  Certificaciones.h
 //  Colegio Arjí A.C.
 //
 //  Created by Carlos Hidalgo on 09/03/16.
@@ -9,13 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "Singleton.h"
 
-@interface QuienesSomos : UIViewController<NSURLSessionDownloadDelegate, UIWebViewDelegate, UIDocumentInteractionControllerDelegate>{
+@interface Certificaciones : UIViewController<NSURLSessionDownloadDelegate, UIWebViewDelegate, UIDocumentInteractionControllerDelegate>{
     UIView* loadingView;
     UILabel* lblPorc;
     NSString *urlWeb;
 }
 
+
 @property (strong, nonatomic) IBOutlet UIWebView *WebView;
+
 
 @property (nonatomic, retain) NSString *urlWeb;
 
@@ -32,6 +34,8 @@
 
 -(void) Preloader;
 
--(void)getURLQuienesSomos;
+-(void)getCertificaciones;
+
+
 
 @end
