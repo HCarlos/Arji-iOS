@@ -1,35 +1,38 @@
 //
-//  VerObjeto.m
+//  Boletin.m
 //  Colegio Arjí A.C.
 //
-//  Created by Carlos Hidalgo on 24/02/16.
+//  Created by Carlos Hidalgo on 08/03/16.
 //  Copyright © 2016 Colegio Arji A.C. All rights reserved.
 //
 
-#import "VerTareasCirculares.h"
-#import "Singleton.h"
+#import "Boletin.h"
 
-@interface VerTareasCirculares ()
+@interface Boletin ()
 
 @end
 
-@implementation VerTareasCirculares{
+@implementation Boletin{
     NSString *miMIME;
     NSData *MiData;
 }
-
-
-
-@synthesize WebView, IdObj, IdObjAlu, IdObjMenu, Singleton, IdTarea, loadingView, lblPorc, urlWeb, IdComMensaje, interactionController;
+@synthesize WebView, Singleton, loadingView, lblPorc, urlWeb, interactionController;
 
 - (void)viewDidLoad {
-/*
-    self.navigationItem.backBarButtonItem =
-    [[UIBarButtonItem alloc] initWithTitle:@""
-                                     style:UIBarButtonItemStylePlain
-                                    target:nil
-                                    action:nil];
-*/        
+
+    /*
+     self.navigationItem.backBarButtonItem =
+     [[UIBarButtonItem alloc] initWithTitle:@""
+     style:UIBarButtonItemStylePlain
+     target:nil
+     action:nil];
+     */
+    
+    //self.urlWeb = [NSURL URLWithString:@"http://platsource.mx/getBoletin/"];
+    
+    //self.WebView.delegate = self;
+    
+    
     
     loadingView = [[UIView alloc]initWithFrame:CGRectMake(
                                                           ((self.WebView.scrollView.contentSize.width/2)-60),
@@ -53,7 +56,7 @@
     lblLoading.font = [UIFont fontWithName:lblLoading.font.fontName size:15];
     lblLoading.textAlignment = NSTextAlignmentCenter;
     [loadingView addSubview:lblLoading];
-
+    
     lblPorc = [[UILabel alloc]initWithFrame:CGRectMake(0, 68, 100, 30)];
     // lblPorc.text = @"%";
     lblPorc.textColor = [UIColor whiteColor];
@@ -69,36 +72,16 @@
     // NSLog(@"Clave: %d",self.Singleton.Clave);
     [self.btnShare setEnabled:NO];
     
-    switch (self.Singleton.Clave) {
-        case 7:
-            if (self.IdObjMenu == 0 || self.IdObjMenu == 1 || self.IdObjMenu == 3 || self.IdObjMenu == 4){
-                miMIME = @"text/html";
-                [self getHTMLVal];
-            }else if (self.IdObjMenu == 2){
-                miMIME = @"application/pdf";
-                [self getPDF];
-                [self.btnShare setEnabled:YES];
-            }else{
-                
-            }
-            break;
-            
-        default:
-            break;
-    }
+    [self getURLBoletin];
     
     
     [super viewDidLoad];
-
+    
     self.WebView.opaque=NO;
     self.WebView.userInteractionEnabled=YES;
     
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    self.WebView = nil;
-    // Dispose of any resources that can be recreated.
+    
+    // Do any additional setup after loading the view.
 }
 
 -(void)dealloc{
@@ -106,52 +89,10 @@
     self.Singleton = nil;
 }
 
-#pragma Get HTML Val
--(void)getHTMLVal{
-
-    @try
-    {
-        
-    // Configuración de la sesión
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-
-    NSString *usernamex = self.Singleton.Username;
-    NSString *noteDataString;
-    // Tarea de gestión de datos
-    NSURL *url = [NSURL URLWithString:@"http://platsource.mx/getHTMLTemplate/"];
-    if (self.IdObjMenu == 0){
-        noteDataString = [NSString stringWithFormat:@"user=%@&idtarea=%d&idtareadestinatario=%d", usernamex,self.IdTarea,self.IdObj];
-    }else     if (self.IdObjMenu == 1){
-        noteDataString = [NSString stringWithFormat:@"user=%@&idcommensaje=%d&idcommensajedestinatario=%d&sts=0", usernamex,self.IdComMensaje,self.IdObj];
-        url = [NSURL URLWithString:@"http://platsource.mx/getCircularesHTMLTemplate/"];
-    }
-        
-    // Tarea de gestión de datos
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    request.HTTPBody = [noteDataString dataUsingEncoding:NSUTF8StringEncoding];
-    request.HTTPMethod = @"POST";
-    
-    // Configuración de la sesión
-    NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    sessionConfiguration.HTTPAdditionalHeaders = @{@"Accept":@"html/text"};
- 
-    // Creación de la sesión
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration delegate:self delegateQueue:nil];
-
-    // Tarea de descarga de archivo
-    NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithRequest:request];
-    [downloadTask resume];
- 
-    }
-    @catch (NSException *theException)
-    {
-        NSLog(@"Get Data Exception: %@", theException);
-    }
-
-    
-    
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
-
 
 #pragma mark - NSURLSessionDownloadDelegate
 - (void)URLSession:(NSURLSession *)session
@@ -175,12 +116,12 @@ didFinishDownloadingToURL:(NSURL *)location
     
     NSData *htmlData = [NSData dataWithContentsOfURL:location];
     [self.WebView loadData:htmlData MIMEType:miMIME textEncodingName:@"UTF-8" baseURL:location];
-
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [loadingView removeFromSuperview];
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         MiData = htmlData;
-
+        
     });
 }
 
@@ -191,7 +132,7 @@ didFinishDownloadingToURL:(NSURL *)location
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     
-    NSLog(@"Acaba de Terminar de Cargar el %lu",(unsigned long)webView.dataDetectorTypes);
+    // NSLog(@"Acaba de Terminar de Cargar el %lu",(unsigned long)webView.dataDetectorTypes);
     [loadingView removeFromSuperview];
     
 }
@@ -201,17 +142,59 @@ didFinishDownloadingToURL:(NSURL *)location
 #pragma webView_shouldStartLoadWithRequest
 -(BOOL) webView:(UIWebView *)inWeb shouldStartLoadWithRequest:(NSURLRequest *)inRequest navigationType:(UIWebViewNavigationType)inType {
     
-    NSLog(@"BODY: %@",[[NSString alloc]initWithData:inRequest.HTTPBody encoding:NSUTF8StringEncoding] );
-    
-    if ( inType == UIWebViewNavigationTypeLinkClicked ) {
-        [[UIApplication sharedApplication] openURL:[inRequest URL]];
-        NSLog(@"Entro");
-        return NO;
-    }
+    //NSLog(@"BODY: %@",[[NSString alloc]initWithData:inRequest.HTTPBody encoding:NSUTF8StringEncoding] );
     
     return YES;
 }
 
+
+-(void)getURLBoletin{
+    // Configuración de la sesión
+    NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    sessionConfiguration.HTTPAdditionalHeaders = @{
+                                                   @"api-key"   : @"55e76dc4bbae25b066cb",
+                                                   @"Accept"    : @"application/json"
+                                                   };
+    
+    // Inicialización de la sesión
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
+    
+    // Tarea de gestión de datos
+    NSURL *url = [NSURL URLWithString:@"http://platsource.mx/getBoletin/"];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        // Sondeo de la respuesta HTTP del servidor
+        NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
+        if (HTTPResponse.statusCode == 200) {
+            if (!error) {
+                // Conversión de JSON a objeto Foundation (NSArray)
+                NSError *JSONError;
+                NSArray *notes = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&JSONError];
+                
+                if (!JSONError) {
+                    NSString *msg = [[notes objectAtIndex:0]objectForKey:@"msg"];
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        if (![msg  isEqual: @"OK"]){
+                            //[self.lblMensaje setText:msg];
+                        }else{
+                            self.urlWeb           = [[notes objectAtIndex:0]objectForKey:@"ruta"];
+                            NSLog(@"%@",self.urlWeb);
+                            miMIME = @"application/pdf";
+                            [self getPDF];
+                            [self.btnShare setEnabled:YES];
+                        }
+                    });
+                } else {
+                    NSAssert(NO, @"Error en la conversión de JSON a Foundation");
+                }
+            } else {
+                NSAssert(NO, @"Error al obtener las notas del servidor");
+            }
+        }
+    }];
+    [dataTask resume];
+}
 
 
 #pragma getPDF
@@ -228,10 +211,10 @@ didFinishDownloadingToURL:(NSURL *)location
         NSURL *url = [NSURL URLWithString:self.urlWeb];
         NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithURL:url];
         [downloadTask resume];
-
+        
     }@catch (NSException *exception) { }
     @finally { }
-
+    
 }
 
 -(IBAction)Zoom:(UIPinchGestureRecognizer *)recognizer{
@@ -243,7 +226,7 @@ didFinishDownloadingToURL:(NSURL *)location
 }
 
 - (IBAction)btnShare:(id)sender {
-
+    
     NSURL *url = self.WebView.request.URL;
     if (url != nil) {
         
@@ -256,21 +239,12 @@ didFinishDownloadingToURL:(NSURL *)location
         {
             [[NSFileManager defaultManager] createDirectoryAtPath:cachePath withIntermediateDirectories:NO attributes:nil error:&error];
         }
-        
-        NSString *filePath = [cachePath stringByAppendingPathComponent:@"factura.pdf"];
+        NSString *filePath = [cachePath stringByAppendingPathComponent:@"boletin.pdf"];
         NSData *pdfFile = [NSData dataWithData:MiData];
         [pdfFile writeToFile:filePath atomically:YES];
-        
-        NSString* foofile = [cachePath stringByAppendingPathComponent:@"factura.pdf"];
-        BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:foofile];
-        
-        //NSLog(@"Existe el Archivo? ::: %@",fileExists);
-        
-        NSLog(fileExists ? @"Yes" : @"No");
-        
         //UIDocumentInteractionController *documentInteractionController;
-
-        NSURL* URL = [NSURL fileURLWithPath:foofile];
+        
+        NSURL* URL = [NSURL fileURLWithPath:filePath];
         
         self.interactionController = [UIDocumentInteractionController interactionControllerWithURL:URL];
         
@@ -282,8 +256,6 @@ didFinishDownloadingToURL:(NSURL *)location
     }
     
 }
-
-
 
 
 @end

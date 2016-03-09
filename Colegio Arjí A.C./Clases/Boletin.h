@@ -1,30 +1,19 @@
 //
-//  VerObjeto.h
+//  Boletin.h
 //  Colegio Arjí A.C.
 //
-//  Created by Carlos Hidalgo on 24/02/16.
+//  Created by Carlos Hidalgo on 08/03/16.
 //  Copyright © 2016 Colegio Arji A.C. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "Singleton.h"
 
-@interface VerTareasCirculares : UIViewController<NSURLSessionDownloadDelegate, UIWebViewDelegate, UIDocumentInteractionControllerDelegate>{
-    int IdObjAlu;
-    int IdObjMenu;
-    int IdObj;
-    int IdTarea;
-    int IdComMensaje;
+@interface Boletin : UIViewController<NSURLSessionDownloadDelegate, UIWebViewDelegate, UIDocumentInteractionControllerDelegate>{
     UIView* loadingView;
     UILabel* lblPorc;
     NSString *urlWeb;
 }
-@property (nonatomic) int IdObj;
-@property (nonatomic) int IdObjMenu;
-@property (nonatomic) int IdObjAlu;
-@property (nonatomic) int IdTarea;
-@property (nonatomic) int IdComMensaje;
-
 @property (nonatomic, retain) NSString *urlWeb;
 
 @property (strong, nonatomic) IBOutlet UIWebView *WebView;
@@ -37,11 +26,12 @@
 
 @property (nonatomic) UIDocumentInteractionController *interactionController;
 
+- (IBAction)btnShare:(id)sender;
+
+
 -(IBAction)Zoom:(UIPinchGestureRecognizer *)recognizer;
 
--(void)getHTMLVal;
-
+-(void)getURLBoletin;
 -(void)getPDF;
 
 @end
-

@@ -43,6 +43,7 @@
 		A6AEE3DE1C864D1000BA68FA /* retina_display_1242x2208.png in Resources */ = {isa = PBXBuildFile; fileRef = A6AEE3D21C864D1000BA68FA /* retina_display_1242x2208.png */; };
 		A6AEE3DF1C864D1000BA68FA /* retina_display_1334x750.png in Resources */ = {isa = PBXBuildFile; fileRef = A6AEE3D31C864D1000BA68FA /* retina_display_1334x750.png */; };
 		A6AEE3E01C864D1000BA68FA /* retina_display_2208x1242.png in Resources */ = {isa = PBXBuildFile; fileRef = A6AEE3D41C864D1000BA68FA /* retina_display_2208x1242.png */; };
+		A6D129C21C8F934400C853C8 /* Boletin.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D129C11C8F934400C853C8 /* Boletin.m */; };
 		A6FB64591C8733480093A2A0 /* icono_arji360x360.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FB64581C8733480093A2A0 /* icono_arji360x360.png */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +94,8 @@
 		A6AEE3D21C864D1000BA68FA /* retina_display_1242x2208.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = retina_display_1242x2208.png; path = Img/Imagenes/retina_display_1242x2208.png; sourceTree = "<group>"; };
 		A6AEE3D31C864D1000BA68FA /* retina_display_1334x750.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = retina_display_1334x750.png; path = Img/Imagenes/retina_display_1334x750.png; sourceTree = "<group>"; };
 		A6AEE3D41C864D1000BA68FA /* retina_display_2208x1242.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = retina_display_2208x1242.png; path = Img/Imagenes/retina_display_2208x1242.png; sourceTree = "<group>"; };
+		A6D129C01C8F934400C853C8 /* Boletin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Boletin.h; path = Clases/Boletin.h; sourceTree = "<group>"; };
+		A6D129C11C8F934400C853C8 /* Boletin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Boletin.m; path = Clases/Boletin.m; sourceTree = "<group>"; };
 		A6FB64581C8733480093A2A0 /* icono_arji360x360.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icono_arji360x360.png; path = Img/Iconos/icono_arji360x360.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -173,6 +176,8 @@
 				A6A9CAC91C7E5BB100314626 /* TercerMenu.m */,
 				A665743D1C7E69C500834389 /* VerTareasCirculares.h */,
 				A665743E1C7E69C500834389 /* VerTareasCirculares.m */,
+				A6D129C01C8F934400C853C8 /* Boletin.h */,
+				A6D129C11C8F934400C853C8 /* Boletin.m */,
 			);
 			name = Clases;
 			sourceTree = "<group>";
@@ -329,6 +334,7 @@
 				A6A9CACA1C7E5BB100314626 /* TercerMenu.m in Sources */,
 				A6A9CA9F1C7E4C4600314626 /* main.m in Sources */,
 				A665743F1C7E69C500834389 /* VerTareasCirculares.m in Sources */,
+				A6D129C21C8F934400C853C8 /* Boletin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
