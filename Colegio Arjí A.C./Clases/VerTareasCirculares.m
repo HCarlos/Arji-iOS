@@ -162,7 +162,6 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
 {
     double currentProgress = (double)totalBytesWritten / totalBytesExpectedToWrite;
     int porc = (int)(currentProgress * 100.0f);
-    // NSLog(@"Progreso de descarga… %d", porc);
     self->lblPorc.text = [NSString stringWithFormat: @"%d",porc];
 }
 
@@ -171,16 +170,10 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
       downloadTask:(NSURLSessionDownloadTask *)downloadTask
 didFinishDownloadingToURL:(NSURL *)location
 {
-    // NSLog(@"Descarga terminada");
-    
-    NSData *htmlData = [NSData dataWithContentsOfURL:location];
-    [self.WebView loadData:htmlData MIMEType:miMIME textEncodingName:@"UTF-8" baseURL:location];
-
     dispatch_async(dispatch_get_main_queue(), ^{
-        [loadingView removeFromSuperview];
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        NSData *htmlData = [NSData dataWithContentsOfURL:location];
         MiData = htmlData;
-
+        [self.WebView loadData:htmlData MIMEType:miMIME textEncodingName:@"UTF-8" baseURL:location];
     });
 }
 
@@ -189,23 +182,20 @@ didFinishDownloadingToURL:(NSURL *)location
     [loadingView setHidden:NO];
     
 }
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-    
-    NSLog(@"Acaba de Terminar de Cargar el %lu",(unsigned long)webView.dataDetectorTypes);
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
     [loadingView removeFromSuperview];
-    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
-
-
 
 #pragma webView_shouldStartLoadWithRequest
 -(BOOL) webView:(UIWebView *)inWeb shouldStartLoadWithRequest:(NSURLRequest *)inRequest navigationType:(UIWebViewNavigationType)inType {
     
-    NSLog(@"BODY: %@",[[NSString alloc]initWithData:inRequest.HTTPBody encoding:NSUTF8StringEncoding] );
+    // NSLog(@"BODY: %@",[[NSString alloc]initWithData:inRequest.HTTPBody encoding:NSUTF8StringEncoding] );
     
     if ( inType == UIWebViewNavigationTypeLinkClicked ) {
         [[UIApplication sharedApplication] openURL:[inRequest URL]];
-        NSLog(@"Entro");
+        // NSLog(@"Entro");
         return NO;
     }
     
@@ -260,24 +250,12 @@ didFinishDownloadingToURL:(NSURL *)location
         NSString *filePath = [cachePath stringByAppendingPathComponent:@"factura.pdf"];
         NSData *pdfFile = [NSData dataWithData:MiData];
         [pdfFile writeToFile:filePath atomically:YES];
-        
-        NSString* foofile = [cachePath stringByAppendingPathComponent:@"factura.pdf"];
-        BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:foofile];
-        
-        //NSLog(@"Existe el Archivo? ::: %@",fileExists);
-        
-        NSLog(fileExists ? @"Yes" : @"No");
-        
-        //UIDocumentInteractionController *documentInteractionController;
 
-        NSURL* URL = [NSURL fileURLWithPath:foofile];
+        NSURL* URL = [NSURL fileURLWithPath:filePath];
         
         self.interactionController = [UIDocumentInteractionController interactionControllerWithURL:URL];
         
-        //[documentInteractionController setDelegate:self];
         [self.interactionController presentOptionsMenuFromRect:self.view.bounds inView:self.view animated:YES];
-        
-        
         
     }
     

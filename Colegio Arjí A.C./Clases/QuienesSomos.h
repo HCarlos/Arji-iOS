@@ -1,23 +1,23 @@
 //
-//  Boletin.h
+//  QuienesSomos.h
 //  Colegio Arjí A.C.
 //
-//  Created by Carlos Hidalgo on 08/03/16.
+//  Created by Carlos Hidalgo on 09/03/16.
 //  Copyright © 2016 Colegio Arji A.C. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "Singleton.h"
 
-@interface Boletin : UIViewController<NSURLSessionDownloadDelegate, UIWebViewDelegate, UIDocumentInteractionControllerDelegate>{
+@interface QuienesSomos : UIViewController<NSURLSessionDownloadDelegate, UIWebViewDelegate, UIDocumentInteractionControllerDelegate>{
     UIView* loadingView;
     UILabel* lblPorc;
     NSString *urlWeb;
 }
-@property (nonatomic, retain) NSString *urlWeb;
 
 @property (strong, nonatomic) IBOutlet UIWebView *WebView;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnShare;
+
+@property (nonatomic, retain) NSString *urlWeb;
 
 @property (strong, nonatomic) UIView* loadingView;
 @property (strong, nonatomic) UILabel* lblPorc;
@@ -26,11 +26,12 @@
 
 @property (nonatomic) UIDocumentInteractionController *interactionController;
 
-- (IBAction)btnShare:(id)sender;
+- (IBAction)btnRefresh:(id)sender;
 
 -(IBAction)Zoom:(UIPinchGestureRecognizer *)recognizer;
 
--(void)getURLBoletin;
--(void)getPDF;
+-(void) Preloader;
+
+-(void)getURLQuienesSomos;
 
 @end

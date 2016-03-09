@@ -1,24 +1,50 @@
 //
-//  Boletin.m
+//  QuienesSomos.m
 //  Colegio Arjí A.C.
 //
-//  Created by Carlos Hidalgo on 08/03/16.
+//  Created by Carlos Hidalgo on 09/03/16.
 //  Copyright © 2016 Colegio Arji A.C. All rights reserved.
 //
 
-#import "Boletin.h"
+#import "QuienesSomos.h"
 
-@interface Boletin ()
+@interface QuienesSomos ()
 
 @end
 
-@implementation Boletin{
+@implementation QuienesSomos{
     NSString *miMIME;
-    NSData *MiData;
 }
 @synthesize WebView, Singleton, loadingView, lblPorc, urlWeb, interactionController;
 
+
 - (void)viewDidLoad {
+    
+    [self Preloader];
+    
+    self.Singleton  = [Singleton sharedMySingleton];
+    
+    miMIME = @"text/html";
+    self.urlWeb = @"http://platsource.mx/getQuienesSomos/";
+    [self getURLQuienesSomos];
+    
+    
+    [super viewDidLoad];
+    
+}
+
+-(void)dealloc{
+    self.WebView = nil;
+    self.Singleton = nil;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma Preloader
+-(void) Preloader{
 
     loadingView = [[UIView alloc]initWithFrame:CGRectMake(
                                                           ((self.WebView.scrollView.contentSize.width/2)-60),
@@ -44,7 +70,6 @@
     [loadingView addSubview:lblLoading];
     
     lblPorc = [[UILabel alloc]initWithFrame:CGRectMake(0, 68, 100, 30)];
-    // lblPorc.text = @"%";
     lblPorc.textColor = [UIColor whiteColor];
     lblPorc.font = [UIFont fontWithName:lblPorc.font.fontName size:15];
     lblPorc.textAlignment = NSTextAlignmentCenter;
@@ -53,31 +78,6 @@
     
     [self.view addSubview:loadingView];
     
-    self.Singleton  = [Singleton sharedMySingleton];
-    
-    // NSLog(@"Clave: %d",self.Singleton.Clave);
-    [self.btnShare setEnabled:NO];
-    
-    [self getURLBoletin];
-    
-    
-    [super viewDidLoad];
-    
-    self.WebView.opaque=NO;
-    self.WebView.userInteractionEnabled=YES;
-    
-    
-    // Do any additional setup after loading the view.
-}
-
--(void)dealloc{
-    self.WebView = nil;
-    self.Singleton = nil;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - NSURLSessionDownloadDelegate
@@ -100,7 +100,6 @@ didFinishDownloadingToURL:(NSURL *)location
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         NSData *htmlData = [NSData dataWithContentsOfURL:location];
-        MiData = htmlData;
         [self.WebView loadData:htmlData MIMEType:miMIME textEncodingName:@"UTF-8" baseURL:location];
         
     });
@@ -119,61 +118,13 @@ didFinishDownloadingToURL:(NSURL *)location
 
 #pragma webView_shouldStartLoadWithRequest
 -(BOOL) webView:(UIWebView *)inWeb shouldStartLoadWithRequest:(NSURLRequest *)inRequest navigationType:(UIWebViewNavigationType)inType {
+    
     return YES;
 }
 
 
--(void)getURLBoletin{
+-(void)getURLQuienesSomos{
     // Configuración de la sesión
-    NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    sessionConfiguration.HTTPAdditionalHeaders = @{
-                                                   @"api-key"   : @"55e76dc4bbae25b066cb",
-                                                   @"Accept"    : @"application/json"
-                                                   };
-    
-    // Inicialización de la sesión
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
-    
-    // Tarea de gestión de datos
-    NSURL *url = [NSURL URLWithString:@"http://platsource.mx/getBoletin/"];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        // Sondeo de la respuesta HTTP del servidor
-        NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
-        if (HTTPResponse.statusCode == 200) {
-            if (!error) {
-                // Conversión de JSON a objeto Foundation (NSArray)
-                NSError *JSONError;
-                NSArray *notes = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&JSONError];
-                
-                if (!JSONError) {
-                    NSString *msg = [[notes objectAtIndex:0]objectForKey:@"msg"];
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        
-                        if (![msg  isEqual: @"OK"]){
-                            //[self.lblMensaje setText:msg];
-                        }else{
-                            self.urlWeb           = [[notes objectAtIndex:0]objectForKey:@"ruta"];
-                            NSLog(@"%@",self.urlWeb);
-                            miMIME = @"application/pdf";
-                            [self getPDF];
-                            [self.btnShare setEnabled:YES];
-                        }
-                    });
-                } else {
-                    NSAssert(NO, @"Error en la conversión de JSON a Foundation");
-                }
-            } else {
-                NSAssert(NO, @"Error al obtener las notas del servidor");
-            }
-        }
-    }];
-    [dataTask resume];
-}
-
-
-#pragma getPDF
--(void)getPDF{
     @try {
         // Configuración de la sesión
         NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -189,7 +140,13 @@ didFinishDownloadingToURL:(NSURL *)location
         
     }@catch (NSException *exception) { }
     @finally { }
-    
+
+}
+
+- (IBAction)btnRefresh:(id)sender {
+    [self.WebView loadHTMLString:@"" baseURL:nil];
+    [self Preloader];
+    [self getURLQuienesSomos];
 }
 
 -(IBAction)Zoom:(UIPinchGestureRecognizer *)recognizer{
@@ -197,32 +154,6 @@ didFinishDownloadingToURL:(NSURL *)location
         recognizer.view.transform = CGAffineTransformScale(recognizer.view.transform, recognizer.scale,recognizer.scale); recognizer.scale = 1;
     }@catch (NSException *exception) { }
     @finally { }
-    
-}
-
-- (IBAction)btnShare:(id)sender {
-    
-    NSURL *url = self.WebView.request.URL;
-    if (url != nil) {
-        
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-        NSString *cachePath = [paths objectAtIndex:0];
-        BOOL isDir = NO;
-        NSError *error;
-        //You must check if this directory exist every time
-        if (! [[NSFileManager defaultManager] fileExistsAtPath:cachePath isDirectory:&isDir] && isDir   == NO)
-        {
-            [[NSFileManager defaultManager] createDirectoryAtPath:cachePath withIntermediateDirectories:NO attributes:nil error:&error];
-        }
-        NSString *filePath = [cachePath stringByAppendingPathComponent:@"boletin.pdf"];
-        NSData *pdfFile = [NSData dataWithData:MiData];
-        [pdfFile writeToFile:filePath atomically:YES];
-        
-        NSURL* URL = [NSURL fileURLWithPath:filePath];
-        self.interactionController = [UIDocumentInteractionController interactionControllerWithURL:URL];
-        [self.interactionController presentOptionsMenuFromRect:self.view.bounds inView:self.view animated:YES];
-        
-    }
     
 }
 
