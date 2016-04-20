@@ -31,6 +31,7 @@
     }else{
     
         self.Singleton  = [Singleton sharedMySingleton];
+        [self.Singleton setPlist];
         
         
         UIDevice *myDevice=[UIDevice currentDevice];
@@ -38,7 +39,7 @@
         
         self.Singleton.uniqueIdentifier = UUID;
         self.Singleton.typeDevice = @"1";
-        NSLog(@"UUID: %@",UUID);
+        // NSLog(@"UUID: %@",UUID);
         
         myDevice = nil;
         UUID = nil;

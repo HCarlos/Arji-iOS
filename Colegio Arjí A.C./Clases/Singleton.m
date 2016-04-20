@@ -23,7 +23,7 @@
 @synthesize Modulo;
 @synthesize uniqueIdentifier;
 @synthesize pathPList, dataPList,IdUser,IsDelete,limCant, limFrom;
-@synthesize Username, Password, IdEmp, IdUserNivelAcceso, Param1, Clave, Empresa, RegistrosPorPagina;
+@synthesize Username, Password, IdEmp, IdUserNivelAcceso, Param1, Clave, Empresa, RegistrosPorPagina, NombreCompletoUsuario;
 @synthesize tokenUser, typeDevice;
 
 static Singleton* _sharedMySingleton = nil;
@@ -167,9 +167,9 @@ static Singleton* _sharedMySingleton = nil;
     if (![fileManager fileExistsAtPath: pathPList])
     {
         pathPList = [documentsDirectory stringByAppendingPathComponent: [NSString stringWithFormat: @"UserConnect.plist"] ];
-        //NSLog(@"Creado" );
+        NSLog(@"Creado" );
     }else{
-        //NSLog(@"Ya estaba Creado" );
+        NSLog(@"Ya estaba Creado" );
         
     }
     
@@ -189,12 +189,16 @@ static Singleton* _sharedMySingleton = nil;
 
     }
 }
--(void)insertUser:(NSString *) User{
+
+-(void)insertUser:(NSString *) User insertPass:(NSString *) PWD{
     ///// INSERTAR ////////
     
     //To insert the data into the plist
     NSString *Usr = User;
-    [dataPList setObject:[NSString stringWithString:Usr] forKey:@"user"];
+    NSString *Pwd = PWD;
+    [dataPList setObject:[NSString stringWithString:Usr] forKey:@"username"];
+    [dataPList setObject:[NSString stringWithString:Pwd] forKey:@"password"];
+
     [dataPList writeToFile: pathPList atomically:YES];
     //[data release];
     
@@ -202,13 +206,11 @@ static Singleton* _sharedMySingleton = nil;
 
 -(void)deleteUser{
 
-    ///// QUITAR /////////////
-    //    NSMutableDictionary *plist = [NSMutableDictionary dictionaryWithCOntentsOfFile:pathToPlist];
-    
-    [dataPList removeObjectForKey:@"user"];
+    [dataPList removeObjectForKey:@"username"];
     [dataPList writeToFile:pathPList atomically:YES];
-    
-    
+
+    [dataPList removeObjectForKey:@"password"];
+    [dataPList writeToFile:pathPList atomically:YES];
     
 }
 
@@ -218,13 +220,21 @@ static Singleton* _sharedMySingleton = nil;
     //To reterive the data from the plist
     NSMutableDictionary *savedStock = [[NSMutableDictionary alloc] initWithContentsOfFile: pathPList];
     NSString *value1;
-    value1 = [savedStock objectForKey:@"user"] ;
-    
-    //NSLog(@"%i",[value1 length] );
-    
-    //[savedStock release];
+    value1 = [savedStock objectForKey:@"username"] ;
     return value1;
 
+}
+
+
+-(NSString *) getPassword{
+    
+    
+    //To reterive the data from the plist
+    NSMutableDictionary *savedStock = [[NSMutableDictionary alloc] initWithContentsOfFile: pathPList];
+    NSString *value1;
+    value1 = [savedStock objectForKey:@"password"] ;
+    return value1;
+    
 }
 
 -(BOOL) validateEmail: (NSString *) candidate {

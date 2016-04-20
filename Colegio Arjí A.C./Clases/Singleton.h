@@ -36,6 +36,8 @@
     
     NSString *Username;
     NSString *Password;
+    
+    NSString *NombreCompletoUsuario;
 
 }
 
@@ -54,6 +56,7 @@
 @property (nonatomic) int RegistrosPorPagina;
 @property (nonatomic, retain) NSString *Username;
 @property (nonatomic, retain) NSString *Password;
+@property (nonatomic, retain) NSString *NombreCompletoUsuario;
 
 @property (nonatomic) BOOL IsDelete;
 /*
@@ -91,9 +94,10 @@
 -(double)intInRangeDouble:(double)min andMaximum:(double)max;
 
 -(void)setPlist;
--(void)insertUser:(NSString *) User;
+-(void)insertUser:(NSString *) User insertPass:(NSString *) PWD;
 -(void)deleteUser;
 -(NSString *) getUser;
+-(NSString *) getPassword;
 -(NSArray*)explodeString:(NSString*)stringToBeExploded WithDelimiter:(NSString*)delimiter;
 
 @end

@@ -23,6 +23,7 @@
 
 @property (strong,nonatomic) Singleton *Singleton;
 
+-(void)ValidCredentials;
 -(void)Login;
 
 @end

@@ -15,45 +15,15 @@
 @implementation Boletin{
     NSString *miMIME;
     NSData *MiData;
+    NSString *extension;
 }
 @synthesize WebView, Singleton, loadingView, lblPorc, urlWeb, interactionController;
 
 - (void)viewDidLoad {
 
-    loadingView = [[UIView alloc]initWithFrame:CGRectMake(
-                                                          ((self.WebView.scrollView.contentSize.width/2)-60),
-                                                          ((self.WebView.scrollView.contentSize.height/2)-50),
-                                                          120,
-                                                          100
-                                                          )];
-    
-    loadingView.backgroundColor = [UIColor colorWithWhite:0. alpha:0.6];
-    loadingView.layer.cornerRadius = 5;
-    
-    UIActivityIndicatorView *activityView=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    activityView.center = CGPointMake(loadingView.frame.size.width / 2.0, 35);
-    [activityView startAnimating];
-    activityView.tag = 100;
-    [loadingView addSubview:activityView];
-    
-    UILabel* lblLoading = [[UILabel alloc]initWithFrame:CGRectMake(0, 48, 100, 30)];
-    lblLoading.text = @"Cargando...";
-    lblLoading.textColor = [UIColor whiteColor];
-    lblLoading.font = [UIFont fontWithName:lblLoading.font.fontName size:15];
-    lblLoading.textAlignment = NSTextAlignmentCenter;
-    [loadingView addSubview:lblLoading];
-    
-    lblPorc = [[UILabel alloc]initWithFrame:CGRectMake(0, 68, 100, 30)];
-    // lblPorc.text = @"%";
-    lblPorc.textColor = [UIColor whiteColor];
-    lblPorc.font = [UIFont fontWithName:lblPorc.font.fontName size:15];
-    lblPorc.textAlignment = NSTextAlignmentCenter;
-    [loadingView addSubview:lblPorc];
-    
-    
-    [self.view addSubview:loadingView];
-    
     self.Singleton  = [Singleton sharedMySingleton];
+    
+    [self Preloader];
     
     // NSLog(@"Clave: %d",self.Singleton.Clave);
     [self.btnShare setEnabled:NO];
@@ -80,19 +50,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - NSURLSessionDownloadDelegate
-- (void)URLSession:(NSURLSession *)session
-      downloadTask:(NSURLSessionDownloadTask *)downloadTask
-      didWriteData:(int64_t)bytesWritten
- totalBytesWritten:(int64_t)totalBytesWritten
-totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
-{
-    double currentProgress = (double)totalBytesWritten / totalBytesExpectedToWrite;
-    int porc = (int)(currentProgress * 100.0f);
-    // NSLog(@"Progreso de descarga… %d", porc);
-    self->lblPorc.text = [NSString stringWithFormat: @"%d",porc];
-}
-
 #pragma mark - didFinishDownloadingToURL
 - (void)URLSession:(NSURLSession *)session
       downloadTask:(NSURLSessionDownloadTask *)downloadTask
@@ -113,12 +70,19 @@ didFinishDownloadingToURL:(NSURL *)location
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
-    [loadingView removeFromSuperview];
+    [loadingView setHidden:YES];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
+
 #pragma webView_shouldStartLoadWithRequest
 -(BOOL) webView:(UIWebView *)inWeb shouldStartLoadWithRequest:(NSURLRequest *)inRequest navigationType:(UIWebViewNavigationType)inType {
+    
+    if ( inType == UIWebViewNavigationTypeLinkClicked ) {
+        [[UIApplication sharedApplication] openURL:[inRequest URL]];
+        return NO;
+    }
+    
     return YES;
 }
 
@@ -154,8 +118,23 @@ didFinishDownloadingToURL:(NSURL *)location
                             //[self.lblMensaje setText:msg];
                         }else{
                             self.urlWeb           = [[notes objectAtIndex:0]objectForKey:@"ruta"];
-                            NSLog(@"%@",self.urlWeb);
-                            miMIME = @"application/pdf";
+                            
+                            NSArray *strings = [self.urlWeb componentsSeparatedByString:@"."];
+                            extension = [ strings objectAtIndex:2 ];
+                            
+                            if ( [extension  isEqual: @"jpg"] || [extension  isEqual: @"JPG"] ) {
+                                miMIME = @"image/jpeg";
+                            }else if ( [extension  isEqual: @"png"] || [extension  isEqual: @"PNG"] ) {
+                                miMIME = @"image/png";
+                            }else if ( [extension  isEqual: @"gif"] || [extension  isEqual: @"GIF"] ) {
+                                miMIME = @"image/gif";
+                            }else if ( [extension  isEqual: @"pdf"] || [extension  isEqual: @"PDF"] ) {
+                                miMIME = @"application/pdf";
+                            }
+                            
+                            NSLog(@"Extensión: %@",extension);
+                            
+                            // miMIME = @"application/pdf";
                             [self getPDF];
                             [self.btnShare setEnabled:YES];
                         }
@@ -209,12 +188,24 @@ didFinishDownloadingToURL:(NSURL *)location
         NSString *cachePath = [paths objectAtIndex:0];
         BOOL isDir = NO;
         NSError *error;
-        //You must check if this directory exist every time
         if (! [[NSFileManager defaultManager] fileExistsAtPath:cachePath isDirectory:&isDir] && isDir   == NO)
         {
             [[NSFileManager defaultManager] createDirectoryAtPath:cachePath withIntermediateDirectories:NO attributes:nil error:&error];
         }
-        NSString *filePath = [cachePath stringByAppendingPathComponent:@"boletin.pdf"];
+        
+        NSString *nameFile;
+        if ( [extension  isEqual: @"jpg"] || [extension  isEqual: @"JPG"] ) {
+            nameFile = @"boletin.jpg";
+        }else if ( [extension  isEqual: @"png"] || [extension  isEqual: @"PNG"] ) {
+            nameFile = @"boletin.png";
+        }else if ( [extension  isEqual: @"gif"] || [extension  isEqual: @"GIF"] ) {
+            nameFile = @"boletin.gif";
+        }else if ( [extension  isEqual: @"pdf"] || [extension  isEqual: @"PDF"] ) {
+            nameFile = @"boletin.pdf";
+        }
+        
+        
+        NSString *filePath = [cachePath stringByAppendingPathComponent:nameFile];
         NSData *pdfFile = [NSData dataWithData:MiData];
         [pdfFile writeToFile:filePath atomically:YES];
         
@@ -223,6 +214,51 @@ didFinishDownloadingToURL:(NSURL *)location
         [self.interactionController presentOptionsMenuFromRect:self.view.bounds inView:self.view animated:YES];
         
     }
+    
+}
+
+-(void) Preloader{
+    
+    loadingView = [[UIView alloc]initWithFrame:CGRectMake(
+                                                          ((self.WebView.scrollView.contentSize.width/2)-60),
+                                                          ((self.WebView.scrollView.contentSize.height/2)-50),
+                                                          120,
+                                                          100
+                                                          )];
+    
+    loadingView.backgroundColor = [UIColor colorWithWhite:0. alpha:0.6];
+    loadingView.layer.cornerRadius = 5;
+    
+    UIActivityIndicatorView *activityView=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    activityView.center = CGPointMake(loadingView.frame.size.width / 2.0, 35);
+    [activityView startAnimating];
+    activityView.tag = 100;
+    [loadingView addSubview:activityView];
+    
+    UILabel* lblLoading = [[UILabel alloc]initWithFrame:CGRectMake(0, 48, 100, 30)];
+    lblLoading.text = @"Cargando...";
+    lblLoading.textColor = [UIColor whiteColor];
+    lblLoading.font = [UIFont fontWithName:lblLoading.font.fontName size:15];
+    lblLoading.textAlignment = NSTextAlignmentCenter;
+    [loadingView addSubview:lblLoading];
+    
+    lblPorc = [[UILabel alloc]initWithFrame:CGRectMake(0, 68, 100, 30)];
+    // lblPorc.text = @"%";
+    lblPorc.textColor = [UIColor whiteColor];
+    lblPorc.font = [UIFont fontWithName:lblPorc.font.fontName size:15];
+    lblPorc.textAlignment = NSTextAlignmentCenter;
+    [loadingView addSubview:lblPorc];
+    
+    
+    [self.view addSubview:loadingView];
+    
+}
+
+- (IBAction)btnRefresh:(id)sender {
+
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    [loadingView setHidden:NO];
+    [self getPDF];
     
 }
 

@@ -11,12 +11,13 @@
 
 @interface Login (){
     NSMutableArray *datos;
+    NSString *Usr;
 }
 
 @end
 
 @implementation Login
-@synthesize Indicador, ViewLogin;
+@synthesize Indicador, ViewLogin, txtUsername, txtPassword;
 - (void)viewDidLoad {
 
     /*
@@ -24,7 +25,7 @@
     self.view.backgroundColor = background;
     background = nil;
      */
-    
+
     UIView *xView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
     self.ViewLogin.layer.cornerRadius = xView.frame.size.width/2;
     self.ViewLogin.layer.borderWidth = 1.0f;
@@ -33,6 +34,8 @@
     xView = nil;
 
     self.Singleton  = [Singleton sharedMySingleton];
+    [self ValidCredentials];
+    
     self.IsOKLogin = NO;
     
     [self.Indicador stopAnimating];
@@ -40,13 +43,30 @@
     
     [super viewDidLoad];
     
-    // Do any additional setup after loading the view, typically from a nib.
 }
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self ValidCredentials];
+    NSLog(@"Apareció");
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)ValidCredentials{
+    Usr = [self.Singleton getUser];
+    if (![Usr  isEqual: @""]){
+        [self.txtUsername setText:Usr];
+        [self.txtPassword setText:[self.Singleton getPassword]];
+    }
+    
+}
+
 
 #pragma mark - getLogin
 -(void)Login{
@@ -99,34 +119,52 @@
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
                         
-                        if (![msg  isEqual: @"OK"]){
+                        if (![msg isEqual: @"OK"]){
                             [self.lblMensaje setText:msg];
                         }else{
-                            self.Singleton.Username           = usernamex;
-                            self.Singleton.Password           = passwordl;
-                            self.Singleton.IdUser             = [[Value objectAtIndex:0] intValue];
-                            self.Singleton.IdEmp              = [[Value objectAtIndex:2] intValue];
-                            self.Singleton.Empresa            = [Value objectAtIndex:3];
-                            self.Singleton.IdUserNivelAcceso  = [[Value objectAtIndex:4] intValue];
-                            self.Singleton.RegistrosPorPagina = [[Value objectAtIndex:5] intValue];
-                            self.Singleton.Clave              = [[Value objectAtIndex:6] intValue];
-                            self.Singleton.Param1             = [[Value objectAtIndex:7] intValue];
+                            self.Singleton.Username              = usernamex;
+                            self.Singleton.Password              = passwordl;
+                            self.Singleton.IdUser                = [[Value objectAtIndex:0] intValue];
+                            self.Singleton.IdEmp                 = [[Value objectAtIndex:2] intValue];
+                            self.Singleton.Empresa               = [Value objectAtIndex:3];
+                            self.Singleton.IdUserNivelAcceso     = [[Value objectAtIndex:4] intValue];
+                            self.Singleton.RegistrosPorPagina    = [[Value objectAtIndex:5] intValue];
+                            self.Singleton.Clave                 = [[Value objectAtIndex:6] intValue];
+                            self.Singleton.Param1                = [[Value objectAtIndex:7] intValue];
+                            self.Singleton.NombreCompletoUsuario = [Value objectAtIndex:8];
                             
-                            /*
-                             
-                             NSLog(@"IdUser->: %@",self.Singleton.Username);
-                             NSLog(@"Password->: %@",self.Singleton.Password);
-                             NSLog(@"IdEmp->: %d",self.Singleton.IdEmp);
-                             NSLog(@"Empresa->: %@",self.Singleton.Empresa);
-                             NSLog(@"IdUserNivelAcceso->: %d",self.Singleton.IdUserNivelAcceso);
-                             NSLog(@"RegistrosPorPagina->: %d",self.Singleton.RegistrosPorPagina);
-                             NSLog(@"Clave->: %d",self.Singleton.Clave);
-                             NSLog(@"Param1->: %d",self.Singleton.Param1);
-                             
-                             */
+                            NSLog(@"IdUser->: %d",self.Singleton.IdUser);
+                            NSLog(@"Username->: %@",self.Singleton.Username);
+                            NSLog(@"Password->: %@",self.Singleton.Password);
+                            NSLog(@"IdEmp->: %d",self.Singleton.IdEmp);
+                            NSLog(@"Empresa->: %@",self.Singleton.Empresa);
+                            NSLog(@"IdUserNivelAcceso->: %d",self.Singleton.IdUserNivelAcceso);
+                            NSLog(@"RegistrosPorPagina->: %d",self.Singleton.RegistrosPorPagina);
+                            NSLog(@"Clave->: %d",self.Singleton.Clave);
+                            NSLog(@"Param1->: %d",self.Singleton.Param1);
+                            NSLog(@"Nombre Completo->: %@",self.Singleton.NombreCompletoUsuario);
                             
-                            [self performSegueWithIdentifier:@"NUno" sender:nil];
+                            NSLog(@"Clave %d",self.Singleton.Clave);
+
+                            [self.Singleton insertUser:usernamex insertPass:passwordl];
+                            
+                            if (self.Singleton.IdUserNivelAcceso == 7){ // Tutores
+                                [self performSegueWithIdentifier:@"NUno" sender:nil];
+                            }else if (self.Singleton.IdUserNivelAcceso == 5){ // Alumnos
+                                [self performSegueWithIdentifier:@"AAlumnos" sender:nil];
+                            }else if (
+                                      self.Singleton.IdUserNivelAcceso == 6 ||
+                                      self.Singleton.IdUserNivelAcceso == 18 ||
+                                      self.Singleton.IdUserNivelAcceso == 23
+                                      
+                                      ){ // Profesores
+                                self.Singleton.Clave = 6;
+                                [self performSegueWithIdentifier:@"PProfesores" sender:nil];
+                            }else{
+                                [self.lblMensaje setText:@"Acceso Denegado"];
+                            }
                         }
+                        
                         [self.btnIngresar setEnabled:YES];
                     });
                 } else {
@@ -165,7 +203,7 @@
     
     [self Login];
     
-    if ( [identifier isEqualToString:@"NUno"] ){
+    if ( [identifier isEqualToString:@"NUno"] || [identifier isEqualToString:@"AAlumnos"] || [identifier isEqualToString:@"PProfesores"] ){
         if (self.IsOKLogin) return YES;
         else return NO;
     }

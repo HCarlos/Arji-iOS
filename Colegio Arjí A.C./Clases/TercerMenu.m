@@ -16,11 +16,22 @@
 
 @implementation TercerMenu{
     NSMutableArray *Menu;
+    UILabel* lblTbl;
 }
 @synthesize tblView, IdObjAlu, IdObjMenu, Indicator, Nav0, Bar0, Segment0, Status;
 
 - (void)viewDidLoad {
     [self.Indicator startAnimating];
+
+    lblTbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 48, 350, 30)];
+    lblTbl.text = @"No se encontraron Mensajes para este Usuario.";
+    lblTbl.textColor = [UIColor brownColor];
+    lblTbl.font = [UIFont fontWithName:lblTbl.font.fontName size:15];
+    lblTbl.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:lblTbl];
+    [lblTbl setHidden:YES];
+    
+    
     self.Singleton  = [Singleton sharedMySingleton];
     [self.Segment0 setHidden:NO];
 
@@ -37,18 +48,36 @@
 */
     
     self.Status = 0;
-    switch (self.IdObjMenu) {
-        case 0:
-        case 1:
-            [self.Segment0 setHidden:NO];
-            break;
-        case 2:
-        case 3:
-            [self.Segment0 setHidden:YES];
-            break;
+    if (self.Singleton.Clave == 5){
+        switch (self.IdObjMenu) {
+            case 0:
+            case 1:
+                [self.Segment0 setHidden:NO];
+                break;
+        }
+    }else if (self.Singleton.Clave == 6){
+            switch (self.IdObjMenu) {
+                case 1:
+                    [self.Segment0 setHidden:NO];
+                    break;
+            }
+    }else if (self.Singleton.Clave == 7){
+        switch (self.IdObjMenu) {
+            case 0:
+            case 1:
+                [self.Segment0 setHidden:NO];
+                break;
+            case 2:
+            case 3:
+                [self.Segment0 setHidden:YES];
+                break;
+        }
+        
     }
     
     switch (self.Singleton.Clave) {
+        case 5:
+        case 6:
         case 7:
             [self getTercerMenu];
             break;
@@ -87,73 +116,118 @@
     static NSString *TableId = @"";
     int vencido = [ [[Menu objectAtIndex:indexPath.row] objectForKey:@"dias_que_faltan_para_vencer"] intValue];
     int status_movto = [ [[Menu objectAtIndex:indexPath.row] objectForKey:@"status_movto"] intValue];
+    
+    if (self.Singleton.Clave == 5){
+        TableId = @"TercerMenuCell";
+    }
 
-    switch (self.IdObjMenu) {
-        case 3:
-            if (vencido < 0 && status_movto == 0){
-                TableId = @"TercerMenuCell_Vencido";
-            }else{
-                if (status_movto == 1){
-                    TableId = @"TercerMenuCell_Pagado";
+    if (self.Singleton.Clave == 6){
+        TableId = @"TercerMenuCell";
+    }
+    
+    if (self.Singleton.Clave == 7){
+        switch (self.IdObjMenu) {
+            case 3:
+                if (vencido < 0 && status_movto == 0){
+                    TableId = @"TercerMenuCell_Vencido";
                 }else{
-                    TableId = @"TercerMenuCell_Pago_Normal";
+                    if (status_movto == 1){
+                        TableId = @"TercerMenuCell_Pagado";
+                    }else{
+                        TableId = @"TercerMenuCell_Pago_Normal";
+                    }
                 }
-            }
-            break;
-        default:
-            TableId = @"TercerMenuCell";
-            break;
+                break;
+            default:
+                TableId = @"TercerMenuCell";
+                break;
+        }
     }
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TableId forIndexPath:indexPath];
     
     if (cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TableId];
-        [cell.layer setCornerRadius:5.0];
+        // [cell.layer setCornerRadius:5.0];
+    }
+
+    if (self.Singleton.Clave == 5){
+        switch (self.IdObjMenu) {
+            case 0:
+                cell.textLabel.text = [[Menu objectAtIndex:indexPath.row] objectForKey:@"titulo_tarea"];
+                cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@",
+                                             [[Menu objectAtIndex:indexPath.row] objectForKey:@"materia"],
+                                             [[Menu objectAtIndex:indexPath.row] objectForKey:@"grupo"]
+                                             ];
+                break;
+            case 1:
+                cell.textLabel.text = [[Menu objectAtIndex:indexPath.row] objectForKey:@"titulo_mensaje"];
+                cell.detailTextLabel.text = @"";
+                break;
+                
+            default:
+                break;
+        }
     }
     
-    switch (self.IdObjMenu) {
-        case 0:
-            cell.textLabel.text = [[Menu objectAtIndex:indexPath.row] objectForKey:@"titulo_tarea"];
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@",
-                                         [[Menu objectAtIndex:indexPath.row] objectForKey:@"materia"],
-                                         [[Menu objectAtIndex:indexPath.row] objectForKey:@"grupo"]
-                                         ];
-            break;
-        case 1:
-            cell.textLabel.text = [[Menu objectAtIndex:indexPath.row] objectForKey:@"titulo_mensaje"];
-            cell.detailTextLabel.text = @"";
-            break;
-        case 2:
-            cell.textLabel.text = [[Menu objectAtIndex:indexPath.row] objectForKey:@"pdf"];
-            cell.detailTextLabel.text = @"";
-            break;
-        case 3:
-            
-            // NSLog(@"vencido = %d, status_movto = %d",vencido,status_movto);
-
-            cell.textLabel.text = [NSString stringWithFormat:@"%@ %@ ",
-                                   [[Menu objectAtIndex:indexPath.row] objectForKey:@"concepto"],
-                                   [[Menu objectAtIndex:indexPath.row] objectForKey:@"mes"]
-                                   ];
-            
-            if (status_movto == 1){
-                cell.detailTextLabel.text = [NSString stringWithFormat:@"PAGADO EL: %@ ",
-                                             [[Menu objectAtIndex:indexPath.row] objectForKey:@"fecha_de_pago"]
-                                             ];
-            }else{
-                if (vencido < 0){
-                    cell.detailTextLabel.text = @"Vencido";                    
-                }else{
-                        cell.detailTextLabel.text = @"";
-                }
-            }
-            
-            break;
-            
-        default:
-            break;
+    if (self.Singleton.Clave == 6){
+        switch (self.IdObjMenu) {
+            case 1:
+                cell.textLabel.text = [[Menu objectAtIndex:indexPath.row] objectForKey:@"titulo_mensaje"];
+                cell.detailTextLabel.text = @"";
+                break;
+                
+            default:
+                break;
+        }
     }
+    
+    
+    if (self.Singleton.Clave == 7){
+        switch (self.IdObjMenu) {
+            case 0:
+                cell.textLabel.text = [[Menu objectAtIndex:indexPath.row] objectForKey:@"titulo_tarea"];
+                cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@",
+                                             [[Menu objectAtIndex:indexPath.row] objectForKey:@"materia"],
+                                             [[Menu objectAtIndex:indexPath.row] objectForKey:@"grupo"]
+                                             ];
+                break;
+            case 1:
+                cell.textLabel.text = [[Menu objectAtIndex:indexPath.row] objectForKey:@"titulo_mensaje"];
+                cell.detailTextLabel.text = @"";
+                break;
+            case 2:
+                cell.textLabel.text = [[Menu objectAtIndex:indexPath.row] objectForKey:@"pdf"];
+                cell.detailTextLabel.text = @"";
+                break;
+            case 3:
+                
+                // NSLog(@"vencido = %d, status_movto = %d",vencido,status_movto);
+
+                cell.textLabel.text = [NSString stringWithFormat:@"%@ %@ ",
+                                       [[Menu objectAtIndex:indexPath.row] objectForKey:@"concepto"],
+                                       [[Menu objectAtIndex:indexPath.row] objectForKey:@"mes"]
+                                       ];
+                
+                if (status_movto == 1){
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"PAGADO EL: %@ ",
+                                                 [[Menu objectAtIndex:indexPath.row] objectForKey:@"fecha_de_pago"]
+                                                 ];
+                }else{
+                    if (vencido < 0){
+                        cell.detailTextLabel.text = @"Vencido";                    
+                    }else{
+                            cell.detailTextLabel.text = @"";
+                    }
+                }
+                
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
     return cell;
 
 }
@@ -224,9 +298,13 @@
         
         // Evio de Datos Sin Imagen
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+        [self.Indicator startAnimating];
+        [lblTbl setHidden:YES];
         
         NSString *usernamex = self.Singleton.Username;
         NSString *noteDataString = [NSString stringWithFormat:@"username=%@&sts=%d&iduseralu=%d&tipoconsulta=%d", usernamex,self.Status,self.IdObjAlu, self.IdObjMenu];
+        
+        NSLog(@"String: %@",noteDataString);
         
         // Configuración de la sesión
         NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -249,11 +327,21 @@
                 // Conversión de JSON a objeto Foundation (NSDictionary)
                 NSError *JSONError;
                 NSDictionary *responseBody = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&JSONError];
+
+
                 if (!JSONError) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         Menu = (NSMutableArray *)responseBody;
-                        // NSLog(@"Lista de Tareas: %lu",(unsigned long)[Menu count]);
-                        [tblView reloadData];
+                        NSString *msg = [[Menu objectAtIndex:0]objectForKey:@"msg"];
+                        if ([msg  isEqual: @"OK"]){
+                            
+                            [tblView reloadData];
+                            
+                            [lblTbl setHidden:YES];
+                            
+                        }else{
+                            [lblTbl setHidden:NO];
+                        }
                         [self.Indicator stopAnimating];
 
                     });
@@ -297,30 +385,55 @@
     
     static NSString *CellIdentifier = @"TercerMenuHeader";
     UITableViewCell *headerView = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    CGRect customCreationRect;
+    
+    CGRect customCreationRect = headerView.frame;
+    
     customCreationRect.size.height = 32.0f;
     [headerView setFrame:customCreationRect];
     
     NSString *sectionName;
     
-    switch (self.IdObjMenu)
-    {
-        case 0:
-            sectionName = [NSString stringWithFormat:@"%lu TAREAS",(unsigned long)[Menu count] ];
-            break;
-        case 1:
-            sectionName = [NSString stringWithFormat:@"%lu CIRCULARES",(unsigned long)[Menu count] ];
-            break;
-        case 2:
-            sectionName = [NSString stringWithFormat:@"%lu FACTURAS",(unsigned long)[Menu count] ];
-            break;
-        case 3:
-            sectionName = [NSString stringWithFormat:@"%lu PAGOS",(unsigned long)[Menu count] ];
-            break;
+    if (self.Singleton.Clave == 5){
+        switch (self.IdObjMenu)
+        {
+            case 0:
+                sectionName = [NSString stringWithFormat:@"%lu TAREAS",(unsigned long)[Menu count] ];
+                break;
+            case 1:
+                sectionName = [NSString stringWithFormat:@"%lu CIRCULARES",(unsigned long)[Menu count] ];
+                break;
+        }
+    }
+
+    if (self.Singleton.Clave == 6){
+        switch (self.IdObjMenu)
+        {
+            case 1:
+                sectionName = [NSString stringWithFormat:@"%lu CIRCULARES",(unsigned long)[Menu count] ];
+                break;
+        }
+    }
+    
+    if (self.Singleton.Clave == 7){
+        switch (self.IdObjMenu)
+        {
+            case 0:
+                sectionName = [NSString stringWithFormat:@"%lu TAREAS",(unsigned long)[Menu count] ];
+                break;
+            case 1:
+                sectionName = [NSString stringWithFormat:@"%lu CIRCULARES",(unsigned long)[Menu count] ];
+                break;
+            case 2:
+                sectionName = [NSString stringWithFormat:@"%lu FACTURAS",(unsigned long)[Menu count] ];
+                break;
+            case 3:
+                sectionName = [NSString stringWithFormat:@"%lu PAGOS",(unsigned long)[Menu count] ];
+                break;
+        }
     }
     
     headerView.textLabel.text = sectionName;
-    [headerView.layer setCornerRadius:5.0];
+    // [headerView.layer setCornerRadius:5.0];
     
     return headerView;
     
@@ -341,10 +454,11 @@
         [self.tblView reloadData];
         
         switch (self.Singleton.Clave) {
+            case 5:
+            case 6:
             case 7:
                 [self getTercerMenu];
                 break;
-                
             default:
                 break;
         }

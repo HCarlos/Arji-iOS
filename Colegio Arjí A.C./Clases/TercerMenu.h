@@ -10,7 +10,7 @@
 #import "Singleton.h"
 #import "VerTareasCirculares.h"
 
-@interface TercerMenu : UITableViewController<UITableViewDelegate, UIToolbarDelegate, UIBarPositioningDelegate>{
+@interface TercerMenu : UITableViewController<UITableViewDelegate, UITableViewDataSource, UIToolbarDelegate, UIBarPositioningDelegate>{
     int IdObjAlu;
     int IdObjMenu;
     Byte Status;

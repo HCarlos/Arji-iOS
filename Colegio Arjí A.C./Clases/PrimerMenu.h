@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "Singleton.h"
 
-@interface PrimerMenu : UITableViewController<UITableViewDelegate>
+@interface PrimerMenu : UITableViewController<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *tblView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *Indicator;
 @property (strong,nonatomic) Singleton *Singleton;
+- (IBAction)btnCloseSession:(id)sender;
 
 -(void)getHijos;
 

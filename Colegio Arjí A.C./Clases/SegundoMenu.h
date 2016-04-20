@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Singleton.h"
 
-@interface SegundoMenu : UITableViewController<UITableViewDelegate>{
+@interface SegundoMenu : UITableViewController<UITableViewDelegate, UITableViewDataSource>{
     int IdObjAlu;
     Singleton *Singleton;
 }
@@ -18,5 +18,6 @@
 @property (strong,nonatomic) Singleton *Singleton;
 
 @property (strong, nonatomic) IBOutlet UITableView *tblView;
+- (IBAction)btnLogin:(id)sender;
 
 @end

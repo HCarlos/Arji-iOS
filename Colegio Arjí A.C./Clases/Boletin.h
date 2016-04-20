@@ -26,9 +26,13 @@
 
 @property (nonatomic) UIDocumentInteractionController *interactionController;
 
+- (IBAction)btnRefresh:(id)sender;
+
 - (IBAction)btnShare:(id)sender;
 
 -(IBAction)Zoom:(UIPinchGestureRecognizer *)recognizer;
+
+-(void) Preloader;
 
 -(void)getURLBoletin;
 -(void)getPDF;

@@ -80,19 +80,6 @@
     
 }
 
-#pragma mark - NSURLSessionDownloadDelegate
-- (void)URLSession:(NSURLSession *)session
-      downloadTask:(NSURLSessionDownloadTask *)downloadTask
-      didWriteData:(int64_t)bytesWritten
- totalBytesWritten:(int64_t)totalBytesWritten
-totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
-{
-    double currentProgress = (double)totalBytesWritten / totalBytesExpectedToWrite;
-    int porc = (int)(currentProgress * 100.0f);
-    // NSLog(@"Progreso de descarga… %d", porc);
-    self->lblPorc.text = [NSString stringWithFormat: @"%d",porc];
-}
-
 #pragma mark - didFinishDownloadingToURL
 - (void)URLSession:(NSURLSession *)session
       downloadTask:(NSURLSessionDownloadTask *)downloadTask
@@ -112,12 +99,18 @@ didFinishDownloadingToURL:(NSURL *)location
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
-    [loadingView removeFromSuperview];
+    //[loadingView removeFromSuperview];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    [loadingView setHidden:YES];
 }
 
 #pragma webView_shouldStartLoadWithRequest
 -(BOOL) webView:(UIWebView *)inWeb shouldStartLoadWithRequest:(NSURLRequest *)inRequest navigationType:(UIWebViewNavigationType)inType {
+    
+    if ( inType == UIWebViewNavigationTypeLinkClicked ) {
+        [[UIApplication sharedApplication] openURL:[inRequest URL]];
+        return NO;
+    }
     
     return YES;
 }
@@ -144,8 +137,8 @@ didFinishDownloadingToURL:(NSURL *)location
 }
 
 - (IBAction)btnRefresh:(id)sender {
-    [self.WebView loadHTMLString:@"" baseURL:nil];
-    [self Preloader];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    [loadingView setHidden:NO];
     [self getURLQuienesSomos];
 }
 

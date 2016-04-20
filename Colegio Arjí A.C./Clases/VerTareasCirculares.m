@@ -70,6 +70,15 @@
     [self.btnShare setEnabled:NO];
     
     switch (self.Singleton.Clave) {
+        case 5:
+        case 6:
+            if (self.IdObjMenu == 0 || self.IdObjMenu == 1 ){
+                miMIME = @"text/html";
+                [self getHTMLVal];
+            }else{
+                
+            }
+            break;
         case 7:
             if (self.IdObjMenu == 0 || self.IdObjMenu == 1 || self.IdObjMenu == 3 || self.IdObjMenu == 4){
                 miMIME = @"text/html";
@@ -118,10 +127,14 @@
     NSString *usernamex = self.Singleton.Username;
     NSString *noteDataString;
     // Tarea de gestión de datos
+        
+        
+        NSLog(@"Menu: %d",self.IdObjMenu);
+        
     NSURL *url = [NSURL URLWithString:@"http://platsource.mx/getHTMLTemplate/"];
     if (self.IdObjMenu == 0){
         noteDataString = [NSString stringWithFormat:@"user=%@&idtarea=%d&idtareadestinatario=%d", usernamex,self.IdTarea,self.IdObj];
-    }else     if (self.IdObjMenu == 1){
+    }else if (self.IdObjMenu == 1){
         noteDataString = [NSString stringWithFormat:@"user=%@&idcommensaje=%d&idcommensajedestinatario=%d&sts=0", usernamex,self.IdComMensaje,self.IdObj];
         url = [NSURL URLWithString:@"http://platsource.mx/getCircularesHTMLTemplate/"];
     }
@@ -191,11 +204,8 @@ didFinishDownloadingToURL:(NSURL *)location
 #pragma webView_shouldStartLoadWithRequest
 -(BOOL) webView:(UIWebView *)inWeb shouldStartLoadWithRequest:(NSURLRequest *)inRequest navigationType:(UIWebViewNavigationType)inType {
     
-    // NSLog(@"BODY: %@",[[NSString alloc]initWithData:inRequest.HTTPBody encoding:NSUTF8StringEncoding] );
-    
     if ( inType == UIWebViewNavigationTypeLinkClicked ) {
         [[UIApplication sharedApplication] openURL:[inRequest URL]];
-        // NSLog(@"Entro");
         return NO;
     }
     

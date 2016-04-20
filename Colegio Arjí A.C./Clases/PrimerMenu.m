@@ -9,6 +9,7 @@
 #import "PrimerMenu.h"
 #import "SegundoMenu.h"
 #import "Singleton.h"
+#import "Login.h"
 
 @interface PrimerMenu ()
 
@@ -16,20 +17,14 @@
 
 @implementation PrimerMenu{
     NSMutableArray *Hijos;
+    UILabel* lblLoading;
 }
 @synthesize tblView, Indicator;
 
 - (void)viewDidLoad {
-/*
-    self.navigationItem.backBarButtonItem =
-    [[UIBarButtonItem alloc] initWithTitle:@""
-                                     style:UIBarButtonItemStylePlain
-                                    target:nil
-                                    action:nil];
-*/
-    
-    self.tableView.layer.cornerRadius = 5.0f;
-    [self.tableView.layer setMasksToBounds:YES];
+
+    // self.tableView.layer.cornerRadius = 5.0f;
+    // [self.tableView.layer setMasksToBounds:YES];
     
     // [self.tblView registerClass:[M3CHeaderFooter class] forHeaderFooterViewReuseIdentifier:@"PrimerMenuHeader"];
     
@@ -37,7 +32,11 @@
 
     self.Singleton  = [Singleton sharedMySingleton];
     
-    // NSLog(@"Clave: %d",self.Singleton.Clave);
+    lblLoading = [[UILabel alloc]initWithFrame:CGRectMake(0, 48, 350, 30)];
+    lblLoading.text = @"No se encontraron datos para este Usuario.";
+    lblLoading.textColor = [UIColor brownColor];
+    lblLoading.font = [UIFont fontWithName:lblLoading.font.fontName size:15];
+    lblLoading.textAlignment = NSTextAlignmentCenter;
     
     switch (self.Singleton.Clave) {
         case 7:
@@ -46,11 +45,6 @@
             
         default:
             [self.Indicator stopAnimating];
-            UILabel* lblLoading = [[UILabel alloc]initWithFrame:CGRectMake(0, 48, 350, 30)];
-            lblLoading.text = @"No se encontraron datos para este Usuario.";
-            lblLoading.textColor = [UIColor brownColor];
-            lblLoading.font = [UIFont fontWithName:lblLoading.font.fontName size:15];
-            lblLoading.textAlignment = NSTextAlignmentCenter;
             [self.view addSubview:lblLoading];
             
             break;
@@ -90,7 +84,7 @@
     if (cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TableId];
 
-        [cell.layer setCornerRadius:5.0];
+        // [cell.layer setCornerRadius:5.0];
         
     
     }
@@ -117,33 +111,14 @@
     }
 
     if ([segue.identifier isEqualToString:@"CloseSession"]){
+
         
-        UIAlertController * alert=   [UIAlertController
-                                      alertControllerWithTitle:@"Cerrar Sesión"
-                                      message:@"Desea cerrar la sesión actual?"
-                                      preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction* yesButton = [UIAlertAction
-                                    actionWithTitle:@"Si, por favor"
-                                    style:UIAlertActionStyleDefault
-                                    handler:^(UIAlertAction * action)
-                                    {
-                                        exit(0);
-                            
-                                    }];
-        UIAlertAction* noButton = [UIAlertAction
-                                   actionWithTitle:@"No, gracias"
-                                   style:UIAlertActionStyleDefault
-                                   handler:^(UIAlertAction * action)
-                                   {
-                                       //Handel no, thanks button
-                                       
-                                   }];
-        
-        [alert addAction:yesButton];
-        [alert addAction:noButton];
-        
-        [self presentViewController:alert animated:YES completion:nil];
+        [self.Singleton deleteUser];
+        Login *lo = segue.destinationViewController;
+        [lo.navigationItem setHidesBackButton:YES];
+        [lo.txtUsername setText:@""];
+        [lo.txtPassword setText:@""];
+        //exit(0);
         
     }
 
@@ -152,6 +127,37 @@
 
 
 #pragma mark - getHijos
+- (IBAction)btnCloseSession:(id)sender {
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@"Cerrar Sesión"
+                                  message:@"Desea cerrar la sesión actual?"
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* yesButton = [UIAlertAction
+                                actionWithTitle:@"Si, por favor"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action)
+                                {
+
+                                    [self performSegueWithIdentifier:@"CloseSession" sender:nil];
+                                    
+                                }];
+    UIAlertAction* noButton = [UIAlertAction
+                               actionWithTitle:@"No, gracias"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction * action)
+                               {
+                                   //Handel no, thanks button
+                                   
+                               }];
+    
+    [alert addAction:yesButton];
+    [alert addAction:noButton];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
+}
+
 -(void)getHijos{
     @try
     {
@@ -187,9 +193,18 @@
                     dispatch_async(dispatch_get_main_queue(), ^{
                         Hijos = (NSMutableArray *)responseBody;
                         // NSLog(@"Hijos: %lu",(unsigned long)[Hijos count]);
-                        [tblView reloadData];
+                        NSUInteger numHijos = [Hijos count];
+                        NSUInteger idhijo = [ [[Hijos objectAtIndex:0]objectForKey:@"data"] intValue];
+                        //NSLog(@"numHijos: %lu, idhijo: %lu", (unsigned long)numHijos, (unsigned long)idhijo);
+                        if (numHijos > 0 && idhijo > 0){
+                            [tblView reloadData];
+                        }else{
+                            [self.Indicator stopAnimating];
+                            [self.view addSubview:lblLoading];
+                            
+                        }
                         [self.Indicator stopAnimating];
-
+                        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                         
                     });
                 } else {
@@ -221,11 +236,13 @@
     return 40;
 }
 
+/*
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     return @"ALUMNOS";
     
 }
+*/
 
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -233,7 +250,7 @@
     static NSString *CellIdentifier = @"PrimerMenuHeader";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
-    [cell.layer setCornerRadius:5.0];
+    // [cell.layer setCornerRadius:5.0];
     
     return cell;
 
