@@ -1,33 +1,37 @@
 //
-//  Mensaje_Body.h
+//  QuienesSomos.h
 //  Colegio Arjí A.C.
 //
-//  Created by Carlos Hidalgo on 22/03/16.
+//  Created by Carlos Hidalgo on 09/03/16.
 //  Copyright © 2016 Colegio Arji A.C. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "Singleton.h"
 
-@interface Mensaje_Body : UIViewController<NSURLSessionDownloadDelegate, UIWebViewDelegate, UIDocumentInteractionControllerDelegate>{
+@interface QuienesSomos : UIViewController<NSURLSessionDownloadDelegate, UIWebViewDelegate, UIDocumentInteractionControllerDelegate>{
     UIView* loadingView;
     UILabel* lblPorc;
     NSString *urlWeb;
-    Singleton *Singleton;
-    int IdMobilMensaje;
 }
 
+@property (strong, nonatomic) IBOutlet UIWebView *WebView;
+
 @property (nonatomic, retain) NSString *urlWeb;
+
 @property (strong, nonatomic) UIView* loadingView;
 @property (strong, nonatomic) UILabel* lblPorc;
-@property (nonatomic) int IdMobilMensaje;
 
 @property (strong,nonatomic) Singleton *Singleton;
 
-@property (strong, nonatomic) IBOutlet UIWebView *WebView;
+@property (nonatomic) UIDocumentInteractionController *interactionController;
+
 - (IBAction)btnRefresh:(id)sender;
-- (IBAction)Zoom:(UIPinchGestureRecognizer *)recognizer;
-- (void) Preloader;
-- (void)getMensaje;
+
+-(IBAction)Zoom:(UIPinchGestureRecognizer *)recognizer;
+
+-(void) Preloader;
+
+-(void)getURLQuienesSomos;
 
 @end

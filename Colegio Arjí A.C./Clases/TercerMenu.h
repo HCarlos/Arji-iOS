@@ -30,4 +30,10 @@
 
 -(void)getTercerMenu;
 
+-(void)sayMessageTable:(NSInteger) Indice Celda:(UITableViewCell*) cell;
+
+-(void)sayTareaTable:(NSInteger) Indice Celda:(UITableViewCell*) cell;
+
+-(NSString *)sayHeaderTable:(NSString *) Label Param:(NSInteger) param;
+
 @end

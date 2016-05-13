@@ -23,13 +23,6 @@
 @synthesize WebView, IdObj, IdObjAlu, IdObjMenu, Singleton, IdTarea, loadingView, lblPorc, urlWeb, IdComMensaje, interactionController;
 
 - (void)viewDidLoad {
-/*
-    self.navigationItem.backBarButtonItem =
-    [[UIBarButtonItem alloc] initWithTitle:@""
-                                     style:UIBarButtonItemStylePlain
-                                    target:nil
-                                    action:nil];
-*/        
     
     loadingView = [[UIView alloc]initWithFrame:CGRectMake(
                                                           ((self.WebView.scrollView.contentSize.width/2)-60),
@@ -129,7 +122,7 @@
     // Tarea de gestión de datos
         
         
-        NSLog(@"Menu: %d",self.IdObjMenu);
+    // NSLog(@"Menu: %d",self.IdObjMenu);
         
     NSURL *url = [NSURL URLWithString:@"http://platsource.mx/getHTMLTemplate/"];
     if (self.IdObjMenu == 0){

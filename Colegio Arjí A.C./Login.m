@@ -49,7 +49,7 @@
 {
     [super viewDidAppear:animated];
     [self ValidCredentials];
-    NSLog(@"Apareció");
+    // NSLog(@"Apareció");
 }
 
 
@@ -76,8 +76,6 @@
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         [self.Indicador startAnimating];
         [self.Indicador setHidden:NO];
-        
-        
         
         [self.btnIngresar setEnabled:NO];
         [self.lblMensaje setText:@""];
@@ -108,7 +106,9 @@
             if (HTTPResponse.statusCode == 200) {
                 // Conversión de JSON a objeto Foundation (NSDictionary)
                 NSError *JSONError;
+                
                 NSDictionary *responseBody = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&JSONError];
+                
                 if (!JSONError) {
                     
                     datos = (NSMutableArray *)responseBody;
@@ -120,6 +120,7 @@
                     dispatch_async(dispatch_get_main_queue(), ^{
                         
                         if (![msg isEqual: @"OK"]){
+                            // NSLog(@"No hubo e %d",self.Singleton.Clave);
                             [self.lblMensaje setText:msg];
                         }else{
                             self.Singleton.Username              = usernamex;
@@ -127,12 +128,12 @@
                             self.Singleton.IdUser                = [[Value objectAtIndex:0] intValue];
                             self.Singleton.IdEmp                 = [[Value objectAtIndex:2] intValue];
                             self.Singleton.Empresa               = [Value objectAtIndex:3];
-                            self.Singleton.IdUserNivelAcceso     = [[Value objectAtIndex:4] intValue];
-                            self.Singleton.RegistrosPorPagina    = [[Value objectAtIndex:5] intValue];
-                            self.Singleton.Clave                 = [[Value objectAtIndex:6] intValue];
-                            self.Singleton.Param1                = [[Value objectAtIndex:7] intValue];
-                            self.Singleton.NombreCompletoUsuario = [Value objectAtIndex:8];
-                            
+                            self.Singleton.IdUserNivelAcceso     = [[Value objectAtIndex:3] intValue];
+                            self.Singleton.RegistrosPorPagina    = [[Value objectAtIndex:4] intValue];
+                            self.Singleton.Clave                 = [[Value objectAtIndex:5] intValue];
+                            self.Singleton.Param1                = [[Value objectAtIndex:6] intValue];
+                            self.Singleton.NombreCompletoUsuario = [Value objectAtIndex:7];
+                            /*
                             NSLog(@"IdUser->: %d",self.Singleton.IdUser);
                             NSLog(@"Username->: %@",self.Singleton.Username);
                             NSLog(@"Password->: %@",self.Singleton.Password);
@@ -143,8 +144,9 @@
                             NSLog(@"Clave->: %d",self.Singleton.Clave);
                             NSLog(@"Param1->: %d",self.Singleton.Param1);
                             NSLog(@"Nombre Completo->: %@",self.Singleton.NombreCompletoUsuario);
+                             */
                             
-                            NSLog(@"Clave %d",self.Singleton.Clave);
+                            // NSLog(@"Clave %d",self.Singleton.Clave);
 
                             [self.Singleton insertUser:usernamex insertPass:passwordl];
                             
@@ -161,14 +163,18 @@
                                 self.Singleton.Clave = 6;
                                 [self performSegueWithIdentifier:@"PProfesores" sender:nil];
                             }else{
-                                [self.lblMensaje setText:@"Acceso Denegado"];
+                                NSString *an = [NSString stringWithFormat:@"Acceso Denegado: %d",self.Singleton.Clave];
+                                [self.lblMensaje setText:an];
+                                an = nil;
                             }
                         }
                         
                         [self.btnIngresar setEnabled:YES];
                     });
                 } else {
-                    NSAssert(NO, @"Error en la conversión de JSON a Foundation ");
+                    [self.btnIngresar setEnabled:YES];
+                    [self.lblMensaje setText:@"Ocurrió un Error!"];
+                    // NSAssert(NO, @"Error en la conversión de JSON a Foundation ");
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [self.Indicador stopAnimating];
                         [self.Indicador setHidden:YES];
@@ -176,7 +182,14 @@
                     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                 }
             } else {
-                NSAssert(NO, @"Error a la hora de obtener las notas del servidor");
+                [self.btnIngresar setEnabled:YES];
+                [self.lblMensaje setText:@"Ocurrió un Error!!"];
+                // NSAssert(NO, @"Error a la hora de obtener las notas del servidor");
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.Indicador stopAnimating];
+                    [self.Indicador setHidden:YES];
+                });
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             }
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.Indicador stopAnimating];
@@ -190,7 +203,7 @@
     }
     @catch (NSException *theException)
     {
-        NSLog(@"Get Data Exception: %@", theException);
+        // NSLog(@"Get Data Exception: %@", theException);
     }
 }
 

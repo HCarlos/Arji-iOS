@@ -167,9 +167,9 @@ static Singleton* _sharedMySingleton = nil;
     if (![fileManager fileExistsAtPath: pathPList])
     {
         pathPList = [documentsDirectory stringByAppendingPathComponent: [NSString stringWithFormat: @"UserConnect.plist"] ];
-        NSLog(@"Creado" );
+        // NSLog(@"Creado" );
     }else{
-        NSLog(@"Ya estaba Creado" );
+        // NSLog(@"Ya estaba Creado" );
         
     }
     

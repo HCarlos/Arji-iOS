@@ -38,15 +38,6 @@
     self.tableView.layer.cornerRadius = 5.0f;
     [self.tableView.layer setMasksToBounds:YES];
     
-    
-/*
-    self.navigationItem.backBarButtonItem =
-    [[UIBarButtonItem alloc] initWithTitle:@""
-                                     style:UIBarButtonItemStylePlain
-                                    target:nil
-                                    action:nil];
-*/
-    
     self.Status = 0;
     if (self.Singleton.Clave == 5){
         switch (self.IdObjMenu) {
@@ -148,21 +139,15 @@
     
     if (cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TableId];
-        // [cell.layer setCornerRadius:5.0];
     }
 
     if (self.Singleton.Clave == 5){
         switch (self.IdObjMenu) {
             case 0:
-                cell.textLabel.text = [[Menu objectAtIndex:indexPath.row] objectForKey:@"titulo_tarea"];
-                cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@",
-                                             [[Menu objectAtIndex:indexPath.row] objectForKey:@"materia"],
-                                             [[Menu objectAtIndex:indexPath.row] objectForKey:@"grupo"]
-                                             ];
+                [self sayTareaTable:indexPath.row Celda:cell];
                 break;
             case 1:
-                cell.textLabel.text = [[Menu objectAtIndex:indexPath.row] objectForKey:@"titulo_mensaje"];
-                cell.detailTextLabel.text = @"";
+                [self sayMessageTable:indexPath.row Celda:cell];
                 break;
                 
             default:
@@ -173,8 +158,7 @@
     if (self.Singleton.Clave == 6){
         switch (self.IdObjMenu) {
             case 1:
-                cell.textLabel.text = [[Menu objectAtIndex:indexPath.row] objectForKey:@"titulo_mensaje"];
-                cell.detailTextLabel.text = @"";
+                [self sayMessageTable:indexPath.row Celda:cell];
                 break;
                 
             default:
@@ -186,15 +170,10 @@
     if (self.Singleton.Clave == 7){
         switch (self.IdObjMenu) {
             case 0:
-                cell.textLabel.text = [[Menu objectAtIndex:indexPath.row] objectForKey:@"titulo_tarea"];
-                cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@",
-                                             [[Menu objectAtIndex:indexPath.row] objectForKey:@"materia"],
-                                             [[Menu objectAtIndex:indexPath.row] objectForKey:@"grupo"]
-                                             ];
+                [self sayTareaTable:indexPath.row Celda:cell];
                 break;
             case 1:
-                cell.textLabel.text = [[Menu objectAtIndex:indexPath.row] objectForKey:@"titulo_mensaje"];
-                cell.detailTextLabel.text = @"";
+                [self sayMessageTable:indexPath.row Celda:cell];
                 break;
             case 2:
                 cell.textLabel.text = [[Menu objectAtIndex:indexPath.row] objectForKey:@"pdf"];
@@ -202,8 +181,6 @@
                 break;
             case 3:
                 
-                // NSLog(@"vencido = %d, status_movto = %d",vencido,status_movto);
-
                 cell.textLabel.text = [NSString stringWithFormat:@"%@ %@ ",
                                        [[Menu objectAtIndex:indexPath.row] objectForKey:@"concepto"],
                                        [[Menu objectAtIndex:indexPath.row] objectForKey:@"mes"]
@@ -234,7 +211,6 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
     if ([segue.identifier isEqualToString:@"VerTareasCirculares"] || [segue.identifier isEqualToString:@"PagosVencidos"] ){
@@ -251,13 +227,11 @@
                 vo.title = [[Menu objectAtIndex:iPath.row] objectForKey:@"titulo_tarea"];
                 vo.IdTarea = [ [[Menu objectAtIndex:iPath.row] objectForKey:@"idtarea"] intValue];
                 vo.IdObj = [ [[Menu objectAtIndex:iPath.row] objectForKey:@"idtareadestinatario"] intValue];
-                // NSLog(@"idtareadestinatario = %d",vo.IdObj);
                 break;
             case 1:
                 vo.title = [[Menu objectAtIndex:iPath.row] objectForKey:@"titulo_mensaje"];
                 vo.IdComMensaje = [ [[Menu objectAtIndex:iPath.row] objectForKey:@"idcommensaje"] intValue];
                 vo.IdObj = [ [[Menu objectAtIndex:iPath.row] objectForKey:@"idcommensajedestinatario"] intValue];
-                // NSLog(@"idcommensajedestinatario = %d",vo.IdObj);
                 break;
                 
             case 2:
@@ -303,8 +277,6 @@
         
         NSString *usernamex = self.Singleton.Username;
         NSString *noteDataString = [NSString stringWithFormat:@"username=%@&sts=%d&iduseralu=%d&tipoconsulta=%d", usernamex,self.Status,self.IdObjAlu, self.IdObjMenu];
-        
-        NSLog(@"String: %@",noteDataString);
         
         // Configuración de la sesión
         NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -383,6 +355,8 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
+    NSLog(@"Section %ld",(long)section);
+    
     static NSString *CellIdentifier = @"TercerMenuHeader";
     UITableViewCell *headerView = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
@@ -390,17 +364,17 @@
     
     customCreationRect.size.height = 32.0f;
     [headerView setFrame:customCreationRect];
-    
-    NSString *sectionName;
-    
+
+    NSString *_sectionName = [NSString stringWithFormat:@""];
+
     if (self.Singleton.Clave == 5){
         switch (self.IdObjMenu)
         {
             case 0:
-                sectionName = [NSString stringWithFormat:@"%lu TAREAS",(unsigned long)[Menu count] ];
+                _sectionName = [self sayHeaderTable:@"%lu TAREAS %@" Param:0];
                 break;
             case 1:
-                sectionName = [NSString stringWithFormat:@"%lu CIRCULARES",(unsigned long)[Menu count] ];
+                _sectionName = [self sayHeaderTable:@"%lu CIRCULARES %@" Param:0];
                 break;
         }
     }
@@ -409,7 +383,7 @@
         switch (self.IdObjMenu)
         {
             case 1:
-                sectionName = [NSString stringWithFormat:@"%lu CIRCULARES",(unsigned long)[Menu count] ];
+                _sectionName = [self sayHeaderTable:@"%lu CIRCULARES %@" Param:0];
                 break;
         }
     }
@@ -418,27 +392,51 @@
         switch (self.IdObjMenu)
         {
             case 0:
-                sectionName = [NSString stringWithFormat:@"%lu TAREAS",(unsigned long)[Menu count] ];
+                _sectionName = [self sayHeaderTable:@"%lu TAREAS %@" Param:0];
                 break;
             case 1:
-                sectionName = [NSString stringWithFormat:@"%lu CIRCULARES",(unsigned long)[Menu count] ];
+                _sectionName = [self sayHeaderTable:@"%lu CIRCULARES %@" Param:0];
                 break;
             case 2:
-                sectionName = [NSString stringWithFormat:@"%lu FACTURAS",(unsigned long)[Menu count] ];
+                _sectionName = [self sayHeaderTable:@"%lu FACTURAS" Param:1];
                 break;
             case 3:
-                sectionName = [NSString stringWithFormat:@"%lu PAGOS",(unsigned long)[Menu count] ];
+                _sectionName = [self sayHeaderTable:@"%lu PAGOS" Param:1];
                 break;
         }
     }
     
-    headerView.textLabel.text = sectionName;
-    // [headerView.layer setCornerRadius:5.0];
+    headerView.textLabel.text = _sectionName;
     
     return headerView;
     
 }
 
+-(NSString *)sayHeaderTable:(NSString *) Label Param:(NSInteger) param{
+    NSString *sStatus = [NSString stringWithFormat:@""];
+    sStatus = self.Status == 0 ? @" NUEVAS" : @" REVISADAS";
+    NSString *_sectionName;
+    
+    if (param==0){
+        _sectionName = [NSString stringWithFormat:Label,(unsigned long)[Menu count], sStatus ];
+    }else{
+        _sectionName = [NSString stringWithFormat:Label,(unsigned long)[Menu count] ];
+    }
+    return (unsigned long)[Menu count] == 0 ? @"Cargando Datos..." : _sectionName;
+}
+
+-(void)sayMessageTable:(NSInteger) Indice Celda:(UITableViewCell*) cell{
+    cell.textLabel.text = [[Menu objectAtIndex:Indice] objectForKey:@"titulo_mensaje"];
+    cell.detailTextLabel.text = @"";
+}
+
+-(void)sayTareaTable:(NSInteger) Indice Celda:(UITableViewCell*) cell{
+    cell.textLabel.text = [[Menu objectAtIndex:Indice] objectForKey:@"titulo_tarea"];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@",
+                                [[Menu objectAtIndex:Indice] objectForKey:@"materia"],
+                                [[Menu objectAtIndex:Indice] objectForKey:@"grupo"]
+                                ];
+}
 
 - (IBAction)btnActionSegment:(UISegmentedControl *)sender {
     
