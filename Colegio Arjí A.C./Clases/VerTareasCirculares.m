@@ -18,12 +18,36 @@
     NSData *MiData;
 }
 
-
-
 @synthesize WebView, IdObj, IdObjAlu, IdObjMenu, Singleton, IdTarea, loadingView, lblPorc, urlWeb, IdComMensaje, interactionController;
 
 - (void)viewDidLoad {
     
+    
+    self.Singleton  = [Singleton sharedMySingleton];
+    
+    [self Reload];
+    
+    [super viewDidLoad];
+
+    self.WebView.opaque=NO;
+    self.WebView.userInteractionEnabled=YES;
+    
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    self.WebView = nil;
+    // Dispose of any resources that can be recreated.
+}
+
+-(void)dealloc{
+    self.WebView = nil;
+    self.Singleton = nil;
+}
+
+#pragma Reload
+-(void)Reload{
+
     loadingView = [[UIView alloc]initWithFrame:CGRectMake(
                                                           ((self.WebView.scrollView.contentSize.width/2)-60),
                                                           ((self.WebView.scrollView.contentSize.height/2)-50),
@@ -46,7 +70,7 @@
     lblLoading.font = [UIFont fontWithName:lblLoading.font.fontName size:15];
     lblLoading.textAlignment = NSTextAlignmentCenter;
     [loadingView addSubview:lblLoading];
-
+    
     lblPorc = [[UILabel alloc]initWithFrame:CGRectMake(0, 68, 100, 30)];
     // lblPorc.text = @"%";
     lblPorc.textColor = [UIColor whiteColor];
@@ -56,11 +80,10 @@
     
     
     [self.view addSubview:loadingView];
-    
-    self.Singleton  = [Singleton sharedMySingleton];
-    
+
     // NSLog(@"Clave: %d",self.Singleton.Clave);
     [self.btnShare setEnabled:NO];
+    [self.btnRefresh setEnabled:NO];
     
     switch (self.Singleton.Clave) {
         case 5:
@@ -89,23 +112,6 @@
             break;
     }
     
-    
-    [super viewDidLoad];
-
-    self.WebView.opaque=NO;
-    self.WebView.userInteractionEnabled=YES;
-    
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    self.WebView = nil;
-    // Dispose of any resources that can be recreated.
-}
-
--(void)dealloc{
-    self.WebView = nil;
-    self.Singleton = nil;
 }
 
 #pragma Get HTML Val
@@ -117,12 +123,10 @@
     // Configuración de la sesión
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 
+    [self.btnRefresh setEnabled:NO];
     NSString *usernamex = self.Singleton.Username;
     NSString *noteDataString;
     // Tarea de gestión de datos
-        
-        
-    // NSLog(@"Menu: %d",self.IdObjMenu);
         
     NSURL *url = [NSURL URLWithString:@"http://platsource.mx/getHTMLTemplate/"];
     if (self.IdObjMenu == 0){
@@ -154,10 +158,7 @@
         NSLog(@"Get Data Exception: %@", theException);
     }
 
-    
-    
 }
-
 
 #pragma mark - NSURLSessionDownloadDelegate
 - (void)URLSession:(NSURLSession *)session
@@ -192,6 +193,8 @@ didFinishDownloadingToURL:(NSURL *)location
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     [loadingView removeFromSuperview];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    [self.btnRefresh setEnabled:YES];
+
 }
 
 #pragma webView_shouldStartLoadWithRequest
@@ -205,11 +208,11 @@ didFinishDownloadingToURL:(NSURL *)location
     return YES;
 }
 
-
-
 #pragma getPDF
 -(void)getPDF{
     @try {
+        [self.btnRefresh setEnabled:NO];
+
         // Configuración de la sesión
         NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
         sessionConfiguration.requestCachePolicy = NSURLRequestReturnCacheDataElseLoad;
@@ -233,6 +236,10 @@ didFinishDownloadingToURL:(NSURL *)location
     }@catch (NSException *exception) { }
     @finally { }
     
+}
+
+- (IBAction)btnRefresh:(id)sender {
+    [self Reload];
 }
 
 - (IBAction)btnShare:(id)sender {

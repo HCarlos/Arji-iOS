@@ -29,6 +29,7 @@
 
 @property (strong, nonatomic) IBOutlet UIWebView *WebView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnShare;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnRefresh;
 
 @property (strong, nonatomic) UIView* loadingView;
 @property (strong, nonatomic) UILabel* lblPorc;
@@ -38,10 +39,13 @@
 @property (nonatomic) UIDocumentInteractionController *interactionController;
 
 -(IBAction)Zoom:(UIPinchGestureRecognizer *)recognizer;
+- (IBAction)btnRefresh:(id)sender;
 
 -(void)getHTMLVal;
 
 -(void)getPDF;
+
+-(void)Reload;
 
 @end
 

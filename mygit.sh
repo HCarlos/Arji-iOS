@@ -8,13 +8,13 @@ git config --global color.ui true
 git config core.fileMode false
 git config --global push.default simple
 
-git checkout master 
+git checkout master
 
 git status
 
 git add .
 
-git commit -m "Actualizado al 23-03-2016"
+git commit -m "Actualizado al 23-03-2016."
 
 git push -u origin master
 
