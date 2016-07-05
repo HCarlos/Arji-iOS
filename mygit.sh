@@ -16,6 +16,6 @@ git add .
 
 git commit -m "Actualizado al 23-03-2016."
 
-git push -u origin master
+git push -u origin master --force
 
 exit
