@@ -191,11 +191,13 @@
                                                  [[Menu objectAtIndex:indexPath.row] objectForKey:@"fecha_de_pago"]
                                                  ];
                 }else{
+                    
                     if (vencido < 0){
                         cell.detailTextLabel.text = @"Vencido";                    
                     }else{
                             cell.detailTextLabel.text = @"";
                     }
+                    
                 }
                 
                 break;
@@ -255,7 +257,7 @@
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(nonnull NSIndexPath *)indexPath{
     
     int IdObj = [ [[Menu objectAtIndex:indexPath.row] objectForKey:@"idedocta"] intValue];
-    NSString *urlstring = [[NSString alloc] initWithFormat:@"http://platsource.mx/php/getPagosLayout/%d/%@/%d/",IdObj,self.Singleton.Username,self.Singleton.IdUser] ;
+    NSString *urlstring = [[NSString alloc] initWithFormat:@"http://platsource.mx/php/01/mobile/pagos_layout.php?idedocta=%d&user=%@&iduser=%d",IdObj,self.Singleton.Username,self.Singleton.IdUser] ;
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlstring]];
     

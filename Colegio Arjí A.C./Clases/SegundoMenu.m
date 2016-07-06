@@ -361,7 +361,8 @@
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(nonnull NSIndexPath *)indexPath{
 
-    NSString *urlstring = [[NSString alloc] initWithFormat:@"http://platsource.mx/php/getBoletasLayout/%d/%@/%d/%d/",self.IdObjAlu,self.Singleton.Username,self.Singleton.IdUser, self.Singleton.IdEmp] ;
+    NSString *urlstring = [[NSString alloc] initWithFormat:@"http://platsource.mx/php/01/mobile/boletas_layout.php?idgrualu=%d&user=%@&iduser=%d&idemp=%d",self.IdObjAlu,self.Singleton.Username,self.Singleton.IdUser, self.Singleton.IdEmp] ;
+    NSLog(@"URL Calif: %@",urlstring);
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlstring]];
     
