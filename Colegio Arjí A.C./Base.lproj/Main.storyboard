@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -39,7 +39,7 @@
                                         <color key="textColor" red="0.43505263328552246" green="0.25672176480293274" blue="0.13657590746879578" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="per0438" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="G3M-2a-AR9">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="G3M-2a-AR9">
                                         <rect key="frame" x="116" y="93" width="170" height="30"/>
                                         <color key="backgroundColor" red="0.43505263328552246" green="0.25672176480293274" blue="0.13657590746879578" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" red="0.97299522161483765" green="0.93423014879226685" blue="0.83232200145721436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -69,7 +69,7 @@
                                             <segue destination="nkc-LZ-CFK" kind="push" identifier="NUno" id="Xhh-6l-QGq"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="per0438" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="a8p-gf-2ME">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="a8p-gf-2ME">
                                         <rect key="frame" x="116" y="131" width="170" height="30"/>
                                         <color key="backgroundColor" red="0.43505263328552246" green="0.25672176480293274" blue="0.13657590746879578" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" red="0.97299522161483765" green="0.93423014879226685" blue="0.83232200145721436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -81,7 +81,7 @@
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.97299522161483765" green="0.93423014879226685" blue="0.83232200145721436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.88663214445114136" green="0.82456129789352417" blue="0.71763485670089722" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <accessibility key="accessibilityConfiguration">
                             <bool key="isElement" value="YES"/>
                         </accessibility>
@@ -653,7 +653,7 @@
         <scene sceneID="nBy-84-wi2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7Uo-v2-Pwn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Ingresar" image="lock.png" selectedImage="lock.png" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Ingresar" image="Login.png" selectedImage="Login_off.png" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" id="TlQ-me-tRP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -678,7 +678,7 @@
         <scene sceneID="uFU-z9-Jm2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Z2h-jn-PkT" userLabel="Tab Bar Boletín" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Boletín" image="calendar.png" selectedImage="calendar.png" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Boletín" image="Calendar.png" selectedImage="Calendar_off.png" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jig-93-NgZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -732,7 +732,7 @@
         <scene sceneID="txp-o1-4hD">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wMQ-cA-VFl" userLabel="Tab Bar Quienes Somos" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Quienes Somos" image="home.png" selectedImage="home.png" id="07c-HO-EEn"/>
+                    <tabBarItem key="tabBarItem" title="Quienes Somos" image="Home.png" selectedImage="Home_off.png" id="07c-HO-EEn"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="a0e-ft-YVf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -785,7 +785,7 @@
         <scene sceneID="bsf-Bx-trd">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Hk-0v-8aT" userLabel="Tab Bar Certificaciones" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Certificaciones" image="graduation-cap.png" selectedImage="graduation-cap.png" id="W8m-He-bFX"/>
+                    <tabBarItem key="tabBarItem" title="Certificaciones" image="Student.png" selectedImage="Student_off.png" id="W8m-He-bFX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hV0-Fl-Y1z">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -816,27 +816,32 @@
                         <color key="backgroundColor" red="0.97299522161483765" green="0.93423014879226685" blue="0.83232200145721436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="sectionIndexBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MasInfoCell_Directorio" textLabel="0zL-GG-vXg" style="IBUITableViewCellStyleDefault" id="62D-9F-o6J">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MasInfoCell_Directorio" textLabel="0zL-GG-vXg" imageView="MpL-mT-2SP" style="IBUITableViewCellStyleDefault" id="62D-9F-o6J">
                                 <rect key="frame" x="0.0" y="92" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="62D-9F-o6J" id="y9B-dQ-mvO">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0zL-GG-vXg">
-                                            <rect key="frame" x="15" y="0.0" width="270" height="43"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0zL-GG-vXg">
+                                            <rect key="frame" x="60" y="0.0" width="225" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Directorio_off.png" id="MpL-mT-2SP">
+                                            <rect key="frame" x="15" y="6" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="YzN-cm-WFD" kind="push" identifier="MasInfo_Directorio" id="3Jy-ph-rl3"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MasInfoCell_Proceso_Admision" textLabel="y5E-O6-bP4" style="IBUITableViewCellStyleDefault" id="q7E-zD-PIa" userLabel="MasInfoCell_Proceso_Admision">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MasInfoCell_Proceso_Admision" textLabel="y5E-O6-bP4" imageView="iqs-gS-JbY" style="IBUITableViewCellStyleDefault" id="q7E-zD-PIa" userLabel="MasInfoCell_Proceso_Admision">
                                 <rect key="frame" x="0.0" y="136" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q7E-zD-PIa" id="uxA-ak-j2I">
@@ -844,19 +849,23 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="y5E-O6-bP4">
-                                            <rect key="frame" x="15" y="0.0" width="270" height="43"/>
+                                            <rect key="frame" x="60" y="0.0" width="225" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="ProcesoAdmision_off.png" id="iqs-gS-JbY">
+                                            <rect key="frame" x="15" y="6" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="OJO-fa-0AB" kind="push" identifier="MasInfo_Proceso_Admision" id="aMj-Wb-TVJ"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MasInfoCell_Mapa_Ubicacion" textLabel="Grf-wG-qpg" style="IBUITableViewCellStyleDefault" id="oiM-oJ-2Yi" userLabel="MasInfoCell_Mapa_Ubicación">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MasInfoCell_Mapa_Ubicacion" textLabel="Grf-wG-qpg" imageView="SeZ-7R-ZHN" style="IBUITableViewCellStyleDefault" id="oiM-oJ-2Yi" userLabel="MasInfoCell_Mapa_Ubicación">
                                 <rect key="frame" x="0.0" y="180" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oiM-oJ-2Yi" id="WqI-Z9-Giy">
@@ -864,19 +873,23 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Grf-wG-qpg">
-                                            <rect key="frame" x="15" y="0.0" width="270" height="43"/>
+                                            <rect key="frame" x="60" y="0.0" width="225" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="MapaUbicacion_off.png" id="SeZ-7R-ZHN">
+                                            <rect key="frame" x="15" y="6" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="s2X-LW-Mtm" kind="push" identifier="MasInfo_Mapa_Ubicacion" id="lFW-oC-TYT"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MasInfoCell_Beneficios" textLabel="WQI-NY-nm1" style="IBUITableViewCellStyleDefault" id="qrd-mV-9H6">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MasInfoCell_Beneficios" textLabel="WQI-NY-nm1" imageView="GCy-Gx-OlC" style="IBUITableViewCellStyleDefault" id="qrd-mV-9H6">
                                 <rect key="frame" x="0.0" y="224" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qrd-mV-9H6" id="Vxm-9t-WDV">
@@ -884,27 +897,55 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WQI-NY-nm1">
-                                            <rect key="frame" x="15" y="0.0" width="270" height="43"/>
+                                            <rect key="frame" x="60" y="0.0" width="225" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Beneficios_off.png" id="GCy-Gx-OlC">
+                                            <rect key="frame" x="15" y="6" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="ylE-Yp-aul" kind="push" identifier="MasInfo_Beneficios" id="f8g-PF-NwW"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MasInfoCell_Contacto" textLabel="vLL-qg-atO" style="IBUITableViewCellStyleDefault" id="Syq-Nb-psR">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MasInfoCell_Aviso_Privacidad" textLabel="ufN-yU-IAp" imageView="MyC-Bo-FIi" style="IBUITableViewCellStyleDefault" id="hdm-xT-MFf">
                                 <rect key="frame" x="0.0" y="268" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hdm-xT-MFf" id="agM-2j-m2e">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ufN-yU-IAp">
+                                            <rect key="frame" x="60" y="0.0" width="225" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="AvisoPrivacidad_off.png" id="MyC-Bo-FIi">
+                                            <rect key="frame" x="15" y="6" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Z5e-vs-gS2" kind="push" identifier="MasInfo_Aviso_Privacidad" id="66T-Gl-nCh"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MasInfoCell_Contacto" textLabel="vLL-qg-atO" imageView="C3K-8u-HIr" style="IBUITableViewCellStyleDefault" id="Syq-Nb-psR">
+                                <rect key="frame" x="0.0" y="312" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Syq-Nb-psR" id="gcf-Se-KWa">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="   Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="250" id="vLL-qg-atO">
-                                            <rect key="frame" x="15" y="0.0" width="270" height="43"/>
+                                            <rect key="frame" x="60" y="0.0" width="225" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <rect key="contentStretch" x="0.0" y="1" width="1" height="1"/>
                                             <edgeInsets key="layoutMargins" top="8" left="18" bottom="8" right="8"/>
@@ -912,6 +953,10 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Programmer_off.png" id="C3K-8u-HIr">
+                                            <rect key="frame" x="15" y="6" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
@@ -1073,7 +1118,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CnJ-4T-YG1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <pinchGestureRecognizer id="BB3-fI-GOr"/>
             </objects>
-            <point key="canvasLocation" x="1377" y="4820"/>
+            <point key="canvasLocation" x="1245" y="5516"/>
         </scene>
         <!--Mas Info Mensajes-->
         <scene sceneID="gRg-No-JlL">
@@ -1175,7 +1220,7 @@
         <scene sceneID="Lxq-fg-0yH">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RNA-bT-GZG" userLabel="Tab Bar Mas Info" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Mas Info" image="layer.png" selectedImage="layer.png" id="vOs-Mx-K1Q"/>
+                    <tabBarItem key="tabBarItem" title="Mas Info" image="Layers.png" selectedImage="Layers_off.png" id="vOs-Mx-K1Q"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gKI-yO-85J">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1484,18 +1529,58 @@
             </objects>
             <point key="canvasLocation" x="1917" y="-2033"/>
         </scene>
+        <!--Mas Info Aviso de Privacidad-->
+        <scene sceneID="cQq-a0-Rvq">
+            <objects>
+                <viewController title="AVISO DE PRIVACIDAD" id="Z5e-vs-gS2" userLabel="Mas Info Aviso de Privacidad" customClass="MasInfo_Aviso_Privacidad" sceneMemberID="viewController">
+                    <webView key="view" clipsSubviews="YES" contentMode="scaleToFill" scalesPageToFit="YES" id="uw8-qB-gmB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" calendarEvent="YES"/>
+                        <connections>
+                            <outlet property="delegate" destination="Z5e-vs-gS2" id="uGf-cT-jq5"/>
+                        </connections>
+                    </webView>
+                    <navigationItem key="navigationItem" title="AVISO DE PRIVACIDAD" id="9mu-gk-pbT">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="cXj-ej-0Ui">
+                            <connections>
+                                <action selector="btnRefresh:" destination="Z5e-vs-gS2" id="8fL-Ic-01G"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="WebView" destination="uw8-qB-gmB" id="uKZ-xa-xmn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uFj-fD-ikU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pinchGestureRecognizer id="XK9-iB-7Ft"/>
+            </objects>
+            <point key="canvasLocation" x="1377" y="4843"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="calendar.png" width="29" height="30"/>
-        <image name="graduation-cap.png" width="30" height="30"/>
-        <image name="home.png" width="30" height="30"/>
-        <image name="layer.png" width="30" height="30"/>
-        <image name="lock.png" width="30" height="30"/>
+        <image name="AvisoPrivacidad_off.png" width="30" height="30"/>
+        <image name="Beneficios_off.png" width="30" height="30"/>
+        <image name="Calendar.png" width="30" height="30"/>
+        <image name="Calendar_off.png" width="30" height="30"/>
+        <image name="Directorio_off.png" width="30" height="30"/>
+        <image name="Home.png" width="30" height="30"/>
+        <image name="Home_off.png" width="30" height="30"/>
+        <image name="Layers.png" width="30" height="30"/>
+        <image name="Layers_off.png" width="30" height="30"/>
+        <image name="Login.png" width="30" height="30"/>
+        <image name="Login_off.png" width="30" height="30"/>
+        <image name="MapaUbicacion_off.png" width="30" height="30"/>
+        <image name="ProcesoAdmision_off.png" width="30" height="30"/>
+        <image name="Programmer_off.png" width="30" height="30"/>
+        <image name="Student.png" width="30" height="30"/>
+        <image name="Student_off.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fk9-u3-px3"/>
+        <segue reference="o7J-LM-tLa"/>
+        <segue reference="sug-H1-CeU"/>
         <segue reference="oaE-L7-Rs0"/>
         <segue reference="hQ3-pb-xf4"/>
-        <segue reference="sug-H1-CeU"/>
     </inferredMetricsTieBreakers>
 </document>

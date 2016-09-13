@@ -12,6 +12,7 @@
 #import "MasInfo_Proceso_Admision.h"
 #import "MasInfo_Mapa_Ubicacion.h"
 #import "MasInfo_Beneficios.h"
+#import "MasInfo_Aviso_Privacidad.h"
 #import "MasInfo_Contacto.h"
 #import "MasInfo_Mensaje.h"
 
@@ -32,7 +33,7 @@
     
     self.tblMIR.delegate = self;
     
-    ArrMIR = [NSMutableArray arrayWithObjects:@"Directorio",@"Proceso de Admisión",@"Mapa de ubicación",@"Beneficios", nil];
+    ArrMIR = [NSMutableArray arrayWithObjects:@"Directorio",@"Proceso de Admisión",@"Mapa de ubicación",@"Beneficios",@"Aviso de Privacidad", nil];
     ArrMIR2 = [NSMutableArray arrayWithObjects:@"Contacto", nil];
 
     [super viewDidLoad];
@@ -79,6 +80,9 @@
             case 3:
                     TableId = @"MasInfoCell_Beneficios";
                     break;
+            case 4:
+                    TableId = @"MasInfoCell_Aviso_Privacidad";
+                    break;
         }
     }else {
         switch (indexPath.row) {
@@ -99,6 +103,7 @@
             case 1:
             case 2:
             case 3:
+            case 4:
                 cell.textLabel.text = [ArrMIR objectAtIndex:indexPath.row];
                 break;
         }
@@ -128,36 +133,6 @@
     }
 }
 
-/*
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    
-    static NSString *CellIdentifier;
-    if (section == 0){
-        CellIdentifier = @"SegundoMenuHeader";
-    }else{
-        CellIdentifier = @"SegundoMenuHeader_1";
-    }
-    UITableViewCell *headerView = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    //[headerView.layer setCornerRadius:5.0];
-    
-    return headerView;
-    
-}
-*/
-
-/*
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(nonnull NSIndexPath *)indexPath{
-    
-    NSString *urlstring = [[NSString alloc] initWithFormat:@"http://platsource.mx/php/getBoletasLayout/%d/%@/%d/%d/",self.IdObjAlu,self.Singleton.Username,self.Singleton.IdUser, self.Singleton.IdEmp] ;
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlstring]];
-    
-    [[UIApplication sharedApplication] openURL:[request URL]];
-    
-}
-*/
-
-
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -174,18 +149,25 @@
     
     if ([segue.identifier isEqualToString:@"MasInfo_Proceso_Admision"]){
         
-        MasInfo_Directorio *mipa = segue.destinationViewController;
+        MasInfo_Proceso_Admision *mipa = segue.destinationViewController;
         mipa.title = [ArrMIR objectAtIndex:iPath.row];
         
     }
 
     if ([segue.identifier isEqualToString:@"MasInfo_Mapa_ubicacion"]){
         
-        MasInfo_Directorio *mimu = segue.destinationViewController;
+        MasInfo_Mapa_Ubicacion *mimu = segue.destinationViewController;
         mimu.title = [ArrMIR objectAtIndex:iPath.row];
         
     }
 
+    if ([segue.identifier isEqualToString:@"MasInfo_Aviso_Privacidad"]){
+        
+        MasInfo_Aviso_Privacidad *mimu = segue.destinationViewController;
+        mimu.title = [ArrMIR objectAtIndex:iPath.row];
+        
+    }
+    
     if ([segue.identifier isEqualToString:@"MasInfo_Contacto"]){
         
         MasInfo_Contacto *mic = segue.destinationViewController;
