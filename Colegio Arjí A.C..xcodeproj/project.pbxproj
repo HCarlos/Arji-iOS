@@ -9,11 +9,18 @@
 /* Begin PBXBuildFile section */
 		A613F7A91C99BEA7006F2D7D /* MasInfo_Beneficios.m in Sources */ = {isa = PBXBuildFile; fileRef = A613F7A81C99BEA7006F2D7D /* MasInfo_Beneficios.m */; };
 		A613F7AC1C99CF28006F2D7D /* MasInfo_Contacto.m in Sources */ = {isa = PBXBuildFile; fileRef = A613F7AB1C99CF28006F2D7D /* MasInfo_Contacto.m */; };
+		A6191B441E96851B00ABB207 /* MasInfo_Token.m in Sources */ = {isa = PBXBuildFile; fileRef = A6191B431E96851B00ABB207 /* MasInfo_Token.m */; };
 		A626E5351C907E2F0089BDA1 /* QuienesSomos.m in Sources */ = {isa = PBXBuildFile; fileRef = A626E5341C907E2F0089BDA1 /* QuienesSomos.m */; };
 		A626E5381C9099790089BDA1 /* Certificaciones.m in Sources */ = {isa = PBXBuildFile; fileRef = A626E5371C9099790089BDA1 /* Certificaciones.m */; };
+		A62C96A81E96C47F00FE3C58 /* Splash.m in Sources */ = {isa = PBXBuildFile; fileRef = A62C96A71E96C47F00FE3C58 /* Splash.m */; };
 		A63245B21C931AD90046B9B6 /* MasInfo_Proceso_Admision.m in Sources */ = {isa = PBXBuildFile; fileRef = A63245B11C931AD90046B9B6 /* MasInfo_Proceso_Admision.m */; };
 		A63245B51C931F9C0046B9B6 /* MasInfo_Mapa_Ubicacion.m in Sources */ = {isa = PBXBuildFile; fileRef = A63245B41C931F9C0046B9B6 /* MasInfo_Mapa_Ubicacion.m */; };
 		A63245B71C9326E80046B9B6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63245B61C9326E80046B9B6 /* MapKit.framework */; };
+		A63C737A1EC4DB4300D1C217 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A63C73791EC4DB4300D1C217 /* Assets.xcassets */; };
+		A63C737E1EC4DD8E00D1C217 /* icono_arji_83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A63C737B1EC4DD8E00D1C217 /* icono_arji_83.5@2x.png */; };
+		A63C737F1EC4DD8E00D1C217 /* icono_arji76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A63C737C1EC4DD8E00D1C217 /* icono_arji76@2x.png */; };
+		A63C73801EC4DD8E00D1C217 /* icono_arji76x76.png in Resources */ = {isa = PBXBuildFile; fileRef = A63C737D1EC4DD8E00D1C217 /* icono_arji76x76.png */; };
+		A663DF9B1E1D7E1400F3A584 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A663DF9A1E1D7E1400F3A584 /* UserNotifications.framework */; };
 		A665743F1C7E69C500834389 /* VerTareasCirculares.m in Sources */ = {isa = PBXBuildFile; fileRef = A665743E1C7E69C500834389 /* VerTareasCirculares.m */; };
 		A675DA2C1D8821350050B4C9 /* MasInfo_Aviso_Privacidad.m in Sources */ = {isa = PBXBuildFile; fileRef = A675DA2B1D8821350050B4C9 /* MasInfo_Aviso_Privacidad.m */; };
 		A675DA371D883B750050B4C9 /* Layers_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A675DA2D1D883B750050B4C9 /* Layers_off@2x.png */; };
@@ -58,7 +65,6 @@
 		A6A9CAA51C7E4C4600314626 /* Login.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A9CAA41C7E4C4600314626 /* Login.m */; };
 		A6A9CAA81C7E4C4600314626 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A9CAA71C7E4C4600314626 /* SecondViewController.m */; };
 		A6A9CAAB1C7E4C4600314626 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6A9CAA91C7E4C4600314626 /* Main.storyboard */; };
-		A6A9CAAD1C7E4C4600314626 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6A9CAAC1C7E4C4600314626 /* Assets.xcassets */; };
 		A6A9CAB01C7E4C4600314626 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6A9CAAE1C7E4C4600314626 /* LaunchScreen.storyboard */; };
 		A6A9CABB1C7E51B400314626 /* PrimerMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A9CABA1C7E51B400314626 /* PrimerMenu.m */; };
 		A6A9CAC11C7E543300314626 /* Singleton.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A9CABF1C7E543300314626 /* Singleton.m */; };
@@ -86,10 +92,15 @@
 		A6AEE3DE1C864D1000BA68FA /* retina_display_1242x2208.png in Resources */ = {isa = PBXBuildFile; fileRef = A6AEE3D21C864D1000BA68FA /* retina_display_1242x2208.png */; };
 		A6AEE3DF1C864D1000BA68FA /* retina_display_1334x750.png in Resources */ = {isa = PBXBuildFile; fileRef = A6AEE3D31C864D1000BA68FA /* retina_display_1334x750.png */; };
 		A6AEE3E01C864D1000BA68FA /* retina_display_2208x1242.png in Resources */ = {isa = PBXBuildFile; fileRef = A6AEE3D41C864D1000BA68FA /* retina_display_2208x1242.png */; };
+		A6B044901ED4AB7C00E874E7 /* califica_app_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6B0448F1ED4AB7C00E874E7 /* califica_app_off@2x.png */; };
+		A6B044931ED4B10100E874E7 /* MasInfo_Evalua_App.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B044921ED4B10100E874E7 /* MasInfo_Evalua_App.m */; };
 		A6C0A7071CB56499008C012F /* spanner-7.png in Resources */ = {isa = PBXBuildFile; fileRef = A6C0A7061CB56499008C012F /* spanner-7.png */; };
 		A6D129C21C8F934400C853C8 /* Boletin.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D129C11C8F934400C853C8 /* Boletin.m */; };
 		A6D1B22D1C91E47300317AA7 /* MasInfo_root.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D1B22C1C91E47300317AA7 /* MasInfo_root.m */; };
 		A6D1B2301C92291100317AA7 /* MasInfo_Directorio.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D1B22F1C92291100317AA7 /* MasInfo_Directorio.m */; };
+		A6D872F01E957542003556D0 /* token30@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6D872EF1E957542003556D0 /* token30@2x.png */; };
+		A6D872F21E95759D003556D0 /* token50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6D872F11E95759D003556D0 /* token50@2x.png */; };
+		A6D873001E9586E0003556D0 /* token40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6D872FF1E9586E0003556D0 /* token40@2x.png */; };
 		A6FB64591C8733480093A2A0 /* icono_arji360x360.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FB64581C8733480093A2A0 /* icono_arji360x360.png */; };
 /* End PBXBuildFile section */
 
@@ -98,16 +109,25 @@
 		A613F7A81C99BEA7006F2D7D /* MasInfo_Beneficios.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasInfo_Beneficios.m; path = Clases/MasInfo_Beneficios.m; sourceTree = "<group>"; };
 		A613F7AA1C99CF28006F2D7D /* MasInfo_Contacto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MasInfo_Contacto.h; path = Clases/MasInfo_Contacto.h; sourceTree = "<group>"; };
 		A613F7AB1C99CF28006F2D7D /* MasInfo_Contacto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasInfo_Contacto.m; path = Clases/MasInfo_Contacto.m; sourceTree = "<group>"; };
+		A6191B421E96851B00ABB207 /* MasInfo_Token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MasInfo_Token.h; path = Clases/MasInfo_Token.h; sourceTree = "<group>"; };
+		A6191B431E96851B00ABB207 /* MasInfo_Token.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasInfo_Token.m; path = Clases/MasInfo_Token.m; sourceTree = "<group>"; };
 		A626E5331C907E2F0089BDA1 /* QuienesSomos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuienesSomos.h; path = Clases/QuienesSomos.h; sourceTree = "<group>"; };
 		A626E5341C907E2F0089BDA1 /* QuienesSomos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuienesSomos.m; path = Clases/QuienesSomos.m; sourceTree = "<group>"; };
 		A626E5361C9099790089BDA1 /* Certificaciones.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Certificaciones.h; sourceTree = "<group>"; };
 		A626E5371C9099790089BDA1 /* Certificaciones.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Certificaciones.m; sourceTree = "<group>"; };
+		A62C96A61E96C47F00FE3C58 /* Splash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Splash.h; path = Clases/Splash.h; sourceTree = "<group>"; };
+		A62C96A71E96C47F00FE3C58 /* Splash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Splash.m; path = Clases/Splash.m; sourceTree = "<group>"; };
 		A63245B01C931AD90046B9B6 /* MasInfo_Proceso_Admision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MasInfo_Proceso_Admision.h; path = Clases/MasInfo_Proceso_Admision.h; sourceTree = "<group>"; };
 		A63245B11C931AD90046B9B6 /* MasInfo_Proceso_Admision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasInfo_Proceso_Admision.m; path = Clases/MasInfo_Proceso_Admision.m; sourceTree = "<group>"; };
 		A63245B31C931F9C0046B9B6 /* MasInfo_Mapa_Ubicacion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MasInfo_Mapa_Ubicacion.h; path = Clases/MasInfo_Mapa_Ubicacion.h; sourceTree = "<group>"; };
 		A63245B41C931F9C0046B9B6 /* MasInfo_Mapa_Ubicacion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasInfo_Mapa_Ubicacion.m; path = Clases/MasInfo_Mapa_Ubicacion.m; sourceTree = "<group>"; };
 		A63245B61C9326E80046B9B6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A63A794E1D89AE2600EDE61A /* Colegio Arjí A.C..entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Colegio Arjí A.C..entitlements"; sourceTree = "<group>"; };
+		A63C73791EC4DB4300D1C217 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Colegio Arjí A.C./Assets.xcassets"; sourceTree = "<group>"; };
+		A63C737B1EC4DD8E00D1C217 /* icono_arji_83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icono_arji_83.5@2x.png"; path = "Img/Iconos/icono_arji_83.5@2x.png"; sourceTree = "<group>"; };
+		A63C737C1EC4DD8E00D1C217 /* icono_arji76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icono_arji76@2x.png"; path = "Img/Iconos/icono_arji76@2x.png"; sourceTree = "<group>"; };
+		A63C737D1EC4DD8E00D1C217 /* icono_arji76x76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icono_arji76x76.png; path = Img/Iconos/icono_arji76x76.png; sourceTree = "<group>"; };
+		A663DF9A1E1D7E1400F3A584 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		A665743D1C7E69C500834389 /* VerTareasCirculares.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VerTareasCirculares.h; path = Clases/VerTareasCirculares.h; sourceTree = "<group>"; };
 		A665743E1C7E69C500834389 /* VerTareasCirculares.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VerTareasCirculares.m; path = Clases/VerTareasCirculares.m; sourceTree = "<group>"; };
 		A675DA2A1D8821350050B4C9 /* MasInfo_Aviso_Privacidad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MasInfo_Aviso_Privacidad.h; path = Clases/MasInfo_Aviso_Privacidad.h; sourceTree = "<group>"; };
@@ -161,7 +181,6 @@
 		A6A9CAA61C7E4C4600314626 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		A6A9CAA71C7E4C4600314626 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		A6A9CAAA1C7E4C4600314626 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A6A9CAAC1C7E4C4600314626 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/../../../../../../../../../Projects/Colegio Arjí A.C./Colegio Arjí A.C./Assets.xcassets"; sourceTree = "<absolute>"; };
 		A6A9CAAF1C7E4C4600314626 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A6A9CAB11C7E4C4600314626 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6A9CAB91C7E51B400314626 /* PrimerMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrimerMenu.h; path = Clases/PrimerMenu.h; sourceTree = "<group>"; };
@@ -195,6 +214,9 @@
 		A6AEE3D21C864D1000BA68FA /* retina_display_1242x2208.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = retina_display_1242x2208.png; path = Img/Imagenes/retina_display_1242x2208.png; sourceTree = "<group>"; };
 		A6AEE3D31C864D1000BA68FA /* retina_display_1334x750.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = retina_display_1334x750.png; path = Img/Imagenes/retina_display_1334x750.png; sourceTree = "<group>"; };
 		A6AEE3D41C864D1000BA68FA /* retina_display_2208x1242.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = retina_display_2208x1242.png; path = Img/Imagenes/retina_display_2208x1242.png; sourceTree = "<group>"; };
+		A6B0448F1ED4AB7C00E874E7 /* califica_app_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "califica_app_off@2x.png"; path = "Img/Iconos/califica_app_off@2x.png"; sourceTree = "<group>"; };
+		A6B044911ED4B10100E874E7 /* MasInfo_Evalua_App.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MasInfo_Evalua_App.h; path = Clases/MasInfo_Evalua_App.h; sourceTree = "<group>"; };
+		A6B044921ED4B10100E874E7 /* MasInfo_Evalua_App.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasInfo_Evalua_App.m; path = Clases/MasInfo_Evalua_App.m; sourceTree = "<group>"; };
 		A6C0A7061CB56499008C012F /* spanner-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "spanner-7.png"; path = "Img/Iconos/spanner-7.png"; sourceTree = "<group>"; };
 		A6D129C01C8F934400C853C8 /* Boletin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Boletin.h; path = Clases/Boletin.h; sourceTree = "<group>"; };
 		A6D129C11C8F934400C853C8 /* Boletin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Boletin.m; path = Clases/Boletin.m; sourceTree = "<group>"; };
@@ -202,6 +224,9 @@
 		A6D1B22C1C91E47300317AA7 /* MasInfo_root.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasInfo_root.m; path = Clases/MasInfo_root.m; sourceTree = "<group>"; };
 		A6D1B22E1C92291100317AA7 /* MasInfo_Directorio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MasInfo_Directorio.h; path = Clases/MasInfo_Directorio.h; sourceTree = "<group>"; };
 		A6D1B22F1C92291100317AA7 /* MasInfo_Directorio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasInfo_Directorio.m; path = Clases/MasInfo_Directorio.m; sourceTree = "<group>"; };
+		A6D872EF1E957542003556D0 /* token30@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "token30@2x.png"; path = "Img/Iconos/token30@2x.png"; sourceTree = "<group>"; };
+		A6D872F11E95759D003556D0 /* token50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "token50@2x.png"; path = "Img/Iconos/token50@2x.png"; sourceTree = "<group>"; };
+		A6D872FF1E9586E0003556D0 /* token40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "token40@2x.png"; path = "Img/Iconos/token40@2x.png"; sourceTree = "<group>"; };
 		A6FB64581C8733480093A2A0 /* icono_arji360x360.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icono_arji360x360.png; path = Img/Iconos/icono_arji360x360.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -210,6 +235,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A663DF9B1E1D7E1400F3A584 /* UserNotifications.framework in Frameworks */,
 				A63245B71C9326E80046B9B6 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,12 +243,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A663DF991E1D7E1400F3A584 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A663DF9A1E1D7E1400F3A584 /* UserNotifications.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A6A9CA911C7E4C4600314626 = {
 			isa = PBXGroup;
 			children = (
 				A6A9CA9C1C7E4C4600314626 /* Colegio Arjí A.C. */,
 				A6A9CA9B1C7E4C4600314626 /* Products */,
+				A63C73791EC4DB4300D1C217 /* Assets.xcassets */,
 				A63245B61C9326E80046B9B6 /* MapKit.framework */,
+				A663DF991E1D7E1400F3A584 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -245,7 +281,6 @@
 				A6A9CAA61C7E4C4600314626 /* SecondViewController.h */,
 				A6A9CAA71C7E4C4600314626 /* SecondViewController.m */,
 				A6A9CAA91C7E4C4600314626 /* Main.storyboard */,
-				A6A9CAAC1C7E4C4600314626 /* Assets.xcassets */,
 				A6A9CAAE1C7E4C4600314626 /* LaunchScreen.storyboard */,
 				A6A9CAB11C7E4C4600314626 /* Info.plist */,
 				A6A9CA9D1C7E4C4600314626 /* Supporting Files */,
@@ -313,6 +348,12 @@
 				A6A9D63A1CA19BDC004B7180 /* Mensaje_Body.m */,
 				A675DA2A1D8821350050B4C9 /* MasInfo_Aviso_Privacidad.h */,
 				A675DA2B1D8821350050B4C9 /* MasInfo_Aviso_Privacidad.m */,
+				A6191B421E96851B00ABB207 /* MasInfo_Token.h */,
+				A6191B431E96851B00ABB207 /* MasInfo_Token.m */,
+				A62C96A61E96C47F00FE3C58 /* Splash.h */,
+				A62C96A71E96C47F00FE3C58 /* Splash.m */,
+				A6B044911ED4B10100E874E7 /* MasInfo_Evalua_App.h */,
+				A6B044921ED4B10100E874E7 /* MasInfo_Evalua_App.m */,
 			);
 			name = Clases;
 			sourceTree = "<group>";
@@ -345,6 +386,13 @@
 		A6AEE3B61C864CDD00BA68FA /* Iconos */ = {
 			isa = PBXGroup;
 			children = (
+				A6B0448F1ED4AB7C00E874E7 /* califica_app_off@2x.png */,
+				A6D872FF1E9586E0003556D0 /* token40@2x.png */,
+				A63C737B1EC4DD8E00D1C217 /* icono_arji_83.5@2x.png */,
+				A63C737C1EC4DD8E00D1C217 /* icono_arji76@2x.png */,
+				A63C737D1EC4DD8E00D1C217 /* icono_arji76x76.png */,
+				A6D872F11E95759D003556D0 /* token50@2x.png */,
+				A6D872EF1E957542003556D0 /* token30@2x.png */,
 				A675DA451D8842A80050B4C9 /* Programmer_off@2x.png */,
 				A675DA461D8842A80050B4C9 /* Programmer@2x.png */,
 				A675DA471D8842A80050B4C9 /* AvisoPrivacidad_off@2x.png */,
@@ -478,12 +526,12 @@
 				A6AEE3C31C864CEA00BA68FA /* icono_arji57x.png in Resources */,
 				A6AEE3DE1C864D1000BA68FA /* retina_display_1242x2208.png in Resources */,
 				A6AEE3DB1C864D1000BA68FA /* retina_display_900x640.png in Resources */,
-				A6A9CAAD1C7E4C4600314626 /* Assets.xcassets in Resources */,
 				A67832181D92B1EC00DD2B63 /* graduation-cap.png in Resources */,
 				A675DA431D883D4C0050B4C9 /* Directorio_off@2x.png in Resources */,
 				A675DA371D883B750050B4C9 /* Layers_off@2x.png in Resources */,
 				A675DA391D883B750050B4C9 /* Student_off@2x.png in Resources */,
 				A675DA3A1D883B750050B4C9 /* Student@2x.png in Resources */,
+				A63C737A1EC4DB4300D1C217 /* Assets.xcassets in Resources */,
 				A675DA571D8842A80050B4C9 /* ProcesoAdmision_off@2x.png in Resources */,
 				A675DA441D883D4C0050B4C9 /* Directorio@2x.png in Resources */,
 				A6AEE3DD1C864D1000BA68FA /* retina_display_1136x640.png in Resources */,
@@ -495,6 +543,8 @@
 				A678321B1D92B1F300DD2B63 /* home.png in Resources */,
 				A6AEE3D91C864D1000BA68FA /* retina_display_640x1136.png in Resources */,
 				A67832151D92B1E600DD2B63 /* default@2x.png in Resources */,
+				A6D873001E9586E0003556D0 /* token40@2x.png in Resources */,
+				A6D872F01E957542003556D0 /* token30@2x.png in Resources */,
 				A67832241D92B20900DD2B63 /* key.png in Resources */,
 				A675DA551D8842A80050B4C9 /* MapaUbicacion_off@2x.png in Resources */,
 				A675DA3D1D883B750050B4C9 /* Calendar_off@2x.png in Resources */,
@@ -510,12 +560,17 @@
 				A675DA521D8842A80050B4C9 /* AvisoPrivacidad@2x.png in Resources */,
 				A678321E1D92B1F700DD2B63 /* calendar.png in Resources */,
 				A678320F1D92B18D00DD2B63 /* layer.png in Resources */,
+				A6B044901ED4AB7C00E874E7 /* califica_app_off@2x.png in Resources */,
 				A67832271D92B20E00DD2B63 /* default.png in Resources */,
+				A63C737F1EC4DD8E00D1C217 /* icono_arji76@2x.png in Resources */,
 				A6A9CAAB1C7E4C4600314626 /* Main.storyboard in Resources */,
 				A6AEE3C81C864CEA00BA68FA /* icono_arji180x.png in Resources */,
 				A6FB64591C8733480093A2A0 /* icono_arji360x360.png in Resources */,
+				A6D872F21E95759D003556D0 /* token50@2x.png in Resources */,
 				A675DA3F1D883B750050B4C9 /* Login_off@2x.png in Resources */,
 				A6AEE3DF1C864D1000BA68FA /* retina_display_1334x750.png in Resources */,
+				A63C737E1EC4DD8E00D1C217 /* icono_arji_83.5@2x.png in Resources */,
+				A63C73801EC4DD8E00D1C217 /* icono_arji76x76.png in Resources */,
 				A6AEE3C01C864CEA00BA68FA /* icono_arji.png in Resources */,
 				A6AEE3D71C864D1000BA68FA /* retina_display_640x900.png in Resources */,
 			);
@@ -533,6 +588,7 @@
 				A6A9CABB1C7E51B400314626 /* PrimerMenu.m in Sources */,
 				A6D1B2301C92291100317AA7 /* MasInfo_Directorio.m in Sources */,
 				A6A9CAC41C7E57DE00314626 /* SegundoMenu.m in Sources */,
+				A6191B441E96851B00ABB207 /* MasInfo_Token.m in Sources */,
 				A6A9CAA21C7E4C4600314626 /* AppDelegate.m in Sources */,
 				A6D1B22D1C91E47300317AA7 /* MasInfo_root.m in Sources */,
 				A6A9CAC11C7E543300314626 /* Singleton.m in Sources */,
@@ -543,10 +599,12 @@
 				A626E5381C9099790089BDA1 /* Certificaciones.m in Sources */,
 				A6A9CACA1C7E5BB100314626 /* TercerMenu.m in Sources */,
 				A6A9CA9F1C7E4C4600314626 /* main.m in Sources */,
+				A6B044931ED4B10100E874E7 /* MasInfo_Evalua_App.m in Sources */,
 				A6A9D63B1CA19BDC004B7180 /* Mensaje_Body.m in Sources */,
 				A69EFAA41C9C47AE00031AB4 /* MasInfo_Mensaje.m in Sources */,
 				A675DA2C1D8821350050B4C9 /* MasInfo_Aviso_Privacidad.m in Sources */,
 				A665743F1C7E69C500834389 /* VerTareasCirculares.m in Sources */,
+				A62C96A81E96C47F00FE3C58 /* Splash.m in Sources */,
 				A6D129C21C8F934400C853C8 /* Boletin.m in Sources */,
 				A63245B51C931F9C0046B9B6 /* MasInfo_Mapa_Ubicacion.m in Sources */,
 				A63245B21C931AD90046B9B6 /* MasInfo_Proceso_Admision.m in Sources */,
@@ -744,7 +802,7 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -772,13 +830,50 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Colegio\\ Arjí\\ A.C./Firebase/Messaging",
+					"$(PROJECT_DIR)/Colegio\\ Arjí\\ A.C./Firebase/Messaging",
+					"$(PROJECT_DIR)/Colegio\\ Arjí\\ A.C./Firebase/Database",
+					"$(PROJECT_DIR)/Colegio\\ Arjí\\ A.C./Firebase/Analytics",
+					"$(PROJECT_DIR)/Colegio\\ Arjí\\ A.C./Firebase/Analytics",
+					"$(PROJECT_DIR)/Colegio\\ Arjí\\ A.C./Firebase/Analytics",
+					"$(PROJECT_DIR)/Colegio\\ Arjí\\ A.C./Firebase/Analytics",
+					"$(PROJECT_DIR)/Colegio\\ Arjí\\ A.C./Firebase/Analytics",
+					"$(PROJECT_DIR)/Colegio\\ Arjí\\ A.C./Firebase/Analytics",
+				);
 				INFOPLIST_FILE = "Colegio Arjí A.C./Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-l\"c++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AddressBook\"",
+					"-framework",
+					"\"FirebaseAnalytics\"",
+					"-framework",
+					"\"FirebaseCore\"",
+					"-framework",
+					"\"FirebaseInstanceID\"",
+					"-framework",
+					"\"GoogleInterchangeUtilities\"",
+					"-framework",
+					"\"GoogleSymbolUtilities\"",
+					"-framework",
+					"\"StoreKit\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ColegioArji.Colegio-Arji--A-C-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -788,16 +883,42 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "Colegio Arjí A.C./Colegio Arjí A.C..entitlements";
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Colegio\\ Arjí\\ A.C./Firebase/Messaging",
+					"$(PROJECT_DIR)/Colegio\\ Arjí\\ A.C./Firebase/Messaging",
+					"$(PROJECT_DIR)/Colegio\\ Arjí\\ A.C./Firebase/Database",
+					"$(PROJECT_DIR)/Colegio\\ Arjí\\ A.C./Firebase/Analytics",
+					"$(PROJECT_DIR)/Colegio\\ Arjí\\ A.C./Firebase/Analytics",
+					"$(PROJECT_DIR)/Colegio\\ Arjí\\ A.C./Firebase/Analytics",
+					"$(PROJECT_DIR)/Colegio\\ Arjí\\ A.C./Firebase/Analytics",
+					"$(PROJECT_DIR)/Colegio\\ Arjí\\ A.C./Firebase/Analytics",
+					"$(PROJECT_DIR)/Colegio\\ Arjí\\ A.C./Firebase/Analytics",
+				);
 				INFOPLIST_FILE = "Colegio Arjí A.C./Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-l\"c++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AddressBook\"",
+					"-framework",
+					"\"StoreKit\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ColegioArji.Colegio-Arji--A-C-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

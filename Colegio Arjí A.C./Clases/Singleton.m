@@ -22,9 +22,10 @@
 //@synthesize IdEmpresa,NombreEmpresa,rutaDB, DB,IdIO, Descripcion, IdMovto, Mes, Ano, arrAcum,viewAcum;
 @synthesize Modulo;
 @synthesize uniqueIdentifier;
-@synthesize pathPList, dataPList,IdUser,IsDelete,limCant, limFrom;
+@synthesize pathPList, dataPList,IdUser, IsDelete, limCant, limFrom, noIngresos, IdConcepto;
 @synthesize Username, Password, IdEmp, IdUserNivelAcceso, Param1, Clave, Empresa, RegistrosPorPagina, NombreCompletoUsuario;
-@synthesize tokenUser, typeDevice;
+@synthesize tokenUser, typeDevice, Version;
+@synthesize applicationIconBadgeNumber;
 
 static Singleton* _sharedMySingleton = nil;
 //extern NSString* CTSettingCopyMyPhoneNumber();
@@ -68,6 +69,17 @@ static Singleton* _sharedMySingleton = nil;
         
         [self.webView loadRequest:[NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://www.tabascoweb.com/images/web/stream.php"]]];
          */
+
+        NSString * version = nil;
+        version = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+        if (!version) {
+            version = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey];
+        }
+        
+        self.Version = version;
+        self.IdConcepto = 0;
+        
+        
 	}
 	
 	return self;
@@ -188,6 +200,13 @@ static Singleton* _sharedMySingleton = nil;
         [dataPList writeToFile: pathPList atomically:YES];
 
     }
+
+    BOOL key2Exists = !![dataPList objectForKey:@"badge"];
+    
+    if (!key2Exists){
+        [self incrementBadge];
+    }
+    
 }
 
 -(void)insertUser:(NSString *) User insertPass:(NSString *) PWD{
@@ -225,7 +244,6 @@ static Singleton* _sharedMySingleton = nil;
 
 }
 
-
 -(NSString *) getPassword{
     
     
@@ -234,6 +252,56 @@ static Singleton* _sharedMySingleton = nil;
     NSString *value1;
     value1 = [savedStock objectForKey:@"password"] ;
     return value1;
+    
+}
+
+
+-(NSInteger) incrementBadge{
+    NSInteger valret = [self getBadge] + 1;
+    [dataPList setObject:[NSNumber numberWithInteger:valret] forKey:@"badge"];
+    [dataPList writeToFile: pathPList atomically:YES];
+    return valret;
+}
+
+-(NSInteger) decrementBadge{
+    NSInteger valret = [self getBadge] - 1;
+    [dataPList setObject:[NSNumber numberWithInteger:valret] forKey:@"badge"];
+    [dataPList writeToFile: pathPList atomically:YES];
+    return valret;
+}
+
+-(NSInteger) getBadge{
+    
+    NSMutableDictionary *savedStock = [[NSMutableDictionary alloc] initWithContentsOfFile: pathPList];
+    NSInteger badge = [[savedStock objectForKey:@"badge"] integerValue] ;
+    return badge;
+    
+}
+
+-(void)removeBadge{
+    
+    [dataPList removeObjectForKey:@"badge"];
+    [dataPList writeToFile:pathPList atomically:YES];
+    
+}
+
+
+-(NSInteger) addAccess{
+    
+    NSInteger valret = [self getAccess] + 1;
+    [dataPList setObject:[NSNumber numberWithInteger:valret] forKey:@"numero_de_ingresos"];
+    [dataPList writeToFile: pathPList atomically:YES];
+    self.noIngresos = valret;
+    return valret;
+    
+}
+
+-(NSInteger) getAccess{
+    
+    NSMutableDictionary *savedStock = [[NSMutableDictionary alloc] initWithContentsOfFile: pathPList];
+    NSInteger _noIngresos = [[savedStock objectForKey:@"numero_de_ingresos"] integerValue];
+    self.noIngresos = _noIngresos;
+    return noIngresos;
     
 }
 

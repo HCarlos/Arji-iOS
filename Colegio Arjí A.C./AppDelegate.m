@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "Singleton.h"
-
 @interface AppDelegate ()
 
 @end
@@ -18,7 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-
+    
     if (launchOptions != nil)
     {
         NSDictionary* dictionary = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
@@ -29,7 +28,7 @@
             [self clearNotifications];
         }
     }else{
-    
+        
         self.Singleton  = [Singleton sharedMySingleton];
         [self.Singleton setPlist];
         
@@ -43,23 +42,24 @@
         
         myDevice = nil;
         UUID = nil;
-
+        
         if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-    #ifdef __IPHONE_8_0
+#ifdef __IPHONE_8_0
             UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert
                                                                                                  | UIUserNotificationTypeBadge
                                                                                                  | UIUserNotificationTypeSound) categories:nil];
             [application registerUserNotificationSettings:settings];
-    #endif
-        
+#endif
+            
         } else {
             
             /*
              
-            UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound;
-            [application registerForRemoteNotificationTypes:myTypes];
-            
-             */
+             UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound;
+             [application registerForRemoteNotificationTypes:myTypes];
+             
+             
+            */
             
         }
         
@@ -93,7 +93,17 @@
     new = [new stringByReplacingOccurrencesOfString: @"<" withString:@""];
     new = [new stringByReplacingOccurrencesOfString: @">" withString:@""];
     self.Singleton.tokenUser = new;
+ 
+    /*
+    NSString *deviceToken = [[[[deviceToke description]
+                               stringByReplacingOccurrencesOfString:@"<"withString:@""]
+                              stringByReplacingOccurrencesOfString:@">" withString:@""]
+                             stringByReplacingOccurrencesOfString: @" " withString: @""];
+    NSLog(@"DT %@", deviceToken);
+    */
     
+    // self.Singleton.tokenUser = [deviceToke description];
+
 }
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
@@ -126,7 +136,6 @@
     [application presentLocalNotificationNow:notification];
     //completionHandler(UIBackgroundFetchResultNewData);
     
-    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -155,7 +164,4 @@
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 0];
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
 }
-
-
-
 @end

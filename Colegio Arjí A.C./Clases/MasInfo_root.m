@@ -12,8 +12,10 @@
 #import "MasInfo_Proceso_Admision.h"
 #import "MasInfo_Mapa_Ubicacion.h"
 #import "MasInfo_Beneficios.h"
+#import "MasInfo_Aviso_Privacidad.h"
 #import "MasInfo_Contacto.h"
 #import "MasInfo_Mensaje.h"
+#import "MasInfo_Evalua_App.h"
 
 @interface MasInfo_root ()
 
@@ -32,7 +34,7 @@
     
     self.tblMIR.delegate = self;
     
-    ArrMIR = [NSMutableArray arrayWithObjects:@"Directorio",@"Proceso de Admisión",@"Mapa de ubicación",@"Beneficios", nil];
+    ArrMIR = [NSMutableArray arrayWithObjects:@"Directorio",@"Proceso de Admisión",@"Mapa de ubicación",@"Beneficios",@"Aviso de Privacidad",@"Evalua nuestra App", nil];
     ArrMIR2 = [NSMutableArray arrayWithObjects:@"Contacto", nil];
 
     [super viewDidLoad];
@@ -61,6 +63,7 @@
     }
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *TableId;
@@ -78,6 +81,12 @@
                     break;
             case 3:
                     TableId = @"MasInfoCell_Beneficios";
+                    break;
+            case 4:
+                    TableId = @"MasInfoCell_Aviso_Privacidad";
+                    break;
+            case 5:
+                    TableId = @"MasInfoCell_Califica_App";
                     break;
         }
     }else {
@@ -99,6 +108,8 @@
             case 1:
             case 2:
             case 3:
+            case 4:
+            case 5:
                 cell.textLabel.text = [ArrMIR objectAtIndex:indexPath.row];
                 break;
         }
@@ -124,39 +135,10 @@
     if (section==0){
         return @"MAS INFORMACIÓN";
     }else{
-        return @"DESARROLLADOR";
+        
+        return [[NSString alloc] initWithFormat:@"DESARROLLADOR   v.%@",self.Singleton.Version];
     }
 }
-
-/*
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    
-    static NSString *CellIdentifier;
-    if (section == 0){
-        CellIdentifier = @"SegundoMenuHeader";
-    }else{
-        CellIdentifier = @"SegundoMenuHeader_1";
-    }
-    UITableViewCell *headerView = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    //[headerView.layer setCornerRadius:5.0];
-    
-    return headerView;
-    
-}
-*/
-
-/*
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(nonnull NSIndexPath *)indexPath{
-    
-    NSString *urlstring = [[NSString alloc] initWithFormat:@"http://platsource.mx/php/getBoletasLayout/%d/%@/%d/%d/",self.IdObjAlu,self.Singleton.Username,self.Singleton.IdUser, self.Singleton.IdEmp] ;
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlstring]];
-    
-    [[UIApplication sharedApplication] openURL:[request URL]];
-    
-}
-*/
-
 
 #pragma mark - Navigation
 
@@ -174,18 +156,35 @@
     
     if ([segue.identifier isEqualToString:@"MasInfo_Proceso_Admision"]){
         
-        MasInfo_Directorio *mipa = segue.destinationViewController;
+        MasInfo_Proceso_Admision *mipa = segue.destinationViewController;
         mipa.title = [ArrMIR objectAtIndex:iPath.row];
         
     }
 
     if ([segue.identifier isEqualToString:@"MasInfo_Mapa_ubicacion"]){
         
-        MasInfo_Directorio *mimu = segue.destinationViewController;
+        MasInfo_Mapa_Ubicacion *mimu = segue.destinationViewController;
         mimu.title = [ArrMIR objectAtIndex:iPath.row];
         
     }
 
+    if ([segue.identifier isEqualToString:@"MasInfo_Aviso_Privacidad"]){
+        
+        MasInfo_Aviso_Privacidad *mimu = segue.destinationViewController;
+        mimu.title = [ArrMIR objectAtIndex:iPath.row];
+        
+    }
+    
+    if ([segue.identifier isEqualToString:@"MasInfo_Evalua_App"]){
+        
+        MasInfo_Evalua_App *mimu = segue.destinationViewController;
+        mimu.title = [ArrMIR objectAtIndex:iPath.row];
+      
+        NSString *iTunesLink = @"itms://appsto.re/mx/ZRCCbb.i";
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:iTunesLink]];
+        
+    }
+    
     if ([segue.identifier isEqualToString:@"MasInfo_Contacto"]){
         
         MasInfo_Contacto *mic = segue.destinationViewController;

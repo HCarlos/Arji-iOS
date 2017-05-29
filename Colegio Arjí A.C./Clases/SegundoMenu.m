@@ -33,6 +33,12 @@
     // [self.tableView.layer setMasksToBounds:YES];
     
     switch (self.Singleton.Clave) {
+        case 3:
+            ArrObj = [NSMutableArray arrayWithObjects:@"CIRCULARES", nil];
+            ArrObj2 = [NSMutableArray arrayWithObjects:@"MENSAJES", nil];
+            self.IdObjAlu = self.Singleton.IdUser;
+            self.title = self.Singleton.NombreCompletoUsuario;
+            break;
         case 5:
             ArrObj = [NSMutableArray arrayWithObjects:@"TAREAS",@"CIRCULARES",@"BOLETAS", nil];
             ArrObj2 = [NSMutableArray arrayWithObjects:@"CALENDARIO", nil];
@@ -48,6 +54,12 @@
             break;
         case 7:
             ArrObj = [NSMutableArray arrayWithObjects:@"TAREAS",@"CIRCULARES",@"FACTURAS",@"PAGOS",@"BOLETAS", nil];
+            ArrObj2 = [NSMutableArray arrayWithObjects:@"CALENDARIO", nil];
+            ArrObj3 = [NSMutableArray arrayWithObjects:@"MENSAJES", nil];
+            break;
+        case 28:
+        case 29:
+            ArrObj = [NSMutableArray arrayWithObjects:@"TAREAS",@"CIRCULARES",@"BOLETAS", nil];
             ArrObj2 = [NSMutableArray arrayWithObjects:@"CALENDARIO", nil];
             ArrObj3 = [NSMutableArray arrayWithObjects:@"MENSAJES", nil];
             break;
@@ -75,10 +87,13 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     int nret = 1;
+    if (self.Singleton.Clave == 3){
+        nret = 2;
+    }
     if (self.Singleton.Clave == 6){
         nret = 2;
     }
-    if (self.Singleton.Clave == 5 || self.Singleton.Clave == 7){
+    if (self.Singleton.Clave == 5 || self.Singleton.Clave == 7 || self.Singleton.Clave == 28 || self.Singleton.Clave == 29){
         nret = 3;
     }
     
@@ -88,6 +103,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger nret = 1;
+
+    if (self.Singleton.Clave == 3){
+        if (section==0) {
+            nret = [ArrObj count];
+        }else{
+            nret = [ArrObj2 count];
+        }
+    }
+    
     if (self.Singleton.Clave == 6){
         if (section==0) {
             nret = [ArrObj count];
@@ -96,7 +120,7 @@
         }
     }
 
-    if (self.Singleton.Clave == 5 || self.Singleton.Clave == 7){
+    if (self.Singleton.Clave == 5 || self.Singleton.Clave == 7 || self.Singleton.Clave == 28 || self.Singleton.Clave == 29){
         if (section==0) {
             nret = [ArrObj count];
         }else if(section==1) {
@@ -121,7 +145,28 @@
     NSUInteger sectionNumber = indexPath.section;
     
     // NSLog(@"ID CEL: %ld",(long)sectionNumber);
-    if (self.Singleton.Clave == 5){
+    
+    if (self.Singleton.Clave == 3){
+        if (sectionNumber == 0){
+            switch (indexPath.row) {
+                case 0:
+                    TableId = @"SegundoMenuCell";
+                    break;
+            }
+        }else if (sectionNumber == 1){
+            switch (indexPath.row) {
+                case 0:
+                    TableId = @"SegundoMenuCell_2";
+                    
+                    break;
+            }
+        }else{
+            
+        }
+    }
+    
+    
+    if (self.Singleton.Clave == 5 || self.Singleton.Clave == 28 || self.Singleton.Clave == 29){
         if (sectionNumber == 0){
             switch (indexPath.row) {
                 case 0:
@@ -212,8 +257,28 @@
     }
     
     // cell.textLabel.text = [ArrObj objectAtIndex:indexPath.row];
+
+    if (self.Singleton.Clave == 3){
+        if (sectionNumber == 0){
+            switch (indexPath.row) {
+                case 0:
+                    cell.textLabel.text = [ArrObj objectAtIndex:indexPath.row];
+                    break;
+            }
+        }else if(sectionNumber == 1){
+            switch (indexPath.row) {
+                case 0:
+                    cell.textLabel.text = [ArrObj2 objectAtIndex:indexPath.row];
+                    break;
+            }
+            
+        }else{
+            
+        }
+    }
     
-    if (self.Singleton.Clave == 5){
+    
+    if (self.Singleton.Clave == 5 || self.Singleton.Clave == 28 || self.Singleton.Clave == 29 ){
         if (sectionNumber == 0){
             switch (indexPath.row) {
                 case 0:
@@ -302,6 +367,19 @@
     // NSLog(@"Section: %ld",(long)section);
     
     NSString *secc;
+
+    if (self.Singleton.Clave == 3){
+        switch(section) {
+            case 0:
+                secc =  @"OPCIONES";
+                break;
+            case 1:
+                secc =  @"NOTIFICACIONES";
+                break;
+        }
+    }
+    
+    
     if (self.Singleton.Clave == 6){
         switch(section) {
             case 0:
@@ -313,7 +391,7 @@
         }
     }
 
-    if (self.Singleton.Clave == 5 || self.Singleton.Clave == 7){
+    if (self.Singleton.Clave == 5 || self.Singleton.Clave == 7 || self.Singleton.Clave == 28 || self.Singleton.Clave == 29 ){
         switch(section) {
             case 0:
                 secc =  @"OPCIONES";
@@ -335,6 +413,15 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
     static NSString *CellIdentifier;
+    
+    if (self.Singleton.Clave == 3){
+        if (section == 0){
+            CellIdentifier = @"SegundoMenuHeader";
+        }else if (section == 1){
+            CellIdentifier = @"SegundoMenuHeader_2";
+        }
+    }
+    
     if (self.Singleton.Clave == 6){
         if (section == 0){
             CellIdentifier = @"SegundoMenuHeader";
@@ -343,7 +430,7 @@
         }
     }
 
-    if (self.Singleton.Clave == 5 || self.Singleton.Clave == 7){
+    if (self.Singleton.Clave == 5 || self.Singleton.Clave == 7 || self.Singleton.Clave == 28 || self.Singleton.Clave == 29){
         if (section == 0){
             CellIdentifier = @"SegundoMenuHeader";
         }else if (section == 1){
@@ -385,11 +472,15 @@
         tm.title = [ArrObj objectAtIndex:iPath.row];
         tm.IdObjAlu =  self.IdObjAlu;
  
+        if (self.Singleton.Clave == 3){
+            tm.IdObjMenu = 1;
+        }
+        
         if (self.Singleton.Clave == 6){
             tm.IdObjMenu = 1;
         }
         
-        if (self.Singleton.Clave == 5 || self.Singleton.Clave == 7){
+        if (self.Singleton.Clave == 5 || self.Singleton.Clave == 7 || self.Singleton.Clave == 28 || self.Singleton.Clave == 29){
             tm.IdObjMenu = (int)iPath.row;
         }
         

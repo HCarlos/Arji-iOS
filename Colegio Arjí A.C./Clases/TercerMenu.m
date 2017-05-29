@@ -17,6 +17,7 @@
 @implementation TercerMenu{
     NSMutableArray *Menu;
     UILabel* lblTbl;
+    NSMutableArray* arrPagos;
 }
 @synthesize tblView, IdObjAlu, IdObjMenu, Indicator, Nav0, Bar0, Segment0, Status;
 
@@ -39,7 +40,13 @@
     [self.tableView.layer setMasksToBounds:YES];
     
     self.Status = 0;
-    if (self.Singleton.Clave == 5){
+    if (self.Singleton.Clave == 3){
+        switch (self.IdObjMenu) {
+            case 1:
+                [self.Segment0 setHidden:NO];
+                break;
+        }
+    }else if (self.Singleton.Clave == 5){
         switch (self.IdObjMenu) {
             case 0:
             case 1:
@@ -52,7 +59,7 @@
                     [self.Segment0 setHidden:NO];
                     break;
             }
-    }else if (self.Singleton.Clave == 7){
+    }else if (self.Singleton.Clave == 7 || self.Singleton.Clave == 28 || self.Singleton.Clave == 29){
         switch (self.IdObjMenu) {
             case 0:
             case 1:
@@ -67,9 +74,13 @@
     }
     
     switch (self.Singleton.Clave) {
+        case 3:
         case 5:
         case 6:
         case 7:
+        case 28:
+        case 29:
+            NSLog(@"STATUS INIT: %hhu",self.Status);
             [self getTercerMenu];
             break;
             
@@ -104,9 +115,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    // Boolean primerPago = false;
+    
     static NSString *TableId = @"";
     int vencido = [ [[Menu objectAtIndex:indexPath.row] objectForKey:@"dias_que_faltan_para_vencer"] intValue];
     int status_movto = [ [[Menu objectAtIndex:indexPath.row] objectForKey:@"status_movto"] intValue];
+    int idconceptounico = [ [[Menu objectAtIndex:indexPath.row] objectForKey:@"idconceptounico"] intValue];
+    
+    if (self.Singleton.Clave == 3){
+        TableId = @"TercerMenuCell";
+    }
     
     if (self.Singleton.Clave == 5){
         TableId = @"TercerMenuCell";
@@ -116,7 +134,7 @@
         TableId = @"TercerMenuCell";
     }
     
-    if (self.Singleton.Clave == 7){
+    if (self.Singleton.Clave == 7 || self.Singleton.Clave == 28 || self.Singleton.Clave == 29){
         switch (self.IdObjMenu) {
             case 3:
                 if (vencido < 0 && status_movto == 0){
@@ -125,10 +143,17 @@
                     if (status_movto == 1){
                         TableId = @"TercerMenuCell_Pagado";
                     }else{
-                        TableId = @"TercerMenuCell_Pago_Normal";
+                        if ( idconceptounico == 0 ){
+                            TableId = @"TercerMenuCell_PorVencer";
+                        }else{
+                            TableId = @"TercerMenuCell_Pago_Normal";
+                        }
                     }
                 }
                 break;
+            // case 0:
+            //     TableId = @"TercerMenuCell_Custom_1";
+            //     break;
             default:
                 TableId = @"TercerMenuCell";
                 break;
@@ -140,7 +165,20 @@
     if (cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TableId];
     }
+    
+    NSLog(@"INDEX PATH: %ld",(long)indexPath.row);
 
+    if (self.Singleton.Clave == 3){
+        switch (self.IdObjMenu) {
+            case 1:
+                [self sayMessageTable:indexPath.row Celda:cell];
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
     if (self.Singleton.Clave == 5){
         switch (self.IdObjMenu) {
             case 0:
@@ -167,7 +205,7 @@
     }
     
     
-    if (self.Singleton.Clave == 7){
+    if (self.Singleton.Clave == 7 || self.Singleton.Clave == 28 || self.Singleton.Clave == 29){
         switch (self.IdObjMenu) {
             case 0:
                 [self sayTareaTable:indexPath.row Celda:cell];
@@ -207,6 +245,9 @@
         }
     }
     
+    NSLog(@"CELL: OK");
+
+    
     return cell;
 
 }
@@ -214,8 +255,12 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-
-    if ([segue.identifier isEqualToString:@"VerTareasCirculares"] || [segue.identifier isEqualToString:@"PagosVencidos"] ){
+    
+    //  [segue.identifier isEqualToString:@"VerTareasCircularesCustom"] ||
+    
+    if ([segue.identifier isEqualToString:@"VerTareasCirculares"] ||
+       
+        [segue.identifier isEqualToString:@"PagosVencidos"] ){
         
         NSIndexPath *iPath = [self.tblView indexPathForSelectedRow];
         VerTareasCirculares *vo = segue.destinationViewController;
@@ -224,6 +269,8 @@
         
         vo.urlWeb = @"";
         
+        NSLog(@"Menu %d",self.IdObjMenu);
+        
         switch (self.IdObjMenu) {
             case 0:
                 vo.title = [[Menu objectAtIndex:iPath.row] objectForKey:@"titulo_tarea"];
@@ -231,7 +278,10 @@
                 vo.IdObj = [ [[Menu objectAtIndex:iPath.row] objectForKey:@"idtareadestinatario"] intValue];
                 break;
             case 1:
-                vo.title = [[Menu objectAtIndex:iPath.row] objectForKey:@"titulo_mensaje"];
+                vo.title = @"Sin título";
+                if ([[Menu objectAtIndex:iPath.row] objectForKey:@"titulo_mensaje"]){
+                    vo.title = [[Menu objectAtIndex:iPath.row] objectForKey:@"titulo_mensaje"];
+                }
                 vo.IdComMensaje = [ [[Menu objectAtIndex:iPath.row] objectForKey:@"idcommensaje"] intValue];
                 vo.IdObj = [ [[Menu objectAtIndex:iPath.row] objectForKey:@"idcommensajedestinatario"] intValue];
                 break;
@@ -257,7 +307,8 @@
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(nonnull NSIndexPath *)indexPath{
     
     int IdObj = [ [[Menu objectAtIndex:indexPath.row] objectForKey:@"idedocta"] intValue];
-    NSString *urlstring = [[NSString alloc] initWithFormat:@"http://platsource.mx/php/01/mobile/pagos_layout.php?idedocta=%d&user=%@&iduser=%d",IdObj,self.Singleton.Username,self.Singleton.IdUser] ;
+    NSInteger idconcepto = [ [[Menu objectAtIndex:indexPath.row] objectForKey:@"idconceptounico"] intValue];
+    NSString *urlstring = [[NSString alloc] initWithFormat:@"http://platsource.mx/php/01/mobile/pagos_layout.php?idedocta=%d&user=%@&iduser=%d@&idconcepto=%ld",IdObj,self.Singleton.Username,self.Singleton.IdUser, (long)idconcepto] ;
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlstring]];
     
@@ -280,6 +331,9 @@
         NSString *usernamex = self.Singleton.Username;
         NSString *noteDataString = [NSString stringWithFormat:@"username=%@&sts=%d&iduseralu=%d&tipoconsulta=%d", usernamex,self.Status,self.IdObjAlu, self.IdObjMenu];
         
+        
+        NSLog(@"STRING QRY: %@", noteDataString);
+        
         // Configuración de la sesión
         NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
         sessionConfiguration.HTTPAdditionalHeaders = @{@"Accept":@"application/json"};
@@ -299,14 +353,17 @@
             NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
             if (HTTPResponse.statusCode == 200) {
                 // Conversión de JSON a objeto Foundation (NSDictionary)
+                
                 NSError *JSONError;
                 NSDictionary *responseBody = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&JSONError];
 
 
                 if (!JSONError) {
                     dispatch_async(dispatch_get_main_queue(), ^{
+                        NSLog(@"RESPUESTA: %@",responseBody);
                         Menu = (NSMutableArray *)responseBody;
                         NSString *msg = [[Menu objectAtIndex:0]objectForKey:@"msg"];
+                        
                         if ([msg  isEqual: @"OK"]){
                             
                             [tblView reloadData];
@@ -316,6 +373,7 @@
                         }else{
                             [lblTbl setHidden:NO];
                         }
+                        
                         [self.Indicator stopAnimating];
 
                     });
@@ -369,6 +427,15 @@
 
     NSString *_sectionName = [NSString stringWithFormat:@""];
 
+    if (self.Singleton.Clave == 3){
+        switch (self.IdObjMenu)
+        {
+            case 1:
+                _sectionName = [self sayHeaderTable:@"%lu CIRCULARES %@" Param:0];
+                break;
+        }
+    }
+    
     if (self.Singleton.Clave == 5){
         switch (self.IdObjMenu)
         {
@@ -390,7 +457,7 @@
         }
     }
     
-    if (self.Singleton.Clave == 7){
+    if (self.Singleton.Clave == 7 || self.Singleton.Clave == 28 || self.Singleton.Clave == 29){
         switch (self.IdObjMenu)
         {
             case 0:
@@ -408,6 +475,9 @@
         }
     }
     
+    NSLog(@"Section 2:  %ld",(long)section);
+    
+    
     headerView.textLabel.text = _sectionName;
     
     return headerView;
@@ -415,21 +485,43 @@
 }
 
 -(NSString *)sayHeaderTable:(NSString *) Label Param:(NSInteger) param{
-    NSString *sStatus = [NSString stringWithFormat:@""];
+    NSString *sStatus = nil;
+    // sStatus = @" NUEVAS";
+    
+    NSLog(@"STATUS 3:  %hhu",self.Status);
+    
     sStatus = self.Status == 0 ? @" NUEVAS" : @" REVISADAS";
     NSString *_sectionName;
+    
     
     if (param==0){
         _sectionName = [NSString stringWithFormat:Label,(unsigned long)[Menu count], sStatus ];
     }else{
         _sectionName = [NSString stringWithFormat:Label,(unsigned long)[Menu count] ];
     }
+    
+    NSLog(@"STATUS 4:  %@", _sectionName);
+
     return (unsigned long)[Menu count] == 0 ? @"Cargando Datos..." : _sectionName;
 }
 
 -(void)sayMessageTable:(NSInteger) Indice Celda:(UITableViewCell*) cell{
-    cell.textLabel.text = [[Menu objectAtIndex:Indice] objectForKey:@"titulo_mensaje"];
-    cell.detailTextLabel.text = @"";
+    
+    @try
+    {
+        NSString *tituloM = @"Hola";
+        NSString *titDetM = @"";
+        tituloM = [[Menu objectAtIndex:Indice] objectForKey:@"titulo_mensaje"] ;
+        titDetM = [[Menu objectAtIndex:Indice] objectForKey:@"nombre_remitente"] ;
+        cell.textLabel.text = tituloM;
+        cell.detailTextLabel.text = titDetM;
+        
+    }
+    @catch (NSException *theException)
+    {
+        NSLog(@"Data Table Error: %@", theException);
+    }
+    
 }
 
 -(void)sayTareaTable:(NSInteger) Indice Celda:(UITableViewCell*) cell{
@@ -449,14 +541,18 @@
     if (selectedSegment != self.Status){
         
         self.Status =  selectedSegment;
-
+        
         Menu = [[NSMutableArray alloc]init];
         [self.tblView reloadData];
         
         switch (self.Singleton.Clave) {
+            case 3:
             case 5:
             case 6:
             case 7:
+            case 28:
+            case 29:
+                NSLog(@"STATUS: %hhu",self.Status);
                 [self getTercerMenu];
                 break;
             default:
@@ -464,7 +560,6 @@
         }
         
     }
-
     
 }
 

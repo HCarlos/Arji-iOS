@@ -1,0 +1,6 @@
+/*
+module Firebase {
+  header "Firebase.h"
+  export *
+}
+*/

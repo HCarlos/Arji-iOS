@@ -40,6 +40,8 @@
     
     switch (self.Singleton.Clave) {
         case 7:
+        case 28:
+        case 29:
             [self getHijos];
             break;
             
@@ -48,6 +50,7 @@
             [self.view addSubview:lblLoading];
             
             break;
+            
     }
  
     
@@ -126,7 +129,7 @@
 
 
 
-#pragma mark - getHijos
+#pragma mark - Cerrar Session
 - (IBAction)btnCloseSession:(id)sender {
     UIAlertController * alert=   [UIAlertController
                                   alertControllerWithTitle:@"Cerrar Sesión"
@@ -166,7 +169,7 @@
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         
         NSString *usernamex = self.Singleton.Username;
-        NSString *noteDataString = [NSString stringWithFormat:@"username=%@", usernamex];
+        NSString *noteDataString = [NSString stringWithFormat:@"username=%@&idusernivelacceso=%d", usernamex,self.Singleton.IdUserNivelAcceso];
         
         // Configuración de la sesión
         NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];

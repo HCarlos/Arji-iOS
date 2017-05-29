@@ -1,0 +1,6 @@
+openssl s_client -connect gateway.sandbox.push.apple.com:2195 -cert PushChatCert.pem -key PushChatKey.pem
+penssl pkcs12 -in aps_development.ColegioArji.Colegio-Arji--A-C-.p12 -out aps_development.ColegioArji.Colegio-Arji--A-C-.pem -nod
+
+openssl pkcs12 -in aps_development.ColegioArji.Colegio-Arji--A-C-.p12 -out aps_development.ColegioArji.Colegio-Arji--A-C-.pem -nodes -clcerts
+
+openssl pkcs12 -in aps_production.ColegioArji.Colegio-Arji--A-C-.p12 -out aps_production.ColegioArji.Colegio-Arji--A-C-.pem -nodes -clcerts

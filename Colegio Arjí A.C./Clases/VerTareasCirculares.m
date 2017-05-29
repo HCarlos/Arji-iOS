@@ -86,6 +86,7 @@
     [self.btnRefresh setEnabled:NO];
     
     switch (self.Singleton.Clave) {
+        case 3:
         case 5:
         case 6:
             if (self.IdObjMenu == 0 || self.IdObjMenu == 1 ){
@@ -96,6 +97,8 @@
             }
             break;
         case 7:
+        case 28:
+        case 29:
             if (self.IdObjMenu == 0 || self.IdObjMenu == 1 || self.IdObjMenu == 3 || self.IdObjMenu == 4){
                 miMIME = @"text/html";
                 [self getHTMLVal];

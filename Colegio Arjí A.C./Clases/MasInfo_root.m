@@ -15,6 +15,7 @@
 #import "MasInfo_Aviso_Privacidad.h"
 #import "MasInfo_Contacto.h"
 #import "MasInfo_Mensaje.h"
+#import "MasInfo_Evalua_App.h"
 
 @interface MasInfo_root ()
 
@@ -33,7 +34,7 @@
     
     self.tblMIR.delegate = self;
     
-    ArrMIR = [NSMutableArray arrayWithObjects:@"Directorio",@"Proceso de Admisión",@"Mapa de ubicación",@"Beneficios",@"Aviso de Privacidad", nil];
+    ArrMIR = [NSMutableArray arrayWithObjects:@"Directorio",@"Proceso de Admisión",@"Mapa de ubicación",@"Beneficios",@"Aviso de Privacidad",@"Evalua nuestra App", nil];
     ArrMIR2 = [NSMutableArray arrayWithObjects:@"Contacto", nil];
 
     [super viewDidLoad];
@@ -62,6 +63,7 @@
     }
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *TableId;
@@ -82,6 +84,9 @@
                     break;
             case 4:
                     TableId = @"MasInfoCell_Aviso_Privacidad";
+                    break;
+            case 5:
+                    TableId = @"MasInfoCell_Califica_App";
                     break;
         }
     }else {
@@ -104,6 +109,7 @@
             case 2:
             case 3:
             case 4:
+            case 5:
                 cell.textLabel.text = [ArrMIR objectAtIndex:indexPath.row];
                 break;
         }
@@ -129,7 +135,8 @@
     if (section==0){
         return @"MAS INFORMACIÓN";
     }else{
-        return @"DESARROLLADOR";
+        
+        return [[NSString alloc] initWithFormat:@"DESARROLLADOR   v.%@",self.Singleton.Version];
     }
 }
 
@@ -165,6 +172,16 @@
         
         MasInfo_Aviso_Privacidad *mimu = segue.destinationViewController;
         mimu.title = [ArrMIR objectAtIndex:iPath.row];
+        
+    }
+    
+    if ([segue.identifier isEqualToString:@"MasInfo_Evalua_App"]){
+        
+        MasInfo_Evalua_App *mimu = segue.destinationViewController;
+        mimu.title = [ArrMIR objectAtIndex:iPath.row];
+      
+        NSString *iTunesLink = @"itms://appsto.re/mx/ZRCCbb.i";
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:iTunesLink]];
         
     }
     

@@ -38,7 +38,9 @@
     NSString *Password;
     
     NSString *NombreCompletoUsuario;
-
+    
+    NSString *Version;
+    
 }
 
 // @property (nonatomic) int IdIO;
@@ -57,8 +59,14 @@
 @property (nonatomic, retain) NSString *Username;
 @property (nonatomic, retain) NSString *Password;
 @property (nonatomic, retain) NSString *NombreCompletoUsuario;
+@property (nonatomic, retain) NSString *Version;
+
+@property (nonatomic) NSInteger applicationIconBadgeNumber;
+@property (nonatomic) NSInteger noIngresos;
+@property (nonatomic) NSInteger IdConcepto;
 
 @property (nonatomic) BOOL IsDelete;
+
 /*
 @property(nonatomic,readonly,retain) NSString    *name;              // e.g. "My iPhone"
 @property(nonatomic,readonly,retain) NSString    *model;             // e.g. @"iPhone", @"iPod Touch"
@@ -66,13 +74,16 @@
 @property(nonatomic,readonly,retain) NSString    *systemName;        // e.g. @"iPhone OS"
 @property(nonatomic,readonly,retain) NSString    *systemVersion;     // e.g. @"2.0"
 */
+
 // @property(nonatomic,readonly) CLDeviceOrientation orientation;       // return current device orientation
 @property(nonatomic, retain) NSString    *typeDevice;  // a string unique to each device based on various
 @property(nonatomic, retain) NSString    *uniqueIdentifier;  // a string unique to each device based on various
 @property(nonatomic, retain) NSUUID *identifierForVendor;
+
 /*
 @property(nonatomic,retain) NSString *domicilio;            // domicilio
  */
+
 @property(nonatomic,retain) NSString *tokenUser;              // e.g. "My iPhone"
 @property(nonatomic,retain) NSMutableDictionary *dataPList;
 @property(nonatomic,retain) NSString *pathPList;
@@ -96,8 +107,17 @@
 -(void)setPlist;
 -(void)insertUser:(NSString *) User insertPass:(NSString *) PWD;
 -(void)deleteUser;
+
 -(NSString *) getUser;
 -(NSString *) getPassword;
 -(NSArray*)explodeString:(NSString*)stringToBeExploded WithDelimiter:(NSString*)delimiter;
+
+-(NSInteger) addAccess;
+-(NSInteger) getAccess;
+
+-(NSInteger) getBadge;
+-(NSInteger) incrementBadge;
+-(NSInteger) decrementBadge;
+-(void) removeBadge;
 
 @end

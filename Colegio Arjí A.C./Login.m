@@ -41,6 +41,25 @@
     [self.Indicador stopAnimating];
     [self.Indicador setHidden:YES];
     
+    UIToolbar *toolbar = [[UIToolbar alloc] init];
+    [toolbar setBarStyle:UIBarStyleBlack];
+    [toolbar sizeToFit];
+    
+    
+    UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    
+    UIBarButtonItem *closebuttom = [[UIBarButtonItem alloc] initWithTitle:@"Ocultar" style:UIBarButtonItemStyleDone target:self action:@selector(HideKeyBoard)];
+    
+    [closebuttom setTitleTextAttributes:
+        [NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:226.0/255.0 green:210.0/255.0 blue:186.0/255.0 alpha:1.0 ], NSForegroundColorAttributeName,nil]
+            forState:UIControlStateNormal];
+    
+    [toolbar setItems:[NSArray arrayWithObjects:space,closebuttom, nil]];
+    
+    [[self txtUsername]setInputAccessoryView:toolbar];
+    [[self txtPassword]setInputAccessoryView:toolbar];
+    [self.txtUsername becomeFirstResponder];
+    
     [super viewDidLoad];
     
 }
@@ -50,6 +69,15 @@
     [super viewDidAppear:animated];
     [self ValidCredentials];
     // NSLog(@"Apareció");
+}
+
+-(void)HideKeyBoard{
+    if ([self.view endEditing:NO]) {
+        [self.view endEditing:YES ];
+    } else {
+        [self.view endEditing:NO];
+    }
+    
 }
 
 
@@ -82,7 +110,12 @@
         
         NSString *usernamex = [[NSString alloc] initWithFormat: @"%@",self.txtUsername.text];
         NSString *passwordl = [[NSString alloc] initWithFormat: @"%@",self.txtPassword.text];
-        NSString *noteDataString = [NSString stringWithFormat:@"username=%@&passwordL=%@&UUID=%@&tD=%@&device_token=%@", usernamex, passwordl,self.Singleton.uniqueIdentifier,self.Singleton.typeDevice,self.Singleton.tokenUser];
+        NSString *noteDataString = [NSString stringWithFormat:@"username=%@&passwordL=%@&UUID=%@&tD=1&device_token=%@", usernamex, passwordl,self.Singleton.uniqueIdentifier,self.Singleton.tokenUser];
+        
+        
+        NSLog(@"TOKEN: %@",self.Singleton.tokenUser);
+        
+        NSLog(@"STRINGQRY: %@",noteDataString);
         
         // Configuración de la sesión
         NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -133,7 +166,7 @@
                             self.Singleton.Clave                 = [[Value objectAtIndex:5] intValue];
                             self.Singleton.Param1                = [[Value objectAtIndex:6] intValue];
                             self.Singleton.NombreCompletoUsuario = [Value objectAtIndex:7];
-                            /*
+                            
                             NSLog(@"IdUser->: %d",self.Singleton.IdUser);
                             NSLog(@"Username->: %@",self.Singleton.Username);
                             NSLog(@"Password->: %@",self.Singleton.Password);
@@ -144,17 +177,21 @@
                             NSLog(@"Clave->: %d",self.Singleton.Clave);
                             NSLog(@"Param1->: %d",self.Singleton.Param1);
                             NSLog(@"Nombre Completo->: %@",self.Singleton.NombreCompletoUsuario);
-                             */
+                            
                             
                             // NSLog(@"Clave %d",self.Singleton.Clave);
 
                             [self.Singleton insertUser:usernamex insertPass:passwordl];
+                            [self.Singleton addAccess];
                             
-                            if (self.Singleton.IdUserNivelAcceso == 7){ // Tutores
+                            if (self.Singleton.Clave == 7 ||
+                                self.Singleton.Clave == 28 ||
+                                self.Singleton.Clave == 29 ){ // Tutores, Familiares RP
                                 [self performSegueWithIdentifier:@"NUno" sender:nil];
                             }else if (self.Singleton.IdUserNivelAcceso == 5){ // Alumnos
                                 [self performSegueWithIdentifier:@"AAlumnos" sender:nil];
                             }else if (
+                                      self.Singleton.IdUserNivelAcceso == 3 ||
                                       self.Singleton.IdUserNivelAcceso == 6 ||
                                       self.Singleton.IdUserNivelAcceso == 18 ||
                                       self.Singleton.IdUserNivelAcceso == 23
@@ -174,6 +211,7 @@
                 } else {
                     [self.btnIngresar setEnabled:YES];
                     [self.lblMensaje setText:@"Ocurrió un Error!"];
+                    // NSAssert(NO, @"%",JSONError);
                     // NSAssert(NO, @"Error en la conversión de JSON a Foundation ");
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [self.Indicador stopAnimating];

@@ -25,6 +25,7 @@
 
 -(void)ValidCredentials;
 -(void)Login;
+-(void)HideKeyBoard;
 
 @end
 

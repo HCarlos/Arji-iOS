@@ -7,6 +7,7 @@
 //
 
 #import "MasInfo_Contacto.h"
+#import "MasInfo_Token.h"
 
 @interface MasInfo_Contacto ()
 
@@ -147,6 +148,18 @@ didFinishDownloadingToURL:(NSURL *)location
         recognizer.view.transform = CGAffineTransformScale(recognizer.view.transform, recognizer.scale,recognizer.scale); recognizer.scale = 1;
     }@catch (NSException *exception) { }
     @finally { }
+    
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    
+    if ([segue.identifier isEqualToString:@"MasInfo_Token"]){
+        
+        MasInfo_Token *mid = segue.destinationViewController;
+        mid.title = @"Otros Datos";
+        
+    }
     
 }
 
