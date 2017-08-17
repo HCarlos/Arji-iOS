@@ -129,7 +129,7 @@ didFinishDownloadingToURL:(NSURL *)location
     
     // Tarea de gestión de datos
     NSLog(@"IdGruAlu = %d",self.IdObjAlu);
-    NSString *urlo = [[NSString alloc] initWithFormat:@"http://platsource.mx/getCalendario/%d/",self.IdObjAlu];
+    NSString *urlo = [[NSString alloc] initWithFormat:self.Singleton.urlCalendario,self.IdObjAlu];
     NSURL *url = [NSURL URLWithString:urlo];
     NSURLSessionDataTask *dataTask = [session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         // Sondeo de la respuesta HTTP del servidor

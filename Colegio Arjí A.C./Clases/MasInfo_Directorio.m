@@ -25,7 +25,7 @@
     self.Singleton  = [Singleton sharedMySingleton];
     
     miMIME = @"text/html";
-    self.urlWeb = @"http://platsource.mx/getDirectorio/";
+    self.urlWeb = self.Singleton.urlDirectorio;
     [self getDirectorio];
     
     [super viewDidLoad];

@@ -23,7 +23,7 @@
     self.Singleton  = [Singleton sharedMySingleton];
     
     miMIME = @"text/html";
-    self.urlWeb = @"http://platsource.mx/getAvisoPrivacidad/";
+    self.urlWeb = self.Singleton.urlAvisoPrivacidad;
     [self getAvisoPrivacidad];
     
     [super viewDidLoad];

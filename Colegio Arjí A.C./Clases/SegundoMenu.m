@@ -13,6 +13,7 @@
 #import "MasInfo_Mensaje.h"
 #import "Singleton.h"
 #import "Login.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface SegundoMenu ()
 
@@ -263,6 +264,7 @@
             switch (indexPath.row) {
                 case 0:
                     cell.textLabel.text = [ArrObj objectAtIndex:indexPath.row];
+                    [self enableDetailCell:cell tipoOption:indexPath.row];
                     break;
             }
         }else if(sectionNumber == 1){
@@ -282,9 +284,17 @@
         if (sectionNumber == 0){
             switch (indexPath.row) {
                 case 0:
+                    cell.textLabel.text = [ArrObj objectAtIndex:indexPath.row];
+                    [self enableDetailCell:cell tipoOption:indexPath.row];
+                    break;
                 case 1:
+                    cell.textLabel.text = [ArrObj objectAtIndex:indexPath.row];
+                    [self enableDetailCell:cell tipoOption:indexPath.row];
+                    break;
                 case 2:
                     cell.textLabel.text = [ArrObj objectAtIndex:indexPath.row];
+                    cell.detailTextLabel.text = @"";
+                    break;
                     break;
             }
         }else if(sectionNumber == 1){
@@ -298,6 +308,7 @@
             switch (indexPath.row) {
                 case 0:
                     cell.textLabel.text = [ArrObj3 objectAtIndex:indexPath.row];
+                    [self enableDetailCell:cell tipoOption:indexPath.row];
                     break;
             }
             
@@ -309,6 +320,7 @@
             switch (indexPath.row) {
                 case 0:
                     cell.textLabel.text = [ArrObj objectAtIndex:indexPath.row];
+                    [self enableDetailCell:cell tipoOption:indexPath.row];
                     break;
             }
         }else if(sectionNumber == 1){
@@ -328,17 +340,31 @@
         if (sectionNumber == 0){
             switch (indexPath.row) {
                 case 0:
+                    cell.textLabel.text = [ArrObj objectAtIndex:indexPath.row];
+                    [self enableDetailCell:cell tipoOption:indexPath.row];
+                    break;
                 case 1:
+                    cell.textLabel.text = [ArrObj objectAtIndex:indexPath.row];
+                    [self enableDetailCell:cell tipoOption:indexPath.row];
+                    break;
                 case 2:
+                    cell.textLabel.text = [ArrObj objectAtIndex:indexPath.row];
+                    cell.detailTextLabel.text = @"";
+                    break;
                 case 3:
+                    cell.textLabel.text = [ArrObj objectAtIndex:indexPath.row];
+                    cell.detailTextLabel.text = @"";
+                    break;
                 case 4:
                     cell.textLabel.text = [ArrObj objectAtIndex:indexPath.row];
+                    cell.detailTextLabel.text = @"";
                     break;
             }
         }else if(sectionNumber == 1){
             switch (indexPath.row) {
                 case 0:
                     cell.textLabel.text = [ArrObj2 objectAtIndex:indexPath.row];
+                    cell.detailTextLabel.text = @"";
                     break;
             }
             
@@ -346,13 +372,12 @@
             switch (indexPath.row) {
                 case 0:
                     cell.textLabel.text = [ArrObj3 objectAtIndex:indexPath.row];
+                    [self enableDetailCell:cell tipoOption:indexPath.row];
                     break;
             }
             
         }
     }
-    
-    // cell.textLabel.text = [ArrObj objectAtIndex:indexPath.row];
     
     return cell;
 
@@ -448,7 +473,7 @@
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(nonnull NSIndexPath *)indexPath{
 
-    NSString *urlstring = [[NSString alloc] initWithFormat:@"http://platsource.mx/php/01/mobile/boletas_layout.php?idgrualu=%d&user=%@&iduser=%d&idemp=%d",self.IdObjAlu,self.Singleton.Username,self.Singleton.IdUser, self.Singleton.IdEmp] ;
+    NSString *urlstring = [[NSString alloc] initWithFormat:self.Singleton.urlBoletas,self.IdObjAlu,self.Singleton.Username,self.Singleton.IdUser, self.Singleton.IdEmp] ;
     NSLog(@"URL Calif: %@",urlstring);
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlstring]];
@@ -524,6 +549,40 @@
         
     }
 
+    
+    
+}
+
+
+- (void)enableDetailCell:(UITableViewCell *)cell  tipoOption:(NSInteger ) tipoOption{
+    
+    cell.detailTextLabel.text = @"";
+    switch (tipoOption) {
+        case 0:
+            if (self.Singleton.totalNoLeidasTareas > 0){
+                cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%d  ", self.Singleton.totalNoLeidasTareas];
+            }
+            break;
+        case 1:
+            if (self.Singleton.totalNoLeidasCirculaes > 0){
+                cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%d  ", self.Singleton.totalNoLeidasCirculaes];
+            }
+            break;
+        default:
+            cell.detailTextLabel.hidden = YES;
+            break;
+    }
+    cell.detailTextLabel.backgroundColor = [UIColor redColor];
+    cell.detailTextLabel.textColor = [UIColor whiteColor];
+    cell.detailTextLabel.clipsToBounds = YES;
+    cell.detailTextLabel.layer.cornerRadius = 7.5;
+
+    NSString *badge = [[NSString alloc] initWithFormat:@"%d  ", self.Singleton.totalNoLeidasBadge];
+    
+    UITabBarController *tabController =(UITabBarController *)[[[UIApplication sharedApplication] delegate] window].rootViewController;
+    [[tabController.viewControllers objectAtIndex:0] tabBarItem].badgeValue = badge;
+
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber: self.Singleton.totalNoLeidasBadge];
     
     
 }

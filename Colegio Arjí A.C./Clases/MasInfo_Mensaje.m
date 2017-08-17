@@ -117,6 +117,8 @@ didFinishDownloadingToURL:(NSURL *)location
         
         NSString *noteDataString = [NSString stringWithFormat:@"iduser=%d&device=%@&sts=%d", self.Singleton.IdUser,self.Singleton.tokenUser,self.Status];
         
+        NSLog(@"%@",noteDataString);
+        
         // Configuración de la sesión
         NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
         sessionConfiguration.HTTPAdditionalHeaders = @{@"Accept":@"application/json"};
@@ -125,7 +127,7 @@ didFinishDownloadingToURL:(NSURL *)location
         NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
         
         // Tarea de gestión de datos
-        NSURL *url = [NSURL URLWithString:@"http://platsource.mx/getMensajes/"];
+        NSURL *url = [NSURL URLWithString:self.Singleton.urlMensajes];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
         request.HTTPBody = [noteDataString dataUsingEncoding:NSUTF8StringEncoding];
         request.HTTPMethod = @"POST";

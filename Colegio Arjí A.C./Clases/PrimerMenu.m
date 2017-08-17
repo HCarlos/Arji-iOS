@@ -179,7 +179,7 @@
         NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
         
         // Tarea de gestión de datos
-        NSURL *url = [NSURL URLWithString:@"http://platsource.mx/getListaHijos/"];
+        NSURL *url = [NSURL URLWithString:self.Singleton.urlListaHijos];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
         request.HTTPBody = [noteDataString dataUsingEncoding:NSUTF8StringEncoding];
         request.HTTPMethod = @"POST";

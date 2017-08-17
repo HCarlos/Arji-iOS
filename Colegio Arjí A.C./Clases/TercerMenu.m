@@ -245,15 +245,56 @@
         }
     }
     
-    NSLog(@"CELL: OK");
-
-    
     return cell;
 
 }
 
-#pragma mark - Navigation
 
+
+- (void)updateTableViewCell:(UITableViewCell *)cell forCount:(NSUInteger)count
+{
+    // Count > 0, show count
+    if (count > 0) {
+        
+        // Create label
+        CGFloat fontSize = 14;
+        UILabel *label = [[UILabel alloc] init];
+        label.font = [UIFont systemFontOfSize:fontSize];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.textColor = [UIColor whiteColor];
+        label.backgroundColor = [UIColor redColor];
+        
+        // Add count to label and size to fit
+        label.text = [NSString stringWithFormat:@"%@", @(count)];
+        [label sizeToFit];
+        
+        // Adjust frame to be square for single digits or elliptical for numbers > 9
+        CGRect frame = label.frame;
+        frame.size.height += (int)(0.4*fontSize);
+        frame.size.width = (count <= 9) ? frame.size.height : frame.size.width + (int)fontSize;
+        label.frame = frame;
+        
+        // Set radius and clip to bounds
+        label.layer.cornerRadius = frame.size.height/2.0;
+        label.clipsToBounds = true;
+        
+        // Show label in accessory view and remove disclosure
+        cell.accessoryView = label;
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
+    // Count = 0, show disclosure
+    else {
+        cell.accessoryView = nil;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+}
+
+
+
+
+
+#pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     //  [segue.identifier isEqualToString:@"VerTareasCircularesCustom"] ||
@@ -289,7 +330,7 @@
             case 2:
                 vo.title  = [[Menu objectAtIndex:iPath.row] objectForKey:@"pdf"];
                 vo.IdObj = [ [[Menu objectAtIndex:iPath.row] objectForKey:@"idfactura"] intValue];
-                vo.urlWeb = [NSString stringWithFormat:@"http://platsource.mx/uw_fe/%@/%@",
+                vo.urlWeb = [NSString stringWithFormat:self.Singleton.urlFE,
                                     [[Menu objectAtIndex:iPath.row] objectForKey:@"directorio"],
                                     [[Menu objectAtIndex:iPath.row] objectForKey:@"pdf"]
                                     ];
@@ -308,7 +349,7 @@
     
     int IdObj = [ [[Menu objectAtIndex:indexPath.row] objectForKey:@"idedocta"] intValue];
     NSInteger idconcepto = [ [[Menu objectAtIndex:indexPath.row] objectForKey:@"idconceptounico"] intValue];
-    NSString *urlstring = [[NSString alloc] initWithFormat:@"http://platsource.mx/php/01/mobile/pagos_layout.php?idedocta=%d&user=%@&iduser=%d@&idconcepto=%ld",IdObj,self.Singleton.Username,self.Singleton.IdUser, (long)idconcepto] ;
+    NSString *urlstring = [[NSString alloc] initWithFormat:self.Singleton.urlPagos,IdObj,self.Singleton.Username,self.Singleton.IdUser, (long)idconcepto] ;
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlstring]];
     
@@ -342,7 +383,7 @@
         NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
         
         // Tarea de gestión de datos
-        NSURL *url = [NSURL URLWithString:@"http://platsource.mx/getListaTutorTareas/"];
+        NSURL *url = [NSURL URLWithString:self.Singleton.urlListaTutorTareas];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
         request.HTTPBody = [noteDataString dataUsingEncoding:NSUTF8StringEncoding];
         request.HTTPMethod = @"POST";
@@ -512,9 +553,17 @@
         NSString *tituloM = @"Hola";
         NSString *titDetM = @"";
         tituloM = [[Menu objectAtIndex:Indice] objectForKey:@"titulo_mensaje"] ;
-        titDetM = [[Menu objectAtIndex:Indice] objectForKey:@"nombre_remitente"] ;
+        titDetM = [[Menu objectAtIndex:Indice] objectForKey:@"nombre_remitente"];
+        
         cell.textLabel.text = tituloM;
         cell.detailTextLabel.text = titDetM;
+
+        int IsLeida = [ [[Menu objectAtIndex:Indice] objectForKey:@"isleida"] intValue];
+        NSString *isleida = IsLeida == 0 ? @"badge_red" : @"badge_white";
+
+        cell.accessoryView = [[ UIImageView alloc ]
+                              initWithImage:[UIImage imageNamed:isleida ]];
+        
         
     }
     @catch (NSException *theException)
@@ -530,6 +579,12 @@
                                 [[Menu objectAtIndex:Indice] objectForKey:@"materia"],
                                 [[Menu objectAtIndex:Indice] objectForKey:@"grupo"]
                                 ];
+    int IsLeida = [ [[Menu objectAtIndex:Indice] objectForKey:@"isleida"] intValue];
+    NSString *isleida = IsLeida == 0 ? @"badge_red" : @"badge_white";
+    
+    cell.accessoryView = [[ UIImageView alloc ]
+                          initWithImage:[UIImage imageNamed:isleida ]];
+
 }
 
 - (IBAction)btnActionSegment:(UISegmentedControl *)sender {

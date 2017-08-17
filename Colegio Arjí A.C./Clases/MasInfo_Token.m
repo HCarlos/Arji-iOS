@@ -11,13 +11,15 @@
 
 @implementation MasInfo_Token
 
-@synthesize Singleton,lblVersion,lblToken, lblNoTransactions;
+@synthesize Singleton,lblVersion,lblToken, FCMToken, APNToken, lblNoTransactions;
 
 - (void)viewDidLoad {
     
     self.Singleton  = [Singleton sharedMySingleton];
     
     [lblToken setText:self.Singleton.tokenUser];
+    [FCMToken setText:self.Singleton.FCMToken];
+    [APNToken setText:self.Singleton.APNSToken];
     [lblVersion setText:[[NSString alloc] initWithFormat:@"v.%@",self.Singleton.Version]];
     [lblNoTransactions setText:[[NSString alloc] initWithFormat:@"%ld",(long)self.Singleton.getAccess]];
 

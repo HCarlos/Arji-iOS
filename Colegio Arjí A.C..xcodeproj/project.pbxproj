@@ -9,10 +9,13 @@
 /* Begin PBXBuildFile section */
 		A613F7A91C99BEA7006F2D7D /* MasInfo_Beneficios.m in Sources */ = {isa = PBXBuildFile; fileRef = A613F7A81C99BEA7006F2D7D /* MasInfo_Beneficios.m */; };
 		A613F7AC1C99CF28006F2D7D /* MasInfo_Contacto.m in Sources */ = {isa = PBXBuildFile; fileRef = A613F7AB1C99CF28006F2D7D /* MasInfo_Contacto.m */; };
+		A6156D951F433F7900E0417F /* badge_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6156D931F433F7900E0417F /* badge_white@2x.png */; };
+		A6156D961F433F7900E0417F /* badge_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6156D941F433F7900E0417F /* badge_red@2x.png */; };
 		A6191B441E96851B00ABB207 /* MasInfo_Token.m in Sources */ = {isa = PBXBuildFile; fileRef = A6191B431E96851B00ABB207 /* MasInfo_Token.m */; };
 		A626E5351C907E2F0089BDA1 /* QuienesSomos.m in Sources */ = {isa = PBXBuildFile; fileRef = A626E5341C907E2F0089BDA1 /* QuienesSomos.m */; };
 		A626E5381C9099790089BDA1 /* Certificaciones.m in Sources */ = {isa = PBXBuildFile; fileRef = A626E5371C9099790089BDA1 /* Certificaciones.m */; };
 		A62C96A81E96C47F00FE3C58 /* Splash.m in Sources */ = {isa = PBXBuildFile; fileRef = A62C96A71E96C47F00FE3C58 /* Splash.m */; };
+		A62CC3A21F3382490045A154 /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62CC3A11F3382490045A154 /* PassKit.framework */; };
 		A63245B21C931AD90046B9B6 /* MasInfo_Proceso_Admision.m in Sources */ = {isa = PBXBuildFile; fileRef = A63245B11C931AD90046B9B6 /* MasInfo_Proceso_Admision.m */; };
 		A63245B51C931F9C0046B9B6 /* MasInfo_Mapa_Ubicacion.m in Sources */ = {isa = PBXBuildFile; fileRef = A63245B41C931F9C0046B9B6 /* MasInfo_Mapa_Ubicacion.m */; };
 		A63245B71C9326E80046B9B6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63245B61C9326E80046B9B6 /* MapKit.framework */; };
@@ -20,6 +23,7 @@
 		A63C737E1EC4DD8E00D1C217 /* icono_arji_83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A63C737B1EC4DD8E00D1C217 /* icono_arji_83.5@2x.png */; };
 		A63C737F1EC4DD8E00D1C217 /* icono_arji76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A63C737C1EC4DD8E00D1C217 /* icono_arji76@2x.png */; };
 		A63C73801EC4DD8E00D1C217 /* icono_arji76x76.png in Resources */ = {isa = PBXBuildFile; fileRef = A63C737D1EC4DD8E00D1C217 /* icono_arji76x76.png */; };
+		A64AA3671F44AED3002D911B /* badge_empty_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A64AA3661F44AED3002D911B /* badge_empty_red@2x.png */; };
 		A663DF9B1E1D7E1400F3A584 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A663DF9A1E1D7E1400F3A584 /* UserNotifications.framework */; };
 		A665743F1C7E69C500834389 /* VerTareasCirculares.m in Sources */ = {isa = PBXBuildFile; fileRef = A665743E1C7E69C500834389 /* VerTareasCirculares.m */; };
 		A675DA2C1D8821350050B4C9 /* MasInfo_Aviso_Privacidad.m in Sources */ = {isa = PBXBuildFile; fileRef = A675DA2B1D8821350050B4C9 /* MasInfo_Aviso_Privacidad.m */; };
@@ -102,13 +106,18 @@
 		A6D872F21E95759D003556D0 /* token50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6D872F11E95759D003556D0 /* token50@2x.png */; };
 		A6D873001E9586E0003556D0 /* token40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6D872FF1E9586E0003556D0 /* token40@2x.png */; };
 		A6FB64591C8733480093A2A0 /* icono_arji360x360.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FB64581C8733480093A2A0 /* icono_arji360x360.png */; };
+		A6FCA3461F3385A8002D10DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6FCA3451F3385A8002D10DF /* GoogleService-Info.plist */; };
+		F433AE80AC43D303A09A74B3 /* libPods-Colegio Arjí A.C..a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C44D09D2E0E233ABE192E30 /* libPods-Colegio Arjí A.C..a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C44D09D2E0E233ABE192E30 /* libPods-Colegio Arjí A.C..a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Colegio Arjí A.C..a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A613F7A71C99BEA7006F2D7D /* MasInfo_Beneficios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MasInfo_Beneficios.h; path = Clases/MasInfo_Beneficios.h; sourceTree = "<group>"; };
 		A613F7A81C99BEA7006F2D7D /* MasInfo_Beneficios.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasInfo_Beneficios.m; path = Clases/MasInfo_Beneficios.m; sourceTree = "<group>"; };
 		A613F7AA1C99CF28006F2D7D /* MasInfo_Contacto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MasInfo_Contacto.h; path = Clases/MasInfo_Contacto.h; sourceTree = "<group>"; };
 		A613F7AB1C99CF28006F2D7D /* MasInfo_Contacto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasInfo_Contacto.m; path = Clases/MasInfo_Contacto.m; sourceTree = "<group>"; };
+		A6156D931F433F7900E0417F /* badge_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "badge_white@2x.png"; path = "Img/Iconos/badge_white@2x.png"; sourceTree = "<group>"; };
+		A6156D941F433F7900E0417F /* badge_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "badge_red@2x.png"; path = "Img/Iconos/badge_red@2x.png"; sourceTree = "<group>"; };
 		A6191B421E96851B00ABB207 /* MasInfo_Token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MasInfo_Token.h; path = Clases/MasInfo_Token.h; sourceTree = "<group>"; };
 		A6191B431E96851B00ABB207 /* MasInfo_Token.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasInfo_Token.m; path = Clases/MasInfo_Token.m; sourceTree = "<group>"; };
 		A626E5331C907E2F0089BDA1 /* QuienesSomos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuienesSomos.h; path = Clases/QuienesSomos.h; sourceTree = "<group>"; };
@@ -117,6 +126,7 @@
 		A626E5371C9099790089BDA1 /* Certificaciones.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Certificaciones.m; sourceTree = "<group>"; };
 		A62C96A61E96C47F00FE3C58 /* Splash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Splash.h; path = Clases/Splash.h; sourceTree = "<group>"; };
 		A62C96A71E96C47F00FE3C58 /* Splash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Splash.m; path = Clases/Splash.m; sourceTree = "<group>"; };
+		A62CC3A11F3382490045A154 /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
 		A63245B01C931AD90046B9B6 /* MasInfo_Proceso_Admision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MasInfo_Proceso_Admision.h; path = Clases/MasInfo_Proceso_Admision.h; sourceTree = "<group>"; };
 		A63245B11C931AD90046B9B6 /* MasInfo_Proceso_Admision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasInfo_Proceso_Admision.m; path = Clases/MasInfo_Proceso_Admision.m; sourceTree = "<group>"; };
 		A63245B31C931F9C0046B9B6 /* MasInfo_Mapa_Ubicacion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MasInfo_Mapa_Ubicacion.h; path = Clases/MasInfo_Mapa_Ubicacion.h; sourceTree = "<group>"; };
@@ -127,6 +137,7 @@
 		A63C737B1EC4DD8E00D1C217 /* icono_arji_83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icono_arji_83.5@2x.png"; path = "Img/Iconos/icono_arji_83.5@2x.png"; sourceTree = "<group>"; };
 		A63C737C1EC4DD8E00D1C217 /* icono_arji76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icono_arji76@2x.png"; path = "Img/Iconos/icono_arji76@2x.png"; sourceTree = "<group>"; };
 		A63C737D1EC4DD8E00D1C217 /* icono_arji76x76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icono_arji76x76.png; path = Img/Iconos/icono_arji76x76.png; sourceTree = "<group>"; };
+		A64AA3661F44AED3002D911B /* badge_empty_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "badge_empty_red@2x.png"; path = "Img/Iconos/badge_empty_red@2x.png"; sourceTree = "<group>"; };
 		A663DF9A1E1D7E1400F3A584 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		A665743D1C7E69C500834389 /* VerTareasCirculares.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VerTareasCirculares.h; path = Clases/VerTareasCirculares.h; sourceTree = "<group>"; };
 		A665743E1C7E69C500834389 /* VerTareasCirculares.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VerTareasCirculares.m; path = Clases/VerTareasCirculares.m; sourceTree = "<group>"; };
@@ -228,6 +239,9 @@
 		A6D872F11E95759D003556D0 /* token50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "token50@2x.png"; path = "Img/Iconos/token50@2x.png"; sourceTree = "<group>"; };
 		A6D872FF1E9586E0003556D0 /* token40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "token40@2x.png"; path = "Img/Iconos/token40@2x.png"; sourceTree = "<group>"; };
 		A6FB64581C8733480093A2A0 /* icono_arji360x360.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icono_arji360x360.png; path = Img/Iconos/icono_arji360x360.png; sourceTree = "<group>"; };
+		A6FCA3451F3385A8002D10DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Colegio Arjí A.C./GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BC333F98A2F6A3953559D531 /* Pods-Colegio Arjí A.C..release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Colegio Arjí A.C..release.xcconfig"; path = "Pods/Target Support Files/Pods-Colegio Arjí A.C./Pods-Colegio Arjí A.C..release.xcconfig"; sourceTree = "<group>"; };
+		C49311714343D042C10E7B2D /* Pods-Colegio Arjí A.C..debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Colegio Arjí A.C..debug.xcconfig"; path = "Pods/Target Support Files/Pods-Colegio Arjí A.C./Pods-Colegio Arjí A.C..debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,8 +249,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A62CC3A21F3382490045A154 /* PassKit.framework in Frameworks */,
 				A663DF9B1E1D7E1400F3A584 /* UserNotifications.framework in Frameworks */,
 				A63245B71C9326E80046B9B6 /* MapKit.framework in Frameworks */,
+				F433AE80AC43D303A09A74B3 /* libPods-Colegio Arjí A.C..a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,7 +262,9 @@
 		A663DF991E1D7E1400F3A584 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A62CC3A11F3382490045A154 /* PassKit.framework */,
 				A663DF9A1E1D7E1400F3A584 /* UserNotifications.framework */,
+				7C44D09D2E0E233ABE192E30 /* libPods-Colegio Arjí A.C..a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -254,11 +272,13 @@
 		A6A9CA911C7E4C4600314626 = {
 			isa = PBXGroup;
 			children = (
+				A6FCA3451F3385A8002D10DF /* GoogleService-Info.plist */,
 				A6A9CA9C1C7E4C4600314626 /* Colegio Arjí A.C. */,
 				A6A9CA9B1C7E4C4600314626 /* Products */,
 				A63C73791EC4DB4300D1C217 /* Assets.xcassets */,
 				A63245B61C9326E80046B9B6 /* MapKit.framework */,
 				A663DF991E1D7E1400F3A584 /* Frameworks */,
+				C2EAE48E1D0C042D4F282FE3 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -386,6 +406,9 @@
 		A6AEE3B61C864CDD00BA68FA /* Iconos */ = {
 			isa = PBXGroup;
 			children = (
+				A64AA3661F44AED3002D911B /* badge_empty_red@2x.png */,
+				A6156D931F433F7900E0417F /* badge_white@2x.png */,
+				A6156D941F433F7900E0417F /* badge_red@2x.png */,
 				A6B0448F1ED4AB7C00E874E7 /* califica_app_off@2x.png */,
 				A6D872FF1E9586E0003556D0 /* token40@2x.png */,
 				A63C737B1EC4DD8E00D1C217 /* icono_arji_83.5@2x.png */,
@@ -436,6 +459,15 @@
 			name = Iconos;
 			sourceTree = "<group>";
 		};
+		C2EAE48E1D0C042D4F282FE3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C49311714343D042C10E7B2D /* Pods-Colegio Arjí A.C..debug.xcconfig */,
+				BC333F98A2F6A3953559D531 /* Pods-Colegio Arjí A.C..release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -443,9 +475,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A6A9CAB41C7E4C4600314626 /* Build configuration list for PBXNativeTarget "Colegio Arjí A.C." */;
 			buildPhases = (
+				9CE9B95269AFA48431E70BA3 /* [CP] Check Pods Manifest.lock */,
 				A6A9CA961C7E4C4600314626 /* Sources */,
 				A6A9CA971C7E4C4600314626 /* Frameworks */,
 				A6A9CA981C7E4C4600314626 /* Resources */,
+				5D2E8C807FB50F0253FDD489 /* [CP] Embed Pods Frameworks */,
+				9A9490749E48E8C2100E4C73 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -477,6 +512,9 @@
 								enabled = 1;
 							};
 							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.Wallet = {
 								enabled = 1;
 							};
 						};
@@ -535,6 +573,8 @@
 				A675DA571D8842A80050B4C9 /* ProcesoAdmision_off@2x.png in Resources */,
 				A675DA441D883D4C0050B4C9 /* Directorio@2x.png in Resources */,
 				A6AEE3DD1C864D1000BA68FA /* retina_display_1136x640.png in Resources */,
+				A6FCA3461F3385A8002D10DF /* GoogleService-Info.plist in Resources */,
+				A64AA3671F44AED3002D911B /* badge_empty_red@2x.png in Resources */,
 				A6AEE3C21C864CEA00BA68FA /* icono_arji3x.png in Resources */,
 				A6AEE3D51C864D1000BA68FA /* retina_display_320x480.png in Resources */,
 				A6AEE3D61C864D1000BA68FA /* retina_display_480x320.png in Resources */,
@@ -542,6 +582,7 @@
 				A678322A1D92B21300DD2B63 /* defaultback.png in Resources */,
 				A678321B1D92B1F300DD2B63 /* home.png in Resources */,
 				A6AEE3D91C864D1000BA68FA /* retina_display_640x1136.png in Resources */,
+				A6156D951F433F7900E0417F /* badge_white@2x.png in Resources */,
 				A67832151D92B1E600DD2B63 /* default@2x.png in Resources */,
 				A6D873001E9586E0003556D0 /* token40@2x.png in Resources */,
 				A6D872F01E957542003556D0 /* token30@2x.png in Resources */,
@@ -556,6 +597,7 @@
 				A675DA3B1D883B750050B4C9 /* Home_off@2x.png in Resources */,
 				A6AEE3C71C864CEA00BA68FA /* icono_arji120x.png in Resources */,
 				A6C0A7071CB56499008C012F /* spanner-7.png in Resources */,
+				A6156D961F433F7900E0417F /* badge_red@2x.png in Resources */,
 				A67832121D92B1DC00DD2B63 /* retina_display_47.png in Resources */,
 				A675DA521D8842A80050B4C9 /* AvisoPrivacidad@2x.png in Resources */,
 				A678321E1D92B1F700DD2B63 /* calendar.png in Resources */,
@@ -577,6 +619,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5D2E8C807FB50F0253FDD489 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Colegio Arjí A.C./Pods-Colegio Arjí A.C.-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9A9490749E48E8C2100E4C73 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Colegio Arjí A.C./Pods-Colegio Arjí A.C.-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9CE9B95269AFA48431E70BA3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A6A9CA961C7E4C4600314626 /* Sources */ = {
@@ -823,6 +913,7 @@
 		};
 		A6A9CAB51C7E4C4600314626 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C49311714343D042C10E7B2D /* Pods-Colegio Arjí A.C..debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -879,6 +970,7 @@
 		};
 		A6A9CAB61C7E4C4600314626 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC333F98A2F6A3953559D531 /* Pods-Colegio Arjí A.C..release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

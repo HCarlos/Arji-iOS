@@ -99,7 +99,7 @@ didFinishDownloadingToURL:(NSURL *)location
     NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
     
     // Tarea de gestión de datos
-    NSURL *url = [NSURL URLWithString:@"http://platsource.mx/getBoletin/"];
+    NSURL *url = [NSURL URLWithString:self.Singleton.urlBoletin];
     NSURLSessionDataTask *dataTask = [session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         // Sondeo de la respuesta HTTP del servidor
         NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;

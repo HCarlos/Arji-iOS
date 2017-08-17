@@ -24,7 +24,7 @@
     self.Singleton  = [Singleton sharedMySingleton];
     
     miMIME = @"text/html";
-    self.urlWeb = [[NSString alloc] initWithFormat:@"http://platsource.mx/getMensaje/%d/%d/%d/", self.IdMobilMensaje, self.Singleton.IdUser,self.Singleton.IdEmp];
+    self.urlWeb = [[NSString alloc] initWithFormat:self.Singleton.urlCuerpoMensaje, self.IdMobilMensaje, self.Singleton.IdUser,self.Singleton.IdEmp];
     [self getMensaje];
     
     // NSLog(@"URL Web: %@",self.urlWeb);

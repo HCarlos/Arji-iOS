@@ -24,7 +24,7 @@
     self.Singleton  = [Singleton sharedMySingleton];
     
     miMIME = @"text/html";
-    self.urlWeb = @"http://platsource.mx/getCertificaciones/";
+    self.urlWeb = self.Singleton.urlCertificaciones;
     [self getCertificaciones];
     
     [super viewDidLoad];

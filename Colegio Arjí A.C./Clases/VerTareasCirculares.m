@@ -131,12 +131,12 @@
     NSString *noteDataString;
     // Tarea de gestión de datos
         
-    NSURL *url = [NSURL URLWithString:@"http://platsource.mx/getHTMLTemplate/"];
+    NSURL *url = [NSURL URLWithString:self.Singleton.urlTemplateTareas];
     if (self.IdObjMenu == 0){
         noteDataString = [NSString stringWithFormat:@"user=%@&idtarea=%d&idtareadestinatario=%d", usernamex,self.IdTarea,self.IdObj];
     }else if (self.IdObjMenu == 1){
         noteDataString = [NSString stringWithFormat:@"user=%@&idcommensaje=%d&idcommensajedestinatario=%d&sts=0", usernamex,self.IdComMensaje,self.IdObj];
-        url = [NSURL URLWithString:@"http://platsource.mx/getCircularesHTMLTemplate/"];
+        url = [NSURL URLWithString:self.Singleton.urlTemplateCirculares];
     }
         
     // Tarea de gestión de datos

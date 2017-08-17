@@ -33,12 +33,9 @@
     int RegistrosPorPagina;
 	BOOL IsDelete;
     NSString *Empresa;
-    
     NSString *Username;
     NSString *Password;
-    
     NSString *NombreCompletoUsuario;
-    
     NSString *Version;
     
 }
@@ -56,14 +53,44 @@
 @property (nonatomic) int limFrom;
 @property (nonatomic) int limCant;
 @property (nonatomic) int RegistrosPorPagina;
+
+@property (nonatomic) int totalNoLeidasTareas;
+@property (nonatomic) int totalNoLeidasCirculaes;
+@property (nonatomic) int totalNoLeidasMensajes;
+@property (nonatomic) int totalNoLeidasBadge;
+
+
 @property (nonatomic, retain) NSString *Username;
 @property (nonatomic, retain) NSString *Password;
 @property (nonatomic, retain) NSString *NombreCompletoUsuario;
 @property (nonatomic, retain) NSString *Version;
+@property (nonatomic, retain) NSString *VersionDisponible;
+// URL's
+@property (nonatomic, retain) NSString *urlBase;
+@property (nonatomic, retain) NSString *urlLogin;
+@property (nonatomic, retain) NSString *urlListaHijos;
+@property (nonatomic, retain) NSString *urlBoletas;
+@property (nonatomic, retain) NSString *urlFE;
+@property (nonatomic, retain) NSString *urlPagos;
+@property (nonatomic, retain) NSString *urlListaTutorTareas;
+@property (nonatomic, retain) NSString *urlTemplateTareas;
+@property (nonatomic, retain) NSString *urlTemplateCirculares;
+@property (nonatomic, retain) NSString *urlBoletin;
+@property (nonatomic, retain) NSString *urlQuienesSomos;
+@property (nonatomic, retain) NSString *urlCertificaciones;
+@property (nonatomic, retain) NSString *urlCalendario;
+@property (nonatomic, retain) NSString *urlDirectorio;
+@property (nonatomic, retain) NSString *urlProcesoAdmision;
+@property (nonatomic, retain) NSString *urlBeneficios;
+@property (nonatomic, retain) NSString *urlContacto;
+@property (nonatomic, retain) NSString *urlMensajes;
+@property (nonatomic, retain) NSString *urlCuerpoMensaje;
+@property (nonatomic, retain) NSString *urlAvisoPrivacidad;
 
 @property (nonatomic) NSInteger applicationIconBadgeNumber;
 @property (nonatomic) NSInteger noIngresos;
 @property (nonatomic) NSInteger IdConcepto;
+
 
 @property (nonatomic) BOOL IsDelete;
 
@@ -80,11 +107,9 @@
 @property(nonatomic, retain) NSString    *uniqueIdentifier;  // a string unique to each device based on various
 @property(nonatomic, retain) NSUUID *identifierForVendor;
 
-/*
-@property(nonatomic,retain) NSString *domicilio;            // domicilio
- */
-
 @property(nonatomic,retain) NSString *tokenUser;              // e.g. "My iPhone"
+@property(nonatomic,retain) NSString *FCMToken;
+@property(nonatomic,retain) NSString *APNSToken;
 @property(nonatomic,retain) NSMutableDictionary *dataPList;
 @property(nonatomic,retain) NSString *pathPList;
 

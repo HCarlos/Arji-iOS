@@ -8,6 +8,7 @@
 
 #import "Login.h"
 #import "Singleton.h"
+@import Firebase;
 
 @interface Login (){
     NSMutableArray *datos;
@@ -127,7 +128,7 @@
         NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
         
         // Tarea de gestión de datos
-        NSURL *url = [NSURL URLWithString:@"http://platsource.mx/getLoginUserMobile/"];
+        NSURL *url = [NSURL URLWithString:self.Singleton.urlLogin];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
         request.HTTPBody = [noteDataString dataUsingEncoding:NSUTF8StringEncoding];
         request.HTTPMethod = @"POST";
@@ -147,7 +148,18 @@
                     datos = (NSMutableArray *)responseBody;
                     NSString *msg = [[datos objectAtIndex:0]objectForKey:@"msg"];
                     NSString *testString= [[datos objectAtIndex:0]objectForKey:@"data"];
-                    //NSLog(@"Data->: %@",testString);
+                    
+                    NSDictionary *stats = [[datos objectAtIndex:0]objectForKey:@"estadisticas"];
+                    
+//                    NSLog(@"Estadisticas->: %@",stats);
+                    
+                    
+                    self.Singleton.totalNoLeidasTareas = [ [stats objectForKey:@"totalNoLeidasTareas"] intValue];
+                    self.Singleton.totalNoLeidasCirculaes = [ [stats objectForKey:@"totalNoLeidasCirculares"] intValue];
+                    self.Singleton.totalNoLeidasMensajes = [ [stats objectForKey:@"totalNoLeidasMensajes"] intValue];
+                    self.Singleton.totalNoLeidasBadge = [ [stats objectForKey:@"totalNoLeidasBadge"] intValue];
+                    // [UIApplication sharedApplication].applicationIconBadgeNumber = self.Singleton.totalNoLeidasBadge;
+                    
                     NSArray *Value = [testString componentsSeparatedByString:@"|"];
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
@@ -160,12 +172,14 @@
                             self.Singleton.Password              = passwordl;
                             self.Singleton.IdUser                = [[Value objectAtIndex:0] intValue];
                             self.Singleton.IdEmp                 = [[Value objectAtIndex:2] intValue];
-                            self.Singleton.Empresa               = [Value objectAtIndex:3];
+                            self.Singleton.Empresa               = [Value objectAtIndex:2];
                             self.Singleton.IdUserNivelAcceso     = [[Value objectAtIndex:3] intValue];
                             self.Singleton.RegistrosPorPagina    = [[Value objectAtIndex:4] intValue];
                             self.Singleton.Clave                 = [[Value objectAtIndex:5] intValue];
                             self.Singleton.Param1                = [[Value objectAtIndex:6] intValue];
                             self.Singleton.NombreCompletoUsuario = [Value objectAtIndex:7];
+                            
+                            
                             
                             NSLog(@"IdUser->: %d",self.Singleton.IdUser);
                             NSLog(@"Username->: %@",self.Singleton.Username);
@@ -176,8 +190,15 @@
                             NSLog(@"RegistrosPorPagina->: %d",self.Singleton.RegistrosPorPagina);
                             NSLog(@"Clave->: %d",self.Singleton.Clave);
                             NSLog(@"Param1->: %d",self.Singleton.Param1);
-                            NSLog(@"Nombre Completo->: %@",self.Singleton.NombreCompletoUsuario);
+                            NSLog(@"Nombre->: %@",self.Singleton.NombreCompletoUsuario);
+
+                            NSLog(@"totalNoLeidasTareas->: %d",self.Singleton.totalNoLeidasTareas);
+                            NSLog(@"totalNoLeidasCiurculaes->: %d",self.Singleton.totalNoLeidasCirculaes);
+                            NSLog(@"totalNoLeidasMensajes->: %d",self.Singleton.totalNoLeidasMensajes);
+                            NSLog(@"totalNoLeidasBadge->: %d",self.Singleton.totalNoLeidasBadge);
                             
+                            NSString *fcmToken = [FIRMessaging messaging].FCMToken;
+                            NSLog(@"FCM registration token: %@", fcmToken);
                             
                             // NSLog(@"Clave %d",self.Singleton.Clave);
 
@@ -210,7 +231,7 @@
                     });
                 } else {
                     [self.btnIngresar setEnabled:YES];
-                    [self.lblMensaje setText:@"Ocurrió un Error!"];
+                    [self.lblMensaje setText:@"Ocurrió un Error! %@"];
                     // NSAssert(NO, @"%",JSONError);
                     // NSAssert(NO, @"Error en la conversión de JSON a Foundation ");
                     dispatch_async(dispatch_get_main_queue(), ^{
@@ -222,6 +243,7 @@
             } else {
                 [self.btnIngresar setEnabled:YES];
                 [self.lblMensaje setText:@"Ocurrió un Error!!"];
+                NSLog(@"%ld",(long)HTTPResponse.statusCode);
                 // NSAssert(NO, @"Error a la hora de obtener las notas del servidor");
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.Indicador stopAnimating];
@@ -241,7 +263,7 @@
     }
     @catch (NSException *theException)
     {
-        // NSLog(@"Get Data Exception: %@", theException);
+        NSLog(@"Get Data Exception: %@", theException);
     }
 }
 

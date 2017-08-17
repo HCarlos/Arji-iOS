@@ -24,8 +24,10 @@
 @synthesize uniqueIdentifier;
 @synthesize pathPList, dataPList,IdUser, IsDelete, limCant, limFrom, noIngresos, IdConcepto;
 @synthesize Username, Password, IdEmp, IdUserNivelAcceso, Param1, Clave, Empresa, RegistrosPorPagina, NombreCompletoUsuario;
-@synthesize tokenUser, typeDevice, Version;
+@synthesize tokenUser, typeDevice, Version, VersionDisponible, FCMToken, APNSToken;
 @synthesize applicationIconBadgeNumber;
+@synthesize totalNoLeidasBadge, totalNoLeidasTareas, totalNoLeidasMensajes, totalNoLeidasCirculaes,
+            urlBase, urlLogin, urlListaHijos, urlBoletas, urlFE, urlPagos, urlListaTutorTareas, urlTemplateTareas,urlTemplateCirculares, urlBoletin, urlQuienesSomos, urlCertificaciones, urlCalendario, urlDirectorio, urlProcesoAdmision, urlBeneficios, urlContacto, urlMensajes, urlCuerpoMensaje, urlAvisoPrivacidad;
 
 static Singleton* _sharedMySingleton = nil;
 //extern NSString* CTSettingCopyMyPhoneNumber();
@@ -61,24 +63,40 @@ static Singleton* _sharedMySingleton = nil;
 	self = [super init];
 	if (self != nil) {
 		
-		/*
-        self.JS = @"";
-        
-         self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
-        //[self.webView setDelegate:self];
-        
-        [self.webView loadRequest:[NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://www.tabascoweb.com/images/web/stream.php"]]];
-         */
-
         NSString * version = nil;
         version = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
         if (!version) {
             version = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey];
         }
         
-        self.Version = version;
-        self.IdConcepto = 0;
+        self.totalNoLeidasCirculaes = 0;
+        self.totalNoLeidasMensajes = 0;
+        self.totalNoLeidasTareas = 0;
+        self.totalNoLeidasBadge = 0;
         
+        self.Version = version;
+        self.VersionDisponible = version;
+        self.IdConcepto = 0;
+        self.urlBase = @"http://platsource.mx/";
+        self.urlLogin = [NSString stringWithFormat:@"%@%@", self.urlBase, @"getLoginUserMobile/"];
+        self.urlListaHijos = [NSString stringWithFormat:@"%@%@", self.urlBase, @"getListaHijos/"];
+        self.urlBoletas = [NSString stringWithFormat:@"%@%@", self.urlBase, @"php/01/mobile/boletas_layout.php?idgrualu=%d&user=%@&iduser=%d&idemp=%d"];
+        self.urlFE = [NSString stringWithFormat:@"%@%@", self.urlBase, @"uw_fe/%@/%@"];
+        self.urlPagos = [NSString stringWithFormat:@"%@%@", self.urlBase, @"php/01/mobile/pagos_layout.php?idedocta=%d&user=%@&iduser=%d@&idconcepto=%ld"];
+        self.urlListaTutorTareas = [NSString stringWithFormat:@"%@%@", self.urlBase, @"getListaTutorTareas/"];
+        self.urlTemplateTareas = [NSString stringWithFormat:@"%@%@", self.urlBase, @"getHTMLTemplate/"];
+        self.urlTemplateCirculares = [NSString stringWithFormat:@"%@%@", self.urlBase, @"getCircularesHTMLTemplate/"];
+        self.urlBoletin = [NSString stringWithFormat:@"%@%@", self.urlBase, @"getBoletin/"];
+        self.urlQuienesSomos = [NSString stringWithFormat:@"%@%@", self.urlBase, @"getQuienesSomos/"];
+        self.urlCertificaciones = [NSString stringWithFormat:@"%@%@", self.urlBase, @"getCertificaciones/"];
+        self.urlCalendario = [NSString stringWithFormat:@"%@%@", self.urlBase, @"getCalendario/%d/"];
+        self.urlDirectorio = [NSString stringWithFormat:@"%@%@", self.urlBase, @"getDirectorio/"];
+        self.urlProcesoAdmision = [NSString stringWithFormat:@"%@%@", self.urlBase, @"getProcesoAdmision/"];
+        self.urlBeneficios = [NSString stringWithFormat:@"%@%@", self.urlBase, @"getBeneficios/"];
+        self.urlContacto = [NSString stringWithFormat:@"%@%@", self.urlBase, @"getContacto/"];
+        self.urlMensajes = [NSString stringWithFormat:@"%@%@", self.urlBase, @"getMensajes/"];
+        self.urlCuerpoMensaje = [NSString stringWithFormat:@"%@%@", self.urlBase, @"getMensaje/%d/%d/%d/"];
+        self.urlAvisoPrivacidad = [NSString stringWithFormat:@"%@%@", self.urlBase, @"getAvisoPrivacidad/"];
         
 	}
 	

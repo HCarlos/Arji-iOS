@@ -24,7 +24,7 @@
     self.Singleton  = [Singleton sharedMySingleton];
     
     miMIME = @"text/html";
-    self.urlWeb = @"http://platsource.mx/getProcesoAdmision/";
+    self.urlWeb = self.Singleton.urlProcesoAdmision;
     [self getProcesoAdmision];
 
     [super viewDidLoad];

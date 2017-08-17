@@ -20,4 +20,6 @@
 @property (strong, nonatomic) IBOutlet UITableView *tblView;
 - (IBAction)btnLogin:(id)sender;
 
+- (void)enableDetailCell:(UITableViewCell *)cell tipoOption:(NSInteger ) tipoOption;
+
 @end
