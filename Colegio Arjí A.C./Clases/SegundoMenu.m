@@ -578,10 +578,8 @@
     cell.detailTextLabel.layer.cornerRadius = 7.5;
 
     NSString *badge = [[NSString alloc] initWithFormat:@"%d  ", self.Singleton.totalNoLeidasBadge];
-    
     UITabBarController *tabController =(UITabBarController *)[[[UIApplication sharedApplication] delegate] window].rootViewController;
     [[tabController.viewControllers objectAtIndex:0] tabBarItem].badgeValue = badge;
-
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber: self.Singleton.totalNoLeidasBadge];
     
     
@@ -622,5 +620,9 @@
     
     [self presentViewController:alert animated:YES completion:nil];
     
+}
+
+- (IBAction)btnRefresh:(id)sender {
+    //[self tab];
 }
 @end

@@ -14,11 +14,14 @@
     Singleton *Singleton;
 }
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnRefresh;
+
 @property (nonatomic) int IdObjAlu;
 @property (strong,nonatomic) Singleton *Singleton;
 
 @property (strong, nonatomic) IBOutlet UITableView *tblView;
 - (IBAction)btnLogin:(id)sender;
+- (IBAction)btnRefresh:(id)sender;
 
 - (void)enableDetailCell:(UITableViewCell *)cell tipoOption:(NSInteger ) tipoOption;
 

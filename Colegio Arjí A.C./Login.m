@@ -150,10 +150,6 @@
                     NSString *testString= [[datos objectAtIndex:0]objectForKey:@"data"];
                     
                     NSDictionary *stats = [[datos objectAtIndex:0]objectForKey:@"estadisticas"];
-                    
-//                    NSLog(@"Estadisticas->: %@",stats);
-                    
-                    
                     self.Singleton.totalNoLeidasTareas = [ [stats objectForKey:@"totalNoLeidasTareas"] intValue];
                     self.Singleton.totalNoLeidasCirculaes = [ [stats objectForKey:@"totalNoLeidasCirculares"] intValue];
                     self.Singleton.totalNoLeidasMensajes = [ [stats objectForKey:@"totalNoLeidasMensajes"] intValue];

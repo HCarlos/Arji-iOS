@@ -404,12 +404,23 @@
                         NSLog(@"RESPUESTA: %@",responseBody);
                         Menu = (NSMutableArray *)responseBody;
                         NSString *msg = [[Menu objectAtIndex:0]objectForKey:@"msg"];
+                        NSDictionary *stats = [[Menu objectAtIndex:0]objectForKey:@"estadisticas"];
+                        self.Singleton.totalNoLeidasTareas = [ [stats objectForKey:@"totalNoLeidasTareas"] intValue];
+                        self.Singleton.totalNoLeidasCirculaes = [ [stats objectForKey:@"totalNoLeidasCirculares"] intValue];
+                        self.Singleton.totalNoLeidasMensajes = [ [stats objectForKey:@"totalNoLeidasMensajes"] intValue];
+                        self.Singleton.totalNoLeidasBadge = [ [stats objectForKey:@"totalNoLeidasBadge"] intValue];
                         
                         if ([msg  isEqual: @"OK"]){
                             
                             [tblView reloadData];
                             
                             [lblTbl setHidden:YES];
+                            
+                            NSString *badge = [[NSString alloc] initWithFormat:@"%d  ", self.Singleton.totalNoLeidasBadge];
+                            UITabBarController *tabController =(UITabBarController *)[[[UIApplication sharedApplication] delegate] window].rootViewController;
+                            [[tabController.viewControllers objectAtIndex:0] tabBarItem].badgeValue = badge;
+                            [[UIApplication sharedApplication] setApplicationIconBadgeNumber: self.Singleton.totalNoLeidasBadge];
+                            
                             
                         }else{
                             [lblTbl setHidden:NO];
@@ -616,6 +627,10 @@
         
     }
     
+}
+
+- (IBAction)btnRefresh:(id)sender {
+    [self getTercerMenu];
 }
 
 

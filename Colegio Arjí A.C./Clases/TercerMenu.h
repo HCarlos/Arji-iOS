@@ -25,6 +25,8 @@
 @property(nonatomic) int IdObjMenu;
 @property(nonatomic) Byte Status;
 - (IBAction)btnActionSegment:(UISegmentedControl *)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnRefresh;
+- (IBAction)btnRefresh:(id)sender;
 
 @property (strong,nonatomic) Singleton *Singleton;
 
