@@ -59,12 +59,11 @@
 @property (nonatomic) int totalNoLeidasMensajes;
 @property (nonatomic) int totalNoLeidasBadge;
 
-
 @property (nonatomic, retain) NSString *Username;
 @property (nonatomic, retain) NSString *Password;
 @property (nonatomic, retain) NSString *NombreCompletoUsuario;
 @property (nonatomic, retain) NSString *Version;
-@property (nonatomic, retain) NSString *VersionDisponible;
+@property (nonatomic, retain) NSString *currentVersion;
 // URL's
 @property (nonatomic, retain) NSString *urlBase;
 @property (nonatomic, retain) NSString *urlLogin;

@@ -14,7 +14,7 @@ git status
 
 git add .
 
-git commit -m "Update 1.1.30A"
+git commit -m "Update 1.1.30B"
 
 git push -u origin master --force
 

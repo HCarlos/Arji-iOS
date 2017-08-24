@@ -154,6 +154,8 @@
                     self.Singleton.totalNoLeidasCirculaes = [ [stats objectForKey:@"totalNoLeidasCirculares"] intValue];
                     self.Singleton.totalNoLeidasMensajes = [ [stats objectForKey:@"totalNoLeidasMensajes"] intValue];
                     self.Singleton.totalNoLeidasBadge = [ [stats objectForKey:@"totalNoLeidasBadge"] intValue];
+                    self.Singleton.currentVersion = [stats objectForKey:@"currentVersion"];
+                    
                     // [UIApplication sharedApplication].applicationIconBadgeNumber = self.Singleton.totalNoLeidasBadge;
                     
                     NSArray *Value = [testString componentsSeparatedByString:@"|"];
@@ -174,9 +176,7 @@
                             self.Singleton.Clave                 = [[Value objectAtIndex:5] intValue];
                             self.Singleton.Param1                = [[Value objectAtIndex:6] intValue];
                             self.Singleton.NombreCompletoUsuario = [Value objectAtIndex:7];
-                            
-                            
-                            
+                                                        
                             NSLog(@"IdUser->: %d",self.Singleton.IdUser);
                             NSLog(@"Username->: %@",self.Singleton.Username);
                             NSLog(@"Password->: %@",self.Singleton.Password);
@@ -196,8 +196,6 @@
                             NSString *fcmToken = [FIRMessaging messaging].FCMToken;
                             NSLog(@"FCM registration token: %@", fcmToken);
                             
-                            // NSLog(@"Clave %d",self.Singleton.Clave);
-
                             [self.Singleton insertUser:usernamex insertPass:passwordl];
                             [self.Singleton addAccess];
                             
@@ -221,6 +219,9 @@
                                 [self.lblMensaje setText:an];
                                 an = nil;
                             }
+                            
+                            [self questionNewVersion];
+                            
                         }
                         
                         [self.btnIngresar setEnabled:YES];
@@ -280,4 +281,56 @@
     return YES;
     
 }
+
+#pragma mark - Question New Versión
+-(void)questionNewVersion {
+    
+    if ( ![self.Singleton.Version isEqualToString:self.Singleton.currentVersion] ){
+        
+        NSString *part1 = @"Existe una nueva versión de esta App.";
+        
+         part1 = [[NSString alloc]
+                      initWithData:
+                      [part1 dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]
+                      encoding:NSUTF8StringEncoding];
+        
+        NSString *quetion = [NSString stringWithFormat:@"%@\r%@", part1,@"Sugerimos actualizarla."];
+        
+        UIAlertController * alert=   [UIAlertController
+                                      alertControllerWithTitle:@"Nueva versión"
+                                      message:quetion
+                                      preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* yesButton = [UIAlertAction
+                                    actionWithTitle:@"OK"
+                                    style:UIAlertActionStyleDefault
+                                    handler:^(UIAlertAction * action)
+                                    {
+                                        
+                                        
+                                    }];
+        /*
+         
+         UIAlertAction* noButton = [UIAlertAction
+         actionWithTitle:@"No, gracias"
+         style:UIAlertActionStyleDefault
+         handler:^(UIAlertAction * action)
+         {
+         
+         }];
+         
+         */
+        
+        [alert addAction:yesButton];
+        //     [alert addAction:noButton];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+        
+    }
+    
+}
+
+
+
+
 @end

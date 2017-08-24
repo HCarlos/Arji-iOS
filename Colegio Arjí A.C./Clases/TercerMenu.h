@@ -27,11 +27,10 @@
 - (IBAction)btnActionSegment:(UISegmentedControl *)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnRefresh;
 - (IBAction)btnRefresh:(id)sender;
-
 @property (strong,nonatomic) Singleton *Singleton;
 
 -(void)getTercerMenu;
-
+-(void) setBadge;
 -(void)sayMessageTable:(NSInteger) Indice Celda:(UITableViewCell*) cell;
 
 -(void)sayTareaTable:(NSInteger) Indice Celda:(UITableViewCell*) cell;

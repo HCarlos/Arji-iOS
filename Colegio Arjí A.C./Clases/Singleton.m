@@ -24,7 +24,7 @@
 @synthesize uniqueIdentifier;
 @synthesize pathPList, dataPList,IdUser, IsDelete, limCant, limFrom, noIngresos, IdConcepto;
 @synthesize Username, Password, IdEmp, IdUserNivelAcceso, Param1, Clave, Empresa, RegistrosPorPagina, NombreCompletoUsuario;
-@synthesize tokenUser, typeDevice, Version, VersionDisponible, FCMToken, APNSToken;
+@synthesize tokenUser, typeDevice, Version, currentVersion, FCMToken, APNSToken;
 @synthesize applicationIconBadgeNumber;
 @synthesize totalNoLeidasBadge, totalNoLeidasTareas, totalNoLeidasMensajes, totalNoLeidasCirculaes,
             urlBase, urlLogin, urlListaHijos, urlBoletas, urlFE, urlPagos, urlListaTutorTareas, urlTemplateTareas,urlTemplateCirculares, urlBoletin, urlQuienesSomos, urlCertificaciones, urlCalendario, urlDirectorio, urlProcesoAdmision, urlBeneficios, urlContacto, urlMensajes, urlCuerpoMensaje, urlAvisoPrivacidad;
@@ -75,9 +75,9 @@ static Singleton* _sharedMySingleton = nil;
         self.totalNoLeidasBadge = 0;
         
         self.Version = version;
-        self.VersionDisponible = version;
+        self.currentVersion = version;
         self.IdConcepto = 0;
-        self.urlBase = @"http://platsource.mx/";
+        self.urlBase = @"https://platsource.mx/";
         self.urlLogin = [NSString stringWithFormat:@"%@%@", self.urlBase, @"getLoginUserMobile/"];
         self.urlListaHijos = [NSString stringWithFormat:@"%@%@", self.urlBase, @"getListaHijos/"];
         self.urlBoletas = [NSString stringWithFormat:@"%@%@", self.urlBase, @"php/01/mobile/boletas_layout.php?idgrualu=%d&user=%@&iduser=%d&idemp=%d"];

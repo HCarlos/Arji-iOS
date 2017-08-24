@@ -26,6 +26,7 @@
 -(void)ValidCredentials;
 -(void)Login;
 -(void)HideKeyBoard;
+-(void)questionNewVersion;
 
 @end
 

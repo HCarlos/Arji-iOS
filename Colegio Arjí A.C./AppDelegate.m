@@ -425,7 +425,13 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
     
     NSString *badge = [userInfo objectForKey:@"badge"];
     UITabBarController *tabController = (UITabBarController *)self.window.rootViewController;
-    [[tabController.viewControllers objectAtIndex:0] tabBarItem].badgeValue = badge;
+    if ( [badge intValue] > 0 ){
+        [[tabController.viewControllers objectAtIndex:0] tabBarItem].badgeValue = badge;
+    }else{
+        [[tabController.viewControllers objectAtIndex:0] tabBarItem].badgeValue = nil;
+    }
+
+    // [[tabController.viewControllers objectAtIndex:0] tabBarItem]. = badge;
     
 }
 

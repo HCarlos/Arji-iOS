@@ -15,7 +15,5 @@
 @property (weak, nonatomic) IBOutlet UITextView *lblToken;
 @property (weak, nonatomic) IBOutlet UILabel *lblVersion;
 @property (weak, nonatomic) IBOutlet UILabel *lblNoTransactions;
-@property (weak, nonatomic) IBOutlet UITextView *FCMToken;
-@property (weak, nonatomic) IBOutlet UITextView *APNToken;
 
 @end

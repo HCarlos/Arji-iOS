@@ -24,7 +24,7 @@
     NSArray *ArrObj2;
     NSArray *ArrObj3;
 }
-@synthesize Singleton, IdObjAlu;
+@synthesize Singleton, IdObjAlu, tblView;
 
 - (void)viewDidLoad {
 
@@ -560,12 +560,14 @@
     switch (tipoOption) {
         case 0:
             if (self.Singleton.totalNoLeidasTareas > 0){
-                cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%d  ", self.Singleton.totalNoLeidasTareas];
+                // cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%d  ", self.Singleton.totalNoLeidasTareas];
+                cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"    "];
             }
             break;
         case 1:
             if (self.Singleton.totalNoLeidasCirculaes > 0){
-                cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%d  ", self.Singleton.totalNoLeidasCirculaes];
+                // cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%d  ", self.Singleton.totalNoLeidasCirculaes];
+                cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"    "];
             }
             break;
         default:
@@ -577,9 +579,15 @@
     cell.detailTextLabel.clipsToBounds = YES;
     cell.detailTextLabel.layer.cornerRadius = 7.5;
 
-    NSString *badge = [[NSString alloc] initWithFormat:@"%d  ", self.Singleton.totalNoLeidasBadge];
+    NSString *badge = [[NSString alloc] initWithFormat:@"%d", self.Singleton.totalNoLeidasBadge];
     UITabBarController *tabController =(UITabBarController *)[[[UIApplication sharedApplication] delegate] window].rootViewController;
-    [[tabController.viewControllers objectAtIndex:0] tabBarItem].badgeValue = badge;
+
+    if ( [badge intValue] > 0 ){
+        [[tabController.viewControllers objectAtIndex:0] tabBarItem].badgeValue = badge;
+    }else{
+        [[tabController.viewControllers objectAtIndex:0] tabBarItem].badgeValue = nil;
+    }
+    
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber: self.Singleton.totalNoLeidasBadge];
     
     
@@ -622,7 +630,4 @@
     
 }
 
-- (IBAction)btnRefresh:(id)sender {
-    //[self tab];
-}
 @end

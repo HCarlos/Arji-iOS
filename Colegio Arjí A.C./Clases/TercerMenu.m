@@ -6,6 +6,7 @@
 //  Copyright © 2016 Colegio Arji A.C. All rights reserved.
 //
 
+#import "SegundoMenu.h"
 #import "TercerMenu.h"
 #import "Singleton.h"
 #import "VerTareasCirculares.h"
@@ -22,7 +23,6 @@
 @synthesize tblView, IdObjAlu, IdObjMenu, Indicator, Nav0, Bar0, Segment0, Status;
 
 - (void)viewDidLoad {
-    [self.Indicator startAnimating];
 
     lblTbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 48, 350, 30)];
     lblTbl.text = @"No se encontraron Mensajes para este Usuario.";
@@ -115,7 +115,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    // Boolean primerPago = false;
+    [self.Indicator setHidden:NO];
+    [self.Indicator startAnimating];
     
     static NSString *TableId = @"";
     int vencido = [ [[Menu objectAtIndex:indexPath.row] objectForKey:@"dias_que_faltan_para_vencer"] intValue];
@@ -244,12 +245,15 @@
                 break;
         }
     }
+
+    [self.Indicator stopAnimating];
+    [self.Indicator setHidden:YES];
     
     return cell;
 
 }
 
-
+/*
 
 - (void)updateTableViewCell:(UITableViewCell *)cell forCount:(NSUInteger)count
 {
@@ -289,7 +293,7 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
 }
-
+*/
 
 
 
@@ -366,6 +370,7 @@
         
         // Evio de Datos Sin Imagen
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+        [self.Indicator setHidden:NO];
         [self.Indicator startAnimating];
         [lblTbl setHidden:YES];
         
@@ -416,31 +421,33 @@
                             
                             [lblTbl setHidden:YES];
                             
-                            NSString *badge = [[NSString alloc] initWithFormat:@"%d  ", self.Singleton.totalNoLeidasBadge];
-                            UITabBarController *tabController =(UITabBarController *)[[[UIApplication sharedApplication] delegate] window].rootViewController;
-                            [[tabController.viewControllers objectAtIndex:0] tabBarItem].badgeValue = badge;
-                            [[UIApplication sharedApplication] setApplicationIconBadgeNumber: self.Singleton.totalNoLeidasBadge];
-                            
+                            [self setBadge];
                             
                         }else{
                             [lblTbl setHidden:NO];
                         }
                         
                         [self.Indicator stopAnimating];
+                        [self.Indicator setHidden:YES];
 
                     });
                 } else {
                     // NSLog(@"Cadena Request: %@",noteDataString);
                     NSAssert(NO, @"Error en la conversión de JSON a Foundation ");
                     [postDataTask resume];
+                    [self.Indicator stopAnimating];
+                    [self.Indicator setHidden:YES];
                 }
             } else {
                 NSAssert(NO, @"Error a la hora de obtener las notas del servidor");
                 [postDataTask resume];
+                [self.Indicator stopAnimating];
+                [self.Indicator setHidden:YES];
             }
             dispatch_async(dispatch_get_main_queue(), ^{ });
                 [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                 [self.Indicator stopAnimating];
+                [self.Indicator setHidden:YES];
             }];
         
         [postDataTask resume];
@@ -602,8 +609,6 @@
     
     Byte selectedSegment = sender.selectedSegmentIndex;
 
-    [self.Indicator startAnimating];
-    
     if (selectedSegment != self.Status){
         
         self.Status =  selectedSegment;
@@ -626,6 +631,27 @@
         }
         
     }
+    
+}
+
+
+-(void) setBadge{
+    
+    NSString *badge = [[NSString alloc] initWithFormat:@"%d", self.Singleton.totalNoLeidasBadge];
+    UITabBarController *tabController =(UITabBarController *)[[[UIApplication sharedApplication] delegate] window].rootViewController;
+    
+    if ( [badge intValue] > 0 ){
+        [[tabController.viewControllers objectAtIndex:0] tabBarItem].badgeValue = badge;
+    }else{
+        [[tabController.viewControllers objectAtIndex:0] tabBarItem].badgeValue = nil;
+    }
+    
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber: self.Singleton.totalNoLeidasBadge];
+    
+    SegundoMenu *SegMen;
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
+    UITableViewCell *cell2 = (UITableViewCell *)[SegMen.tblView dequeueReusableCellWithIdentifier:@"SegundoMenuCell" forIndexPath:indexPath];
+    [SegMen enableDetailCell:cell2 tipoOption:1];
     
 }
 

@@ -21,8 +21,8 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tblView;
 - (IBAction)btnLogin:(id)sender;
-- (IBAction)btnRefresh:(id)sender;
 
 - (void)enableDetailCell:(UITableViewCell *)cell tipoOption:(NSInteger ) tipoOption;
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
